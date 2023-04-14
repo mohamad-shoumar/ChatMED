@@ -38,3 +38,28 @@ export const getMedicalHistory = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+// Update a medical history
+export const updateMedicalHistory = async (req: Request, res: Response) => {
+  try {
+    const userId = req.body.user.id;
+    const {
+      height,
+      weight,
+      allergies,
+      medications,
+      surgeries,
+      chronicConditions,
+    } = req.body.medicalHistory;
+
+    const updatedMedicalHistory = await MedicalHistory.findOneAndUpdate(
+      { user: userId },
+      { height, weight, allergies, medications, surgeries, chronicConditions },
+      { new: true }
+    );
+
+    res.status(200).json({ updatedMedicalHistory });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
