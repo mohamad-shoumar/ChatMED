@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const router = (0, express_1.Router)();
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const patient_middleware_1 = require("../middlewares/patient.middleware");
+const medicalhistory_controllers_1 = require("../controllers/medicalhistory.controllers");
+router.get("/my-history", auth_middleware_1.authMiddleware, medicalhistory_controllers_1.getMedicalHistory);
+router.post("/", auth_middleware_1.authMiddleware, patient_middleware_1.patientMiddleware, medicalhistory_controllers_1.addMedicalHistory);
+router.put("/", auth_middleware_1.authMiddleware, patient_middleware_1.patientMiddleware, medicalhistory_controllers_1.updateMedicalHistory);
+exports.default = router;
