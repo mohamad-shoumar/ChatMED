@@ -3,6 +3,7 @@ import cors from "cors";
 import { config } from "dotenv";
 import authRoutes from "./routes/auth.routes";
 import patientRoutes from "./routes/patient.routes";
+import vitalsRoutes from "./routes/vitals.routes";
 // import doctorRoutes from "./routes/doctor.routes";
 import medicalHistoryRoutes from "./routes/medicalhistory.routes";
 
@@ -28,3 +29,4 @@ app.use("/auth", authRoutes);
 app.use("/patient", patientRoutes);
 // app.use("/doctor", doctorRoutes);
 app.use("/medicalhistory", medicalHistoryRoutes);
+app.use("/vitals", vitalsRoutes);
