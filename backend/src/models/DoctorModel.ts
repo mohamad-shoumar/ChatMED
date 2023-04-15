@@ -10,6 +10,10 @@ export interface IDoctor extends mongoose.Document {
     start: string;
     end: string;
   };
+  consultations: {
+    doctor: string;
+    date: Date;
+  }[];
 }
 
 const Schema = mongoose.Schema;
@@ -39,19 +43,20 @@ const DoctorSchema = new Schema({
   patients: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Patient",
     },
   ],
-  medicalHistory: [
+  consultations: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "MedicalHistory",
-    },
-  ],
-  vitals: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Vitals",
+      doctor: {
+        type: Schema.Types.ObjectId,
+        ref: "Patient",
+        required: true,
+      },
+      date: {
+        type: Date,
+        required: true,
+      },
     },
   ],
 });
