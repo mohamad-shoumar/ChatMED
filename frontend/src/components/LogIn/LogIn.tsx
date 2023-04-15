@@ -8,7 +8,37 @@ import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let nav = useNavigate();
+  const handleSignin = async (e: any) => {
+    e.preventDefault();
+    const data_signin = { email: email, password: password };
+    const url = `${base_url}auth/login`,
+      response = await postAPI(url, data_signin);
+    const token = response.token;
+    console.log(response);
+    localStorage.setItem("token", token);
+    let user: JwtPayload = jwt_decode(token);
+    console.log(user);
 
+    console.log(user.role);
+    try {
+      if (user.role === "pateint") {
+        toast.success(`You Are Now Logged in.`);
+        nav("/pateint");
+      } else {
+        toast.success(`You Are Now Logged in.`);
+        nav("/doctor");
+      }
+      setEmail("");
+      setPassword("");
+    } catch {
+      console.log("error");
+      toast.error("Failed.");
+    }
+  };
 
   return (
     <div className="form-container sign-in-container">
