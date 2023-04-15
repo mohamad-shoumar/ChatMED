@@ -3,12 +3,14 @@ const router: Router = Router();
 import { authMiddleware } from "../middlewares/auth.middleware";
 import { patientMiddleware } from "../middlewares/patient.middleware";
 import {
-  getVitals,
   addBloodPressure,
   getBloodPressure,
+  addSugar,
+  addHeartRate,
+  getHeartRate,
+  getSugar,
 } from "../controllers/vitals.controller";
 
-router.get("/", authMiddleware, getVitals);
 router.post(
   "/bloodpressure",
   authMiddleware,
@@ -21,5 +23,11 @@ router.get(
   patientMiddleware,
   getBloodPressure
 );
+
+router.post("/sugar", authMiddleware, patientMiddleware, addSugar);
+router.get("/sugar", authMiddleware, patientMiddleware, getSugar);
+
+router.post("/heart", authMiddleware, patientMiddleware, addHeartRate);
+router.get("/heart", authMiddleware, patientMiddleware, getHeartRate);
 
 export default router;
