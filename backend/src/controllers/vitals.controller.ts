@@ -75,3 +75,18 @@ export const addSugar = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+// get sugar api
+export const getSugar = async (req: Request, res: Response) => {
+  try {
+    const userId = req.body.user.id;
+    const retrievedBloodSugar = await Vitals.findOne(
+      { user: userId },
+      { bloodsugar: 1 }
+    );
+
+    res.json(retrievedBloodSugar);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
