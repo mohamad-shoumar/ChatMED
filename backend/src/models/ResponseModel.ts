@@ -14,7 +14,7 @@ const Schema = mongoose.Schema;
 const ResponseSchema = new Schema({
   patient: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Patient",
     required: true,
   },
   doctor: {

@@ -8,6 +8,10 @@ export interface IUser extends Document {
   picture?: string;
   fullName: string;
   gender: "male" | "female" | "other";
+  consultations?: {
+    doctor: string;
+    date: Date;
+  }[];
 }
 
 const UserSchema = new Schema<IUser>({
@@ -44,6 +48,19 @@ const UserSchema = new Schema<IUser>({
     enum: ["male", "female", "other"],
     required: true,
   },
+  consultations: [
+    {
+      doctor: {
+        type: Schema.Types.ObjectId,
+        ref: "Doctor",
+        required: true,
+      },
+      date: {
+        type: Date,
+        required: true,
+      },
+    },
+  ],
 });
 
 const UserModel: Model<IUser> = mongoose.model<IUser>("User", UserSchema);
