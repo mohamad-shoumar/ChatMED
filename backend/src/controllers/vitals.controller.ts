@@ -54,7 +54,7 @@ export const addSugar = async (req: Request, res: Response) => {
   try {
     const value = req.body.value;
     const userId = req.body.user.id;
-    if (!value || typeof value !== "number" || !userId) {
+    if (!value || !userId) {
       return res.status(400).json({ message: "Invalid input data" });
     }
 
@@ -85,6 +85,31 @@ export const getSugar = async (req: Request, res: Response) => {
     );
 
     res.json(retrievedBloodSugar);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+// heart  rate api
+export const addHeartRate = async (req: Request, res: Response) => {
+  try {
+    const value = req.body.value;
+    const userId = req.body.user.id;
+    if (!value || !userId) {
+      return res.status(400).json({ message: "Invalid input data" });
+    }
+    let vital_hr = await Vitals.findOne({ user: userId });
+    if (!vital_hr) {
+      vital_hr = new Vitals({ user: userId, heartRate: [{ value }] });
+    } else {
+      if (!vital_hr.heartRate) {
+        vital_hr.heartRate = [{ value }];
+      } else {
+        vital_hr.heartRate.push({ value });
+      }
+    }
+    await vital_hr.save();
+    res.json(vital_hr);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
