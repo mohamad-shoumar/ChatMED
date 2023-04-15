@@ -4,21 +4,29 @@ import MedicalHistory, { IMedicalHistory } from "../models/MedicalHistoryModel";
 // craate new medical history
 export const addMedicalHistory = async (req: Request, response: Response) => {
   try {
-    const { user, medicalHistory } = req.body;
-    const newMedicalHistory: IMedicalHistory = new MedicalHistory({
-      user: user.id,
-      height: medicalHistory.height,
-      weight: medicalHistory.weight,
-      allergies: medicalHistory.allergies,
-      medications: medicalHistory.medications,
-      surgeries: medicalHistory.surgeries,
-      chronicConditions: medicalHistory.chronicConditions,
-      dateOfBirth: medicalHistory.dateOfBirth,
-    });
-    console.log(newMedicalHistory);
+    const userId = req.body.user.id;
+    const medicalHistory = req.body.medicalHistory;
 
-    await newMedicalHistory.save();
-    response.json({ message: "medical history added", newMedicalHistory });
+    let newMedicalHistory = await MedicalHistory.findOne({ user: userId });
+    if (newMedicalHistory) {
+      return response
+        .status(400)
+        .json({ message: "Medical history already exists" });
+    } else if (!newMedicalHistory) {
+      newMedicalHistory = new MedicalHistory({
+        user: userId,
+        height: medicalHistory.height,
+        weight: medicalHistory.weight,
+        allergies: medicalHistory.allergies,
+        medications: medicalHistory.medications,
+        surgeries: medicalHistory.surgeries,
+        chronicConditions: medicalHistory.chronicConditions,
+        dateOfBirth: medicalHistory.dateOfBirth,
+      });
+      console.log(newMedicalHistory);
+      await newMedicalHistory.save();
+      response.json({ message: "medical history added", newMedicalHistory });
+    }
   } catch (error) {
     response.status(500).json({ message: "Server error" });
   }
@@ -49,11 +57,20 @@ export const updateMedicalHistory = async (req: Request, res: Response) => {
       medications,
       surgeries,
       chronicConditions,
+      dateOfBirth,
     } = req.body.medicalHistory;
 
     const updatedMedicalHistory = await MedicalHistory.findOneAndUpdate(
       { user: userId },
-      { height, weight, allergies, medications, surgeries, chronicConditions },
+      {
+        height,
+        weight,
+        allergies,
+        medications,
+        surgeries,
+        chronicConditions,
+        dateOfBirth,
+      },
       { new: true }
     );
 
