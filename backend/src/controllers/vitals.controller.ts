@@ -115,3 +115,17 @@ export const addHeartRate = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+// get heart rate api
+export const getHeartRate = async (req: Request, res: Response) => {
+  try {
+    const userId = req.body.user.id;
+    const retrievedHeartRate = await Vitals.findOne(
+      { user: userId },
+      { heartRate: 1 }
+    );
+    res.json(retrievedHeartRate);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
