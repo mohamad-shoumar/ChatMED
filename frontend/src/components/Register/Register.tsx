@@ -6,8 +6,40 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const Register = () => {
+  const [username, setUserName] = useState("");
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  const [gender, setGender] = useState("");
+  const [role, setRole] = useState("");
 
+  const handleSignup = async (e: any) => {
+    e.preventDefault();
+    const data = {
+      fullName: fullname,
+
+      gender: gender,
+      role: role,
+      email: email,
+      password: password,
+      username: username,
+    };
+    const url = `${base_url}auth/register`,
+      response = await postAPI(url, data);
+    console.log(response);
+    if (response.data.message === "success") {
+      toast.success(`You Are Now Registered.`);
+      setUserName("");
+      setFullName("");
+
+      setEmail("");
+      setPassword("");
+    } else {
+      toast.error("Error signing up.");
+    }
+  };
   return (
     <div className="form-container sign-up-container">
       <form>
