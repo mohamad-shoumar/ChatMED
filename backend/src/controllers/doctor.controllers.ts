@@ -90,4 +90,20 @@ export const getProfile = async (req: Request, response: Response) => {
     response.status(500).json({ message: "Server error" });
   }
 };
-// get list of consultations
+// getPatients
+export const getPatients = async (req: Request, response: Response) => {
+  try {
+    const doctorId = req.body.user.id;
+    const doctor = await Doctor.findOne({ user: doctorId });
+    console.log(doctor);
+
+    if (!doctor) {
+      response.status(404).json({ message: "Doctor not found" });
+      return;
+    }
+    const patients = await User.find({ _id: { $in: doctor.patients } });
+    response.json(patients);
+  } catch (error) {
+    response.status(500).json({ message: "Server error" });
+  }
+};
