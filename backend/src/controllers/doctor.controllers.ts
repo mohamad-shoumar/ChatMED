@@ -64,9 +64,30 @@ export const editProfile = async (req: Request, res: Response) => {
     retrievedUser.email = email || retrievedUser.email;
     retrievedUser.picture = picture || retrievedUser.picture;
     const updatedUser = await retrievedUser.save();
-    res.json({ updatedDoctor });
+    res.json({ updatedDoctor, updatedUser });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 };
+// get profile
+export const getProfile = async (req: Request, response: Response) => {
+  try {
+    const doctorInfo = req.body.user.id;
+    const userInfo = req.body.user.id;
+    const doctor = await Doctor.findOne({ user: doctorInfo });
+    const user = await User.findOne({ _id: userInfo });
+    if (!doctor) {
+      response.status(404).json({ message: "Doctor not found" });
+      return;
+    }
+    if (!user) {
+      response.status(404).json({ message: "User not found" });
+      return;
+    }
+    response.json({ doctor, user });
+  } catch (error) {
+    response.status(500).json({ message: "Server error" });
+  }
+};
+// get list of consultations
