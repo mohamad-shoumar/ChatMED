@@ -6,10 +6,12 @@ import {
   editProfile,
   getDoctors,
   getProfile,
+  chooseDoctor,
 } from "../controllers/patient.controllers";
 
 router.get("/getdoctors", authMiddleware, patientMiddleware, getDoctors);
 router.get("/profile", authMiddleware, patientMiddleware, getProfile);
 router.post("/editProfile", authMiddleware, patientMiddleware, editProfile);
+router.post("/choosedoctor", authMiddleware, patientMiddleware, chooseDoctor);
 
 export default router;
