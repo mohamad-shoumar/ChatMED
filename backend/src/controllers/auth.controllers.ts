@@ -30,6 +30,7 @@ export const login = async (req: Request, res: Response) => {
 };
 
 // Register
+
 export const register = async (req: Request, res: Response) => {
   const schema = Joi.object({
     email: Joi.string().email().required(),
@@ -67,21 +68,22 @@ export const register = async (req: Request, res: Response) => {
 
     if (role === "doctor") {
       const doctor = new Doctor({
-        user: user._id,
+        doctor: user._id,
       });
       await doctor.save();
     } else if (role === "patient") {
       const patient = new Patient({
-        user: user._id,
+        patient: user._id,
       });
       await patient.save();
     }
 
     return res.status(201).json({ message: "Success", user });
-  } catch (error) {
-    return res.status(500).json({ message: error });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
   }
 };
+
 //
 
 // apis

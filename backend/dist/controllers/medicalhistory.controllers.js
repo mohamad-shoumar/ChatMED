@@ -19,8 +19,6 @@ const addMedicalHistory = (req, response) => __awaiter(void 0, void 0, void 0, f
     try {
         const userId = req.body.user.id;
         const medicalHistory = req.body.medicalHistory;
-        console.log(userId);
-        console.log(medicalHistory);
         let newMedicalHistory = yield MedicalHistoryModel_1.default.findOne({ user: userId });
         if (newMedicalHistory) {
             return response

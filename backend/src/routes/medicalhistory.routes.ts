@@ -8,7 +8,7 @@ import {
   updateMedicalHistory,
 } from "../controllers/medicalhistory.controllers";
 
-router.get("/my-history", authMiddleware, getMedicalHistory);
+router.get("/myhistory", authMiddleware, getMedicalHistory);
 
 router.post(
   "/addhistory",
@@ -18,7 +18,7 @@ router.post(
 );
 
 router.post(
-  "/update-history",
+  "/updatehistory",
   authMiddleware,
   patientMiddleware,
   updateMedicalHistory

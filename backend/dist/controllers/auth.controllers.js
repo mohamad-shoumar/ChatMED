@@ -71,20 +71,20 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         yield user.save();
         if (role === "doctor") {
             const doctor = new DoctorModel_1.default({
-                user: user._id,
+                doctor: user._id,
             });
             yield doctor.save();
         }
         else if (role === "patient") {
             const patient = new PatientModel_1.default({
-                user: user._id,
+                patient: user._id,
             });
             yield patient.save();
         }
         return res.status(201).json({ message: "Success", user });
     }
     catch (error) {
-        return res.status(500).json({ message: error });
+        return res.status(500).json({ message: error.message });
     }
 });
 exports.register = register;

@@ -4,6 +4,7 @@ declare global {
       PORTAL: Number;
       Secret_key: string;
       DB_URL: string;
+      OPEN_AI_KEY: string;
     }
   }
 }

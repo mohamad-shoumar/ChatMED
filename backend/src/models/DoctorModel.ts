@@ -4,6 +4,7 @@ export interface IDoctor extends mongoose.Document {
   user: string;
   specialization: string;
   price?: number;
+  patients?: string[];
   workingHours?: {
     start: string;
     end: string;
