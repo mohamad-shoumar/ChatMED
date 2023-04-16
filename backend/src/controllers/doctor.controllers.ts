@@ -1,13 +1,12 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import Doctor, { IDoctor } from "../models/DoctorModel";
-import UserModel, { IUser } from "../models/UserModel";
+import User, { IUser } from "../models/UserModel";
 import MedicalHistoryModel, {
   IMedicalHistory,
 } from "../models/MedicalHistoryModel";
 import Vitals, { IVital } from "../models/VitalModel";
 
-// Get a list of all the patients assigned to the current doctor
 // GET /patients
 // export const getpatients =  async (req:Request, res:Response) => {
 //   try {
@@ -30,3 +29,44 @@ import Vitals, { IVital } from "../models/VitalModel";
 //     res.status(500).json({ error: "Server error" });
 //   }
 // });
+// // get list of patients
+// get list of consultations
+// get profile
+// post edit doctor profile
+// get response
+// post edit response
+// post submit response( turn state to complete)
+
+// edit profile
+export const editProfile = async (req: Request, res: Response) => {
+  try {
+    const userId = req.body.user.id;
+    const { fullName, price, workingHours, email, picture } = req.body;
+    console.log(req.body);
+    console.log(userId);
+    console.log(workingHours);
+
+    const doctor = await Doctor.findOne({ user: userId });
+    if (!doctor) {
+      return res.status(404).json({ message: "Doctor not found" });
+    }
+    const typedDoctor = doctor as IDoctor;
+    typedDoctor.price = price || typedDoctor.price;
+    typedDoctor.workingHours = workingHours || typedDoctor.workingHours;
+    const updatedDoctor = await typedDoctor.save();
+
+    const retrievedUser = await User.findOne({ _id: userId });
+
+    if (!retrievedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    retrievedUser.fullName = fullName || retrievedUser.fullName;
+    retrievedUser.email = email || retrievedUser.email;
+    retrievedUser.picture = picture || retrievedUser.picture;
+    const updatedUser = await retrievedUser.save();
+    res.json({ updatedDoctor });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
