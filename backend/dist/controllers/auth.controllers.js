@@ -17,6 +17,8 @@ const joi_1 = __importDefault(require("joi"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const UserModel_1 = __importDefault(require("../models/UserModel"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const DoctorModel_1 = __importDefault(require("../models/DoctorModel"));
+const PatientModel_1 = __importDefault(require("../models/PatientModel"));
 const saltRounds = 10;
 //  Login
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -46,14 +48,12 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         role: joi_1.default.string().valid("patient", "doctor").required(),
         fullName: joi_1.default.string().min(3).max(50).required(),
         gender: joi_1.default.string().valid("male", "female", "other").required(),
-        dateOfBirth: joi_1.default.date().required(),
     });
     const { error } = schema.validate(req.body);
     if (error) {
         return res.status(400).json({ message: error.message });
     }
-    console.log(req.body);
-    const { email, username, password, role, fullName, gender, dateOfBirth } = req.body;
+    const { email, username, password, role, fullName, gender } = req.body;
     try {
         const existingUser = yield UserModel_1.default.findOne({ email });
         if (existingUser) {
@@ -67,13 +67,45 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             role,
             fullName,
             gender,
-            dateOfBirth,
         });
         yield user.save();
+        if (role === "doctor") {
+            const doctor = new DoctorModel_1.default({
+                user: user._id,
+            });
+            yield doctor.save();
+        }
+        else if (role === "patient") {
+            const patient = new PatientModel_1.default({
+                user: user._id,
+            });
+            yield patient.save();
+        }
         return res.status(201).json({ message: "Success", user });
     }
     catch (error) {
-        return res.status(500).json({ message: "Error" });
+        return res.status(500).json({ message: error });
     }
 });
 exports.register = register;
+//
+// apis
+// post add medical history
+// get medical history
+// post edit medical history
+// get patient profile
+// get list of doctors
+// get advice of day(response.advice model)
+// post choose doctor and enter sympotoms (response model)
+// get response by doctor
+// post edit profile
+// post enter vitals
+// get vitals(graph and chart)
+// doctor api
+// get list of patients
+// get list of consultations
+// get profile
+// post edit doctor profile
+// get response
+// post edit reponse
+// post submit response( turn state to complete)

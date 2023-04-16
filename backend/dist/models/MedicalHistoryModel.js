@@ -8,7 +8,7 @@ const Schema = mongoose_1.default.Schema;
 const MedicalHistorySchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Patient",
     },
     height: {
         type: Number,
@@ -38,6 +38,9 @@ const MedicalHistorySchema = new Schema({
             type: String,
         },
     ],
+    dateOfBirth: {
+        type: Date,
+    },
 });
 const MedicalHistoryModel = mongoose_1.default.model("MedicalHistory", MedicalHistorySchema);
 exports.default = MedicalHistoryModel;

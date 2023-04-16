@@ -27,28 +27,44 @@ const mongoose_1 = __importStar(require("mongoose"));
 const VitalSchema = new mongoose_1.default.Schema({
     user: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Patient",
     },
-    medicalData: [
+    bloodPressure: [
         {
-            date: {
-                type: Date,
+            value: {
+                type: String,
                 required: true,
             },
-            bloodPressure: {
-                type: String,
-                required: false,
-            },
-            heartRate: {
-                type: Number,
-                required: false,
-            },
-            bloodsugar: {
-                type: Number,
-                required: false,
+            timestamp: {
+                type: Date,
+                default: Date.now,
             },
         },
     ],
-});
+    heartRate: [
+        {
+            value: {
+                type: Number,
+                required: true,
+            },
+            timestamp: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ],
+    bloodsugar: [
+        {
+            value: {
+                type: Number,
+                required: true,
+            },
+            timestamp: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ],
+}, { timestamps: true });
 const Vital = mongoose_1.default.model("Vitals", VitalSchema);
 exports.default = Vital;

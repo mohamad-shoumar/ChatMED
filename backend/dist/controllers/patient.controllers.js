@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProfile = exports.editProfile = exports.getDoctors = void 0;
 const UserModel_1 = __importDefault(require("../models/UserModel"));
-const moment_1 = __importDefault(require("moment"));
 // Get all doctors
 const getDoctors = (req, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,17 +28,14 @@ exports.getDoctors = getDoctors;
 // edit profile
 const editProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id, fullName, email, picture, dateOfBirth } = req.body;
+        const { id } = req.body.user;
+        const { fullName, email, picture } = req.body;
         const retrievedUser = yield UserModel_1.default.findById(id);
         if (!retrievedUser) {
             return res.status(404).json({ message: "User not found" });
         }
-        if (dateOfBirth && !(0, moment_1.default)(dateOfBirth, "YYYY-MM-DD", true).isValid()) {
-            return res.status(400).json({ message: "Invalid date of birth" });
-        }
         retrievedUser.fullName = fullName || retrievedUser.fullName;
         retrievedUser.email = email || retrievedUser.email;
-        retrievedUser.dateOfBirth = dateOfBirth || retrievedUser.dateOfBirth;
         retrievedUser.picture = picture || retrievedUser.picture;
         const updatedUser = yield retrievedUser.save();
         res.json(updatedUser);
@@ -53,8 +49,10 @@ exports.editProfile = editProfile;
 // get profile
 const getProfile = (req, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { user } = req.body;
-        const retreiveduser = yield UserModel_1.default.findById(user._id);
+        const user = req.body.user;
+        console.log(user);
+        const retreiveduser = yield UserModel_1.default.findOne({ email: user.email });
+        console.log(retreiveduser);
         if (!retreiveduser) {
             response.status(404).json({ message: "User not found" });
             return;

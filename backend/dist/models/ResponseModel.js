@@ -8,7 +8,7 @@ const Schema = mongoose_1.default.Schema;
 const ResponseSchema = new Schema({
     patient: {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Patient",
         required: true,
     },
     doctor: {
@@ -30,7 +30,7 @@ const ResponseSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ["pending", "edited", "LiveChat", "completed"],
+        enum: ["pending", "edited", "Chat", "completed"],
         default: "pending",
     },
     date: {

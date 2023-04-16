@@ -17,19 +17,31 @@ const MedicalHistoryModel_1 = __importDefault(require("../models/MedicalHistoryM
 // craate new medical history
 const addMedicalHistory = (req, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { user, medicalHistory } = req.body;
-        const newMedicalHistory = new MedicalHistoryModel_1.default({
-            user: user.id,
-            height: medicalHistory.height,
-            weight: medicalHistory.weight,
-            allergies: medicalHistory.allergies,
-            medications: medicalHistory.medications,
-            surgeries: medicalHistory.surgeries,
-            chronicConditions: medicalHistory.chronicConditions,
-        });
-        console.log(newMedicalHistory);
-        yield newMedicalHistory.save();
-        response.json({ message: "medical history added", newMedicalHistory });
+        const userId = req.body.user.id;
+        const medicalHistory = req.body.medicalHistory;
+        console.log(userId);
+        console.log(medicalHistory);
+        let newMedicalHistory = yield MedicalHistoryModel_1.default.findOne({ user: userId });
+        if (newMedicalHistory) {
+            return response
+                .status(400)
+                .json({ message: "Medical history already exists" });
+        }
+        else if (!newMedicalHistory) {
+            newMedicalHistory = new MedicalHistoryModel_1.default({
+                user: userId,
+                height: medicalHistory.height,
+                weight: medicalHistory.weight,
+                allergies: medicalHistory.allergies,
+                medications: medicalHistory.medications,
+                surgeries: medicalHistory.surgeries,
+                chronicConditions: medicalHistory.chronicConditions,
+                dateOfBirth: medicalHistory.dateOfBirth,
+            });
+            console.log(newMedicalHistory);
+            yield newMedicalHistory.save();
+            response.json({ message: "medical history added", newMedicalHistory });
+        }
     }
     catch (error) {
         response.status(500).json({ message: "Server error" });
@@ -56,12 +68,21 @@ exports.getMedicalHistory = getMedicalHistory;
 const updateMedicalHistory = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userId = req.body.user.id;
-        const medicalHistory = yield MedicalHistoryModel_1.default.findOneAndUpdate({ user: userId }, { $set: req.body }, { new: true, upsert: true });
-        return res.json({ medicalHistory });
+        const { height, weight, allergies, medications, surgeries, chronicConditions, dateOfBirth, } = req.body.medicalHistory;
+        const updatedMedicalHistory = yield MedicalHistoryModel_1.default.findOneAndUpdate({ user: userId }, {
+            height,
+            weight,
+            allergies,
+            medications,
+            surgeries,
+            chronicConditions,
+            dateOfBirth,
+        }, { new: true });
+        res.status(200).json({ updatedMedicalHistory });
     }
     catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Internal server error" });
+        res.status(500).json({ message: "Internal server error" });
     }
 });
 exports.updateMedicalHistory = updateMedicalHistory;

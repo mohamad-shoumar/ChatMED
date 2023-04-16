@@ -57,10 +57,19 @@ const UserSchema = new mongoose_1.Schema({
         enum: ["male", "female", "other"],
         required: true,
     },
-    dateOfBirth: {
-        type: Date,
-        required: true,
-    },
+    consultations: [
+        {
+            doctor: {
+                type: mongoose_1.Schema.Types.ObjectId,
+                ref: "Doctor",
+                required: true,
+            },
+            date: {
+                type: Date,
+                required: true,
+            },
+        },
+    ],
 });
 const UserModel = mongoose_1.default.model("User", UserSchema);
 exports.default = UserModel;

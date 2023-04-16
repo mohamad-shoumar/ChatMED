@@ -8,7 +8,8 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = require("dotenv");
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const patient_routes_1 = __importDefault(require("./routes/patient.routes"));
-// import doctorRoutes from "./routes/doctor.routes";
+const vitals_routes_1 = __importDefault(require("./routes/vitals.routes"));
+const doctor_routes_1 = __importDefault(require("./routes/doctor.routes"));
 const medicalhistory_routes_1 = __importDefault(require("./routes/medicalhistory.routes"));
 const db_config_1 = __importDefault(require("./configs/db.config"));
 (0, dotenv_1.config)();
@@ -27,5 +28,6 @@ app.listen(port, () => {
 });
 app.use("/auth", auth_routes_1.default);
 app.use("/patient", patient_routes_1.default);
-// app.use("/doctor", doctorRoutes);
+app.use("/doctor", doctor_routes_1.default);
 app.use("/medicalhistory", medicalhistory_routes_1.default);
+app.use("/vitals", vitals_routes_1.default);
