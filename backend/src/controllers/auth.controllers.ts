@@ -3,6 +3,8 @@ import Joi from "joi";
 import bcrypt from "bcrypt";
 import User, { IUser } from "../models/UserModel";
 import jwt from "jsonwebtoken";
+import Doctor, { IDoctor } from "../models/DoctorModel";
+import Patient, { IPatient } from "../models/PatientModel";
 
 const saltRounds = 10;
 
@@ -42,7 +44,6 @@ export const register = async (req: Request, res: Response) => {
   if (error) {
     return res.status(400).json({ message: error.message });
   }
-  console.log(req.body);
 
   const { email, username, password, role, fullName, gender } = req.body;
 
@@ -63,11 +64,25 @@ export const register = async (req: Request, res: Response) => {
     });
 
     await user.save();
+
+    if (role === "doctor") {
+      const doctor = new Doctor({
+        user: user._id,
+      });
+      await doctor.save();
+    } else if (role === "patient") {
+      const patient = new Patient({
+        user: user._id,
+      });
+      await patient.save();
+    }
+
     return res.status(201).json({ message: "Success", user });
   } catch (error) {
-    return res.status(500).json({ message: "Error" });
+    return res.status(500).json({ message: error });
   }
 };
+//
 
 // apis
 // post add medical history
