@@ -2,40 +2,8 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import Doctor, { IDoctor } from "../models/DoctorModel";
 import User, { IUser } from "../models/UserModel";
-import MedicalHistoryModel, {
-  IMedicalHistory,
-} from "../models/MedicalHistoryModel";
+import MedicalHistory from "../models/MedicalHistoryModel";
 import Vitals, { IVital } from "../models/VitalModel";
-
-// GET /patients
-// export const getpatients =  async (req:Request, res:Response) => {
-//   try {
-//     // Get the current doctor's ID from the request
-//     const doctorId = req.user._id;
-
-//     // Find the doctor in the database
-//     const doctor = await Doctor.findById(doctorId).populate("patients");
-
-//     if (!doctor) {
-//       // Return an error if the doctor is not found
-//       return res.status(404).json({ error: "Doctor not found" });
-//     }
-
-//     // Return the list of patients assigned to the doctor
-//     res.json(doctor.patients);
-//   } catch (err) {
-//     // Handle any errors that occur
-//     console.error(err);
-//     res.status(500).json({ error: "Server error" });
-//   }
-// });
-// // get list of patients
-// get list of consultations
-// get profile
-// post edit doctor profile
-// get response
-// post edit response
-// post submit response( turn state to complete)
 
 // edit profile
 export const editProfile = async (req: Request, res: Response) => {
@@ -103,6 +71,22 @@ export const getPatients = async (req: Request, response: Response) => {
     }
     const patients = await User.find({ _id: { $in: doctor.patients } });
     response.json(patients);
+  } catch (error) {
+    response.status(500).json({ message: "Server error" });
+  }
+};
+// GetpatientMedicalHistory
+export const getMedicalHistory = async (req: Request, response: Response) => {
+  try {
+    const patientId = req.body.patientId;
+    const medicalHistory = await MedicalHistory.findOne({
+      user: patientId,
+    }).populate("user");
+    if (!medicalHistory) {
+      response.status(404).json({ message: "Medical history not found" });
+      return;
+    }
+    response.json(medicalHistory);
   } catch (error) {
     response.status(500).json({ message: "Server error" });
   }
