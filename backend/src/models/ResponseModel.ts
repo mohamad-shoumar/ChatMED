@@ -6,7 +6,6 @@ export interface IResponse extends mongoose.Document {
   symptoms: string;
   diagnosis: string;
   treatmentPlan: string;
-  status: string;
   date: Date;
 }
 const Schema = mongoose.Schema;
@@ -26,6 +25,7 @@ const ResponseSchema = new Schema({
     type: String,
     required: true,
   },
+
   diagnosis: {
     type: String,
     required: true,
@@ -45,9 +45,9 @@ const ResponseSchema = new Schema({
   },
 });
 
-const ResponseModel: Model<IResponse> = mongoose.model<IResponse>(
-  "Response",
+const ResponseModel = mongoose.model<IResponse>(
+  "ResponseModel",
   ResponseSchema
 );
 
-module.exports = ResponseModel;
+export default ResponseModel;
