@@ -45,3 +45,30 @@ export const responseByChat = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+const generatePrompt = (symptoms: string, retrievedMedicalhistory: any) => {
+  return `
+  Context information is below.
+  ------------------------------
+  medical history: ${retrievedMedicalhistory}
+  symptoms: ${symptoms}
+
+  diagnosis: diagnosis
+  treatmentPlan: treatmentPlan
+  ------------------------------
+  Given the above information,
+    patient x has the following medical history: ${retrievedMedicalhistory}, his/her symptoms are: ${symptoms}.
+   your response to this case will be checked by a medical professional, provide a diagnosis and treatment plan and
+    the response shall be sent to a physician which will check it and either confirm, edit or suggest a physical appoitment.
+   make your response as if a medical doctor is writing it, suggest a diagnosis and a treatmentPlan.
+   Reurtn only a JSON parsable object with the following schema (Do not include any explanation before or after the JSON object):
+   const ResponseSchema = mongoose.Schema({
+    diagnosis: {
+      type: String,
+      required: true,
+    },
+    treatmentPlan: {
+      type: String, //you are allowed to prescribe a medication with a frequency and duration
+      required: true,
+    },
+})`;
+};
