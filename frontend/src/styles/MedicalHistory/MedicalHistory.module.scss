@@ -3,8 +3,8 @@
 .medicalHistory {
   margin-top: 9vh;
   margin-right: 10vw;
-  padding-top: 7vh;
-  margin-left: 25vw;
+  padding-top: 5vh;
+  margin-left: 20vw;
 }
 .medicalHistoryContainer {
   width: 100%;
@@ -21,4 +21,10 @@
   align-items: center;
   margin-bottom: 20px;
   padding: 10px 20px;
+}
+
+.medicalHistoryForm {
+  padding-left: 10%;
+  display: flex;
+  justify-content: space-evenly;
 }
