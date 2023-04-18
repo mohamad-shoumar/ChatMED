@@ -1,0 +1,24 @@
+@import " ../../../../stylesheet.scss";
+
+.medicalHistory {
+  margin-top: 9vh;
+  margin-right: 10vw;
+  padding-top: 7vh;
+  margin-left: 25vw;
+}
+.medicalHistoryContainer {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
