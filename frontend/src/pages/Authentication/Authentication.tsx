@@ -1,49 +1,58 @@
 import { useState } from "react";
-import "../../styles/Authentication/Authentication.css";
+import "../../styles/Authentication/Authentication.module.scss";
+import styles from "../../styles/Authentication/Authentication.module.scss";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React, { FC } from "react";
 import Register from "../../components/Register/Register";
 import LogIn from "../../components/LogIn/LogIn";
 
-const Authentication: FC = () => {
-  let nav = useNavigate();
-  const [swap, setSwap] = useState<boolean>(true);
+const Authentication = () => {
+  const [swap, setSwap] = useState(false);
+
   return (
-    <div className="wholeContainer">
+    <div className={styles.wholeContainer}>
       <div
-        className={swap ? "container" : "container right-panel-active"}
+        className={`${styles.container} ${
+          swap ? "" : styles["right-panel-active"]
+        }`}
         id="container"
       >
         <Register />
         <LogIn />
-        <div className="overlay-container">
-          <div className="overlay">
-            <div className="overlay-panel overlay-left">
-              <h1 className="title">Thank you for choosing ChatMED! </h1>
-              <p className="text">
+        <div className={styles["overlay-container"]}>
+          <div className={styles.overlay}>
+            <div
+              className={styles["overlay-panel"] + " " + styles["overlay-left"]}
+            >
+              <h1 className={styles.title}>Thank you for choosing ChatMED! </h1>
+              <p className={styles.text}>
                 If you already have an account please sign in
               </p>
               <button
                 onClick={() => {
                   setSwap(!swap);
                 }}
-                className="btn-signin ghost gradient-button gradient-button-1"
+                className={`${styles["btn-signin"]} ${styles.ghost} ${styles["gradient-button"]} ${styles["gradient-button-1"]}`}
                 id="signIn"
               >
                 Sign In
               </button>
             </div>
-            <div className="overlay-panel overlay-right">
-              <h1 className="title">Welcome to ChatMed! </h1>
-              <p className="text">
+            <div
+              className={
+                styles["overlay-panel"] + " " + styles["overlay-right"]
+              }
+            >
+              <h1 className={styles.title}>Welcome to ChatMed! </h1>
+              <p className={styles.text}>
                 Experience personalized healthcare with our AI-powered platform.{" "}
               </p>
               <button
                 onClick={() => {
                   setSwap(!swap);
                 }}
-                className="btn-signin ghost gradient-button gradient-button-1 "
+                className={`${styles["btn-signin"]} ${styles.ghost} ${styles["gradient-button"]} ${styles["gradient-button-1"]}`}
                 id="signUp"
               >
                 Sign Up

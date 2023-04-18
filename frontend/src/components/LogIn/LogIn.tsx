@@ -1,7 +1,8 @@
 import React from "react";
-import "../../styles/Authentication/LogIn.css";
-import "../../styles/Authentication/Authentication.css";
-import { getAPI, postAPI, base_url } from "../API/API";
+import "../../styles/Authentication/LogIn.module.scss";
+import "../../styles/Authentication/Authentication.module.scss";
+import styles from "../../styles/Authentication/Authentication.module.scss";
+import { getAPI, postAPI, base_url } from "../../API/API";
 import { useState } from "react";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import jwt_decode from "jwt-decode";
@@ -41,10 +42,12 @@ const Login = () => {
   };
 
   return (
-    <div className="form-container sign-in-container">
+    <div
+      className={`${styles["form-container"]} ${styles["sign-in-container"]}`}
+    >
       <form>
-        <h1 className="title">Sign In</h1>
-        <span className="span">Already have an account? </span>
+        <h1 className={styles.title}>Sign In</h1>
+        <span className={styles.span}>Already have an account? </span>
         <input
           type="email"
           placeholder="Email"
@@ -59,7 +62,7 @@ const Login = () => {
         />
         <button
           onClick={handleSignin}
-          className="btn-signin ghost gradient-button gradient-button-1"
+          className={`${styles["btn-signin"]} ${styles.ghost} ${styles["gradient-button"]} ${styles["gradient-button-1"]}`}
         >
           Sign In
         </button>
