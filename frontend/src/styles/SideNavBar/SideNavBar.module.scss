@@ -59,3 +59,33 @@
   size: 0.2rem;
   margin-top: 25px;
 }
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 85%;
+  border-radius: 5px;
+  padding: 5px 8px;
+  size: 0.2rem;
+}
+.word {
+  color: $background;
+  font-weight: bold;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.linkleft {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
+  width: 85%;
+  border-radius: 5px;
+  padding: 5px 5px;
+  size: 0.2rem;
+  font-weight: bold;
+  font-size: 0.5rem;
+  font-weight: bold;
+}
