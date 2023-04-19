@@ -57,7 +57,13 @@
   border-radius: 5px;
   padding: 5px 8px;
   size: 0.2rem;
-  margin-top: 25px;
+  margin-top: 20px;
+}
+.darkmode:hover {
+  filter: brightness(0.8);
+  background-color: rgb(15, 15, 85);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .link {
@@ -69,6 +75,12 @@
   border-radius: 5px;
   padding: 5px 8px;
   size: 0.2rem;
+  cursor: pointer;
+}
+.link:hover {
+  filter: brightness(0.8);
+  background-color: rgb(15, 15, 85);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .word {
   color: $background;
