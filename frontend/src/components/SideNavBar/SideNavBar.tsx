@@ -21,6 +21,40 @@ const SideNavBar = () => {
             <img src={Vector} alt="logo" />
             <div className={styles.Dashboard}>Dashboard</div>
           </div>
+          <div className={styles.link}>
+            <div className={styles.linkleft}>
+              <img src={history} alt="logo" />
+              <div className={styles.word}>Medical Hsitory</div>
+            </div>
+            <img src={Icon} alt="arrow" />
+          </div>
+          <div className={styles.link}>
+            <div className={styles.linkleft}>
+              <img src={vitals} alt="logo" />
+              <div className={styles.word}> Vitals</div>
+            </div>
+            <img src={Icon} alt="arrow" />
+          </div>
+          <div className={styles.link}>
+            <div className={styles.linkleft}>
+              <img src={chats} alt="logo" />
+              <div className={styles.word}>Chats</div>
+            </div>
+            <img src={Icon} alt="arrow" />
+          </div>
+          <div className={styles.link}>
+            <div className={styles.linkleft}>
+              <img src={logs} alt="logo" />
+              <div className={styles.word}>Log Out</div>
+            </div>
+            <img src={Icon} alt="arrow" />
+          </div>
+          <div className={styles.darkmode}>
+            <div className={styles.linkleft}>
+              <img src={sun} alt="logo" />
+              <div className={styles.word}>Dark Mode</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
