@@ -2,7 +2,8 @@ import React from "react";
 import "../../styles/Authentication/LogIn.module.scss";
 import "../../styles/Authentication/Authentication.module.scss";
 import styles from "../../styles/Authentication/Authentication.module.scss";
-import { getAPI, postAPI, base_url } from "../../API/API";
+import { API } from "../../../src/API/API";
+import { base_url } from "../../API/API";
 import { useState } from "react";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import jwt_decode from "jwt-decode";
@@ -15,16 +16,12 @@ const Login = () => {
   let nav = useNavigate();
   const handleSignin = async (e: any) => {
     e.preventDefault();
-    const data_signin = { email: email, password: password };
-    const url = `${base_url}auth/login`,
-      response = await postAPI(url, data_signin);
+    const api_data = { email: email, password: password };
+    const response = await API.postAPI(`${base_url}auth/login`, api_data);
     const token = response.token;
     console.log(response);
     localStorage.setItem("token", token);
     let user: JwtPayload = jwt_decode(token);
-    console.log(user);
-
-    console.log(user.role);
     try {
       if (user.role === "pateint") {
         toast.success(`You Are Now Logged in.`);

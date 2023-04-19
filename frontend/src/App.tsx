@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/authentication" element={<Authentication />} />
-        <Route path="/medical-history" element={<MedicalHistory />} />
+        <Route path="/medicalhistory" element={<MedicalHistory />} />
       </Routes>
     </BrowserRouter>
   );

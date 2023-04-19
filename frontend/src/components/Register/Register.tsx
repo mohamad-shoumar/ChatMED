@@ -1,73 +1,101 @@
 import React from "react";
-import { getAPI, postAPI, base_url } from "../API/API";
-import "../../styles/Authentication/Register.css";
+import { API } from "../../API/API";
+import { base_url } from "../../API/API";
+import style from "../../styles/Authentication/Register.module.scss";
+import styles from "../../styles/Authentication/Authentication.module.scss";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-  const [username, setUserName] = useState("");
+  const [UserName, setUserName] = useState("");
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [gender, setGender] = useState("");
   const [role, setRole] = useState("");
+  let nav = useNavigate();
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
     const data = {
       fullName: fullname,
-
       gender: gender,
       role: role,
       email: email,
       password: password,
-      username: username,
+      username: UserName,
     };
-    const url = `${base_url}auth/register`,
-      response = await postAPI(url, data);
-    console.log(response);
-    if (response.data.message === "success") {
+    const url = `${base_url}auth/register`;
+    console.log("Data: ", data);
+    console.log("URL: ", url);
+    try {
+      const response = await API.postAPI(url, data);
+      console.log("Response: ", response);
       toast.success(`You Are Now Registered.`);
-      setUserName("");
-      setFullName("");
-
-      setEmail("");
-      setPassword("");
-    } else {
+      if (response.data.message === "Success") {
+        toast.success(`You Are Now Registered.`);
+        setUserName("");
+        setFullName("");
+        setEmail("");
+        setPassword("");
+        nav("/medicalhistory");
+      } else {
+        toast.error("Error signing up.");
+      }
+    } catch (error) {
+      console.log("Error: ", error);
       toast.error("Error signing up.");
     }
   };
   return (
-    <div className="form-container sign-up-container">
+    <div
+      className={styles["form-container"] + " " + styles["sign-up-container"]}
+    >
       <form>
-        <h1 className="title">Create New Account</h1>
+        <h1 className={styles.title}>Create New Account</h1>
 
         <input
           type="text"
           placeholder="Full Name"
           value={fullname}
           onChange={(e) => setFullName(e.target.value)}
+          className={styles.input}
         />
-        <div>
-          <button className="btn-role" onClick={() => setRole("patient")}>
+        <div className={style["btn-options"]}>
+          <label>
+            <input
+              type="radio"
+              name="role"
+              value="patient"
+              onChange={(e) => setRole("patient")}
+              className={style.input}
+            />
             Patient
-          </button>
-          <button className="btn-role" onClick={() => setRole("doctor")}>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="role"
+              value="doctor"
+              onChange={(e) => setRole("doctor")}
+              className={style.input}
+            />
             Doctor
-          </button>
+          </label>
         </div>
         <div>
-          <div className="gender-label">Gender:</div>
-          <div className="gender-options">
+          <div className={style["gender-label"]}>Gender:</div>
+          <div className={style["gender-options"]}>
             <label>
               <input
                 type="radio"
                 name="gender"
                 value="male"
                 onChange={(e) => setGender(e.target.value)}
+                className={style.input}
               />
               Male
             </label>
@@ -77,6 +105,7 @@ const Register = () => {
                 name="gender"
                 value="female"
                 onChange={(e) => setGender(e.target.value)}
+                className={style.input}
               />
               Female
             </label>
@@ -86,6 +115,7 @@ const Register = () => {
                 name="gender"
                 value="other"
                 onChange={(e) => setGender(e.target.value)}
+                className={styles.input}
               />
               Other
             </label>
@@ -95,8 +125,9 @@ const Register = () => {
         <input
           type="text"
           placeholder="username"
-          value={username}
+          value={UserName}
           onChange={(e) => setUserName(e.target.value)}
+          className={styles.input}
         />
 
         <input
@@ -104,16 +135,18 @@ const Register = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className={styles.input}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className={styles.input}
         />
 
         <button
-          className="btn-signin ghost gradient-button gradient-button-1"
+          className={`${styles["btn-signin"]} ${styles["ghost-signup"]} ${styles["gradient-button"]} ${styles["gradient-button-1"]}`}
           id="sup"
           onClick={handleSignup}
         >
@@ -123,4 +156,5 @@ const Register = () => {
     </div>
   );
 };
+
 export default Register;
