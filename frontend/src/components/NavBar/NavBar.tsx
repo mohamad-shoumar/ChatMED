@@ -3,8 +3,11 @@ import styles from "../../styles/Authentication/NavBar.module.scss";
 import logoImage from "../../assets/navbar/logo.png";
 import bellIconImage from "../../assets/navbar/bell-fill.png";
 import profileImage from "../../assets/navbar/person-circle.png";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.navmain}>
       <div className={styles.navright}>
@@ -12,8 +15,19 @@ const Navbar = () => {
         <h2 className={styles.ChatMED}>ChatMED</h2>
       </div>
       <div className={styles.navright}>
-        <img className={styles.bell} src={bellIconImage} alt="bell-icon" />
-        <img src={profileImage} alt="profile" />
+        <img
+          className={styles.bell}
+          onClick={() => navigate("/notifications")}
+          src={bellIconImage}
+          alt="bell-icon"
+        />
+        <img
+          onClick={(e) => {
+            navigate("/profile");
+          }}
+          src={profileImage}
+          alt="profile"
+        />
       </div>
     </div>
   );
