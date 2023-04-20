@@ -41,6 +41,12 @@
   font-size: 0.7rem;
   font-weight: bolder;
 }
+.dash:hover {
+  filter: brightness(1.1);
+  background-color: $sec;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
 .submain {
   display: flex;
   flex-direction: column;
@@ -60,7 +66,7 @@
   margin-top: 20px;
 }
 .darkmode:hover {
-  filter: brightness(0.8);
+  filter: brightness(1.2);
   background-color: rgb(15, 15, 85);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -78,7 +84,7 @@
   cursor: pointer;
 }
 .link:hover {
-  filter: brightness(0.8);
+  filter: brightness(1.2);
   background-color: rgb(15, 15, 85);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
