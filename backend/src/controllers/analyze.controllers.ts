@@ -45,3 +45,25 @@ export const analyzeByChat = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+const generatePrompt = (vitalspatient: any) => {
+  return `
+        Context information is below.
+        ------------------------------
+        vitals: ${vitalspatient}
+        analyze: analyze
+        ------------------------------
+        Given the above information,
+          patient x has the following vitals data set: ${vitalspatient}.
+         Analyze this data of the vitals and provide a 15 words warning, motivation or nuetral statemnet depending on the data. 
+         Reurtn only a JSON parsable object with the following schema (Do not include any explanation before or after the JSON object):
+         const Schema = mongoose.Schema;
+         const AnalyzeSchema = new mongoose.Schema({
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: "Patient",
+          },
+          analysis: {
+            type: String,
+          },
+        });`;
+};
