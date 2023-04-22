@@ -7,6 +7,8 @@ import vitalsRoutes from "./routes/vitals.routes";
 import doctorRoutes from "./routes/doctor.routes";
 import medicalHistoryRoutes from "./routes/medicalhistory.routes";
 import responseRoutes from "./routes/response.routes";
+import analyzeRoutes from "./routes/analyze.routes";
+import adviceRoutes from "./routes/advice.routes";
 import { Configuration, OpenAIApi } from "openai";
 
 import connectDB from "./configs/db.config";
@@ -35,4 +37,6 @@ app.use("/patient", patientRoutes);
 app.use("/doctor", doctorRoutes);
 app.use("/medicalhistory", medicalHistoryRoutes);
 app.use("/vitals", vitalsRoutes);
-app.use("/openai", responseRoutes);
+app.use("/response", responseRoutes);
+app.use("/advice", adviceRoutes);
+app.use("/analyze", analyzeRoutes);
