@@ -1,5 +1,3 @@
-// post choose doctor and enter sympotoms (response model)
-// get response by doctor
 import { Router } from "express";
 const router: Router = Router();
 import { authMiddleware } from "../middlewares/auth.middleware";
