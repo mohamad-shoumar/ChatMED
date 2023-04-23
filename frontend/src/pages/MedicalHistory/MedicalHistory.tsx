@@ -11,6 +11,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
+import MedicalHistorySections from "../../components/MedicalHistorySections/MedicalHistorySections";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -22,6 +23,15 @@ const MedicalHistory = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [medications, setMedications] = useState<
     { name: string; frequency: string }[]
+  >([]);
+  const [surgeries, setSurgeries] = useState<{ name: string; date: number }[]>(
+    []
+  );
+  const [allergies, setAllergies] = useState<{ name: string; date: number }[]>(
+    []
+  );
+  const [chronicConditions, setChronicConditions] = useState<
+    { name: string; date: number }[]
   >([]);
   const [medicalHistoryData, setMedicalHistoryData] = useState<any>({
     height: "",
@@ -100,6 +110,23 @@ const MedicalHistory = () => {
 
           <div className={styles.sectionsMain}>
             <div className={styles.sections}>
+              <div>
+                <MedicalHistorySections
+                  title="Surgery"
+                  data={surgeries}
+                  setData={setSurgeries}
+                />
+                <MedicalHistorySections
+                  title="Allergies"
+                  data={allergies}
+                  setData={setAllergies}
+                />
+                <MedicalHistorySections
+                  title="Chronic Conditions"
+                  data={chronicConditions}
+                  setData={setChronicConditions}
+                />
+              </div>
               <div>
                 <MedicalHistorySection
                   onUpdateMedications={handleUpdateMedications}

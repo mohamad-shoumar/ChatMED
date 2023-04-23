@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { Secret } from "jsonwebtoken";
 import Joi from "joi";
 import bcrypt from "bcrypt";
 import User, { IUser } from "../models/UserModel";
@@ -12,7 +13,7 @@ const saltRounds = 10;
 export const login = async (req: Request, res: Response) => {
   try {
     console.log(req.body);
-
+    const secretKey: Secret = process.env.Secret_key as string;
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ message: "Invalid Credentials" });
@@ -21,7 +22,7 @@ export const login = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "invalid credintails" });
     const token = jwt.sign(
       { id: user._id, email: user.email, role: user.role },
-      process.env.Secret_key
+      secretKey
     );
     res.json({ token });
   } catch (error) {
