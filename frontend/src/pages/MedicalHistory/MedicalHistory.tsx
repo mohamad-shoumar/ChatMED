@@ -12,6 +12,8 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const MedicalHistory = () => {
   const navigate = useNavigate();
@@ -21,6 +23,26 @@ const MedicalHistory = () => {
   const [medications, setMedications] = useState<
     { name: string; frequency: string }[]
   >([]);
+  const [medicalHistoryData, setMedicalHistoryData] = useState<any>({
+    height: "",
+    weight: "",
+    dateOfBirth: "",
+    medications: [],
+    surgeries: [],
+    allergies: [],
+    chronicConditions: [],
+  });
+
+  const handleUpdateMedications = (
+    medications: { name: string; frequency: string }[]
+  ) => {
+    console.log("Medications updated:", medications);
+    setMedicalHistoryData({ ...medicalHistoryData, medications: medications });
+  };
+
+  const handleMedicalHistorySubmit = () => {
+    console.log("Medical history data:", medicalHistoryData);
+  };
 
   return (
     <div>
@@ -33,7 +55,13 @@ const MedicalHistory = () => {
               <h2>Medical History</h2>
             </div>
             <div className={styles.submitbtn}>
-              <button className={styles.submit}>Submit</button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={handleMedicalHistorySubmit}
+              >
+                <Typography variant="button">Sumbit</Typography>
+              </Button>
             </div>
           </div>
           <div className={styles.medicalHistoryForm}>
@@ -73,7 +101,9 @@ const MedicalHistory = () => {
           <div className={styles.sectionsMain}>
             <div className={styles.sections}>
               <div>
-                <MedicalHistorySection />
+                <MedicalHistorySection
+                  onUpdateMedications={handleUpdateMedications}
+                />
               </div>
             </div>
           </div>
