@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@500&display=swap");
+@import " ../../../../stylesheet.scss";
+
+.correct {
+  border-color: grey;
+  color: rgb(4, 198, 4);
+  //   border: 2px solid rgb(96, 96, 96);
+}
+.correct:hover {
+  color: rgb(13, 124, 13);
+  filter: brightness(1.4);
+}
+.x {
+  border-color: grey;
+  color: rgb(198, 20, 4);
+  //   border: 2px solid rgb(98, 98, 98);
+  //   border-radius: 20px;
+}
+.x:hover {
+  color: rgb(227, 16, 16);
+  filter: brightness(1.4);
+}
+.Grid {
+  padding: 0px 15px;
+}
