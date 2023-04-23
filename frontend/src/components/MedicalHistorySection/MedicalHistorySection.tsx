@@ -1,66 +1,49 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { InputText } from "primereact/inputtext";
-import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
-import { Card } from "primereact/card";
+import styles from "../.././styles/MedicalHistory/MedicalHistorySection.module.scss";
 
-interface MedicalHistorySectionProps {
-  sectionTitle: string;
-  medicationNameLabel: string;
-  frequencyLabel: string;
-}
-const MedicalHistorySection: React.FC<MedicalHistorySectionProps> = ({
-  sectionTitle,
-  medicationNameLabel,
-  frequencyLabel,
-}) => {
+import React, { useState, useEffect } from "react";
+import {
+  Grid,
+  Typography,
+  IconButton,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button,
+  Box,
+  Divider,
+  Paper,
+} from "@mui/material";
+import {
+  Delete as DeleteIcon,
+  Clear as ClearIcon,
+  Check as CheckIcon,
+} from "@mui/icons-material";
+
+const MedicalHistorySection = () => {
   const [medicationName, setMedicationName] = useState("");
-  const [frequency, setFrequency] = useState("");
+  const [frequency, setFrequency] = useState("once");
+  const [medications, setMedications] = useState<
+    { name: string; frequency: string }[]
+  >([]);
+  const [showInputs, setShowInputs] = useState(false);
 
-  const handleMedicationNameChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setMedicationName(event.target.value);
+  const handleAddMedication = () => {
+    const newMedication = { name: medicationName, frequency: frequency };
+    setMedications([...medications, newMedication]);
+    setMedicationName("");
+    setFrequency("once");
   };
 
-  const handleFrequencyChange = (event: DropdownChangeEvent) => {
-    setFrequency(event.target.value);
+  const handleDeleteMedication = (index: any) => {
+    const updatedMedications = [...medications];
+    updatedMedications.splice(index, 1);
+    setMedications(updatedMedications);
   };
-
-  const frequencyOptions = [
-    { label: "Once a day", value: "once-a-day" },
-    { label: "Twice a day", value: "twice-a-day" },
-    { label: "Three times a day", value: "three-times-a-day" },
-  ];
 
   return (
-    <Card title={sectionTitle}>
-      <div className="p-field">
-        <label htmlFor="medicationName">{medicationNameLabel}</label>
-        <InputText
-          id="medicationName"
-          value={medicationName}
-          onChange={handleMedicationNameChange}
-        />
-      </div>
-      <div className="p-field">
-        <label htmlFor="frequency">{frequencyLabel}</label>
-        <Dropdown
-          id="frequency"
-          value={frequency}
-          options={frequencyOptions}
-          onChange={handleFrequencyChange}
-          placeholder="Select a frequency"
-        />
-      </div>
-    </Card>
-  );
-};
 
-MedicalHistorySection.propTypes = {
-  sectionTitle: PropTypes.string.isRequired,
-  medicationNameLabel: PropTypes.string.isRequired,
-  frequencyLabel: PropTypes.string.isRequired,
 };
 
 export default MedicalHistorySection;
