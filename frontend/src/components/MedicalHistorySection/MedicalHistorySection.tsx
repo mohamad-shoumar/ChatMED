@@ -20,8 +20,14 @@ import {
   Clear as ClearIcon,
   Check as CheckIcon,
 } from "@mui/icons-material";
-
-const MedicalHistorySection = () => {
+interface MedicalHistorySectionProps {
+  onUpdateMedications: (
+    medications: { name: string; frequency: string }[]
+  ) => void;
+}
+const MedicalHistorySection = ({
+  onUpdateMedications,
+}: MedicalHistorySectionProps) => {
   const [medicationName, setMedicationName] = useState("");
   const [frequency, setFrequency] = useState("once");
   const [medications, setMedications] = useState<
@@ -31,7 +37,9 @@ const MedicalHistorySection = () => {
 
   const handleAddMedication = () => {
     const newMedication = { name: medicationName, frequency: frequency };
-    setMedications([...medications, newMedication]);
+    const updatedMedications = [...medications, newMedication];
+    setMedications(updatedMedications);
+    onUpdateMedications(updatedMedications);
     setMedicationName("");
     setFrequency("once");
   };
