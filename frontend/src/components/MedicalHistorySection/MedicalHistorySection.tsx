@@ -43,7 +43,61 @@ const MedicalHistorySection = () => {
   };
 
   return (
-
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Typography variant="h6" gutterBottom>
+          What medication are you currently taking?
+        </Typography>
+      </Grid>
+      <Grid item>
+        <IconButton onClick={() => setShowInputs(false)}>
+          <ClearIcon className={styles.x} />
+        </IconButton>
+      </Grid>
+      <Grid item>
+        <IconButton onClick={() => setShowInputs(true)}>
+          <CheckIcon className={styles.correct} />
+        </IconButton>
+      </Grid>
+      {showInputs && (
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <TextField
+              fullWidth
+              label="Medication Name"
+              variant="outlined"
+              value={medicationName}
+              onChange={(event) => setMedicationName(event.target.value)}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <FormControl fullWidth variant="outlined">
+              <InputLabel id="frequency-label">Frequency</InputLabel>
+              <Select
+                labelId="frequency-label"
+                value={frequency}
+                onChange={(event) => setFrequency(event.target.value)}
+                label="Frequency"
+              >
+                <MenuItem value="once">Once a day</MenuItem>
+                <MenuItem value="twice">Twice a day</MenuItem>
+                <MenuItem value="threeTimes">Three times a day</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleAddMedication}
+            >
+              Add
+            </Button>
+          </Grid>
+        </Grid>
+      )}
+    </Grid>
+  );
 };
 
 export default MedicalHistorySection;
