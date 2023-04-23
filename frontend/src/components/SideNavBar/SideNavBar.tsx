@@ -20,7 +20,10 @@ const SideNavBar = () => {
           <img src={Union} alt="logo" />
         </div>
         <div className={styles.submain}>
-          <div className={styles.dash}>
+          <div
+            className={`${styles.dash} ${styles.hover}`}
+            onClick={() => navigate("/dashboard")}
+          >
             <img src={dash} alt="logo" />
             <div className={styles.Dashboard}>Dashboard</div>
           </div>
@@ -36,7 +39,7 @@ const SideNavBar = () => {
           </div>
           <div
             className={`${styles.link} ${styles.hover}`}
-            onClick={() => navigate("/authentication")}
+            onClick={() => navigate("/vitals")}
           >
             <div className={styles.linkleft}>
               <img src={vitals} alt="logo" />
@@ -46,7 +49,7 @@ const SideNavBar = () => {
           </div>
           <div
             className={`${styles.link} ${styles.hover}`}
-            onClick={() => navigate("")}
+            onClick={() => navigate("/chat")}
           >
             <div className={styles.linkleft}>
               <img src={chats} alt="logo" />
