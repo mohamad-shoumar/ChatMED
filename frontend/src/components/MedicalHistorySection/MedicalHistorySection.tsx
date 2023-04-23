@@ -96,6 +96,25 @@ const MedicalHistorySection = () => {
           </Grid>
         </Grid>
       )}
+      {medications.map((medication, index) => (
+        <Grid key={index} container spacing={2} alignItems="center">
+          <Grid item xs={6}>
+            <Typography variant="body1">{medication.name}</Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="body1">{medication.frequency}</Typography>
+          </Grid>
+          <Box ml="auto">
+            <IconButton
+              onClick={() => handleDeleteMedication(index)}
+              size="small"
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Box>
+          <Divider />
+        </Grid>
+      ))}
     </Grid>
   );
 };
