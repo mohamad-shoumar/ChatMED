@@ -4,10 +4,23 @@ export interface IMedicalHistory extends mongoose.Document {
   user: string;
   height: number;
   weight: number;
-  allergies: string[];
-  medications: string[];
-  surgeries: string[];
-  chronicConditions: string[];
+  allergies: {
+    name: string;
+    date: Date;
+  }[];
+  medications: {
+    name: string;
+    dosage: string;
+    frequency: string;
+  }[];
+  surgeries: {
+    name: string;
+    date: Date;
+  }[];
+  chronicConditions: {
+    name: string;
+    date: Date;
+  }[];
   dateOfBirth: Date;
   gender: "male" | "female" | "other";
 }
@@ -28,25 +41,56 @@ const MedicalHistorySchema = new Schema({
   },
   allergies: [
     {
-      type: String,
+      name: {
+        type: String,
+        required: true,
+      },
+      date: {
+        type: Date,
+        required: true,
+      },
     },
   ],
   medications: [
     {
-      type: String,
+      name: {
+        type: String,
+        required: true,
+      },
+      dosage: {
+        type: String,
+        required: true,
+      },
+      frequency: {
+        type: String,
+        required: true,
+      },
     },
   ],
   surgeries: [
     {
-      type: String,
+      name: {
+        type: String,
+        required: true,
+      },
+      date: {
+        type: Date,
+        required: true,
+      },
     },
   ],
   chronicConditions: [
     {
-      type: String,
+      name: {
+        type: String,
+        required: true,
+      },
+      date: {
+        type: Date,
+        required: true,
+      },
     },
   ],
-
   dateOfBirth: {
     type: Date,
   },

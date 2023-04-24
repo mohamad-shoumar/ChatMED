@@ -6,7 +6,6 @@ export const addMedicalHistory = async (req: Request, response: Response) => {
   try {
     const userId = req.body.user.id;
     const medicalHistory = req.body.medicalHistory;
-
     let newMedicalHistory = await MedicalHistory.findOne({ user: userId });
     if (newMedicalHistory) {
       return response
@@ -22,13 +21,14 @@ export const addMedicalHistory = async (req: Request, response: Response) => {
         surgeries: medicalHistory.surgeries,
         chronicConditions: medicalHistory.chronicConditions,
         dateOfBirth: medicalHistory.dateOfBirth,
+        gender: medicalHistory.gender,
       });
       console.log(newMedicalHistory);
       await newMedicalHistory.save();
       response.json({ message: "medical history added", newMedicalHistory });
     }
   } catch (error) {
-    response.status(500).json({ message: "Server error" });
+    response.status(500).json({ message: error });
   }
 };
 
