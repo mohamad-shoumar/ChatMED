@@ -74,6 +74,55 @@ const MedicalHistory = () => {
     }
   };
 
+  const handleUpdateMedications = (
+    medications: { name: string; frequency: string }[]
+  ) => {
+    const updatedMedications = medications.map((medication) => {
+      return ["name", "frequncey"];
+    });
+    setMedicalHistoryData({
+      ...medicalHistoryData,
+      medications: updatedMedications,
+    });
+  };
+  const handleUpdateSurgeries = (
+    surgeries: { name: string; date: number }[]
+  ) => {
+    console.log("Surgeries updated:", surgeries);
+    setMedicalHistoryData({ ...medicalHistoryData, surgeries: surgeries });
+  };
+  const handleUpdateAllergies = (
+    allergies: { name: string; date: number }[]
+  ) => {
+    console.log("Allergies updated:", allergies);
+    setMedicalHistoryData({ ...medicalHistoryData, allergies: allergies });
+  };
+  const handleUpdateChronicConditions = (
+    chronicConditions: { name: string; date: number }[]
+  ) => {
+    console.log("Chronic conditions updated:", chronicConditions);
+    setMedicalHistoryData({
+      ...medicalHistoryData,
+      chronicConditions: chronicConditions,
+    });
+  };
+  console.log(medicalHistoryData);
+  const handleMedicalHistorySubmit = async (e: any) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+    const data = { ...medicalHistoryData };
+    const body = JSON.stringify({ medicalHistory: data });
+    console.log("Body:", body);
+
+    const response = await API.postAPI(
+      `${base_url}medicalhistory/addhistory`,
+      body,
+      token!
+    );
+    console.log("Response:", response);
+    console.log("Medical history data:", medicalHistoryData);
+  };
+
   return (
     <div>
       <NavBar />
