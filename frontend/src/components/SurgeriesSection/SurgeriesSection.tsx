@@ -101,6 +101,42 @@ const SurgeriesSection = ({ onUpdateSurgeries }: surgeryProps) => {
           <CheckIcon />
         </IconButton>
       </Box>
+      {showInputs && (
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
+            <Box sx={{ flex: 1 }}>
+              <InputLabel id="Surgery-label">Surgery</InputLabel>
+              <TextField
+                id="Surgery-label"
+                fullWidth
+                label="Surgery Name"
+                variant="outlined"
+                value={surgeryName}
+                onChange={(event) => setSurgeryName(event.target.value)}
+              />
+            </Box>
+            <Box sx={{ flex: 1 }}>
+              <InputLabel id="date-label">Onset-Date</InputLabel>
+              <TextField
+                fullWidth
+                label="Onset-Date"
+                variant="outlined"
+                value={date}
+                onChange={(event) => setDate(parseInt(event.target.value))}
+              />
+            </Box>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleAddSurgery}
+            >
+              Add
+            </Button>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 };
