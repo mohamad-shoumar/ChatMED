@@ -47,10 +47,64 @@ const AllergySection = () => {
           };
         
 
+  return (
+    <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      gap: 1,
+      p: 0,
+      width: "90%",
+    }}
+  >
+    <Typography variant="h6" gutterBottom>
+      Did you have any Allergies?
+    </Typography>
+    <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+      <IconButton
+        sx={{
+          "&:hover": {
+            color: activeButton ? "red" : "initial",
+          },
+          "&:focus": {
+            outline: activeButton ? "2px solid red" : "none",
+            outlineOffset: 2,
+            color: activeButton ? "red" : "initial",
+          },
+        }}
+        onClick={() => {
+          setShowInputs(false);
+          setActiveButton(true);
+        }}
+      >
+        <ClearIcon />
+      </IconButton>
+      <IconButton
+        sx={{
+          "&:hover": {
+            color: activeButton ? "green" : "initial",
+          },
+          "&:focus": {
+            outline: activeButton ? "2px solid green" : "none",
+            outlineOffset: 2,
+            color: activeButton ? "green" : "initial",
+          },
+        }}
+        onClick={() => {
+          setShowInputs(true);
+          setActiveButton(true);
+        }}
+        onChange={() => {
+          setActiveButton(true);
+        }}
+      >
+        <CheckIcon />
+      </IconButton>
+    </Box>
+        
 
 
-
-  return <div></div>;
+  );
 };
 
 export default AllergySection;
