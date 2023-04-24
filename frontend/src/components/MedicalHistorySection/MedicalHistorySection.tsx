@@ -34,6 +34,7 @@ const MedicalHistorySection = ({
     { name: string; frequency: string }[]
   >([]);
   const [showInputs, setShowInputs] = useState(false);
+  const [activeButton, setActiveButton] = useState(false);
 
   const handleAddMedication = () => {
     const newMedication = { name: medicationName, frequency: frequency };
@@ -43,7 +44,6 @@ const MedicalHistorySection = ({
     setMedicationName("");
     setFrequency("once");
   };
-
   const handleDeleteMedication = (index: any) => {
     const updatedMedications = [...medications];
     updatedMedications.splice(index, 1);
@@ -51,49 +51,88 @@ const MedicalHistorySection = ({
   };
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Typography variant="h6" gutterBottom>
-          What medication are you currently taking?
-        </Typography>
-      </Grid>
-      <Grid item>
-        <IconButton onClick={() => setShowInputs(false)}>
-          <ClearIcon className={styles.x} />
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 1,
+        p: 0,
+        width: "90%",
+      }}
+    >
+      <Typography variant="h6" gutterBottom>
+        Are you currently taking any medication?
+      </Typography>
+      <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+        <IconButton
+          sx={{
+            "&:hover": {
+              color: activeButton ? "red" : "initial",
+            },
+            "&:focus": {
+              outline: activeButton ? "2px solid red" : "none",
+              outlineOffset: 2,
+              color: activeButton ? "red" : "initial",
+            },
+          }}
+          onClick={() => {
+            setShowInputs(false);
+            setActiveButton(true);
+          }}
+        >
+          <ClearIcon />
         </IconButton>
-      </Grid>
-      <Grid item>
-        <IconButton onClick={() => setShowInputs(true)}>
-          <CheckIcon className={styles.correct} />
+        <IconButton
+          sx={{
+            "&:hover": {
+              color: activeButton ? "green" : "initial",
+            },
+            "&:focus": {
+              outline: activeButton ? "2px solid green" : "none",
+              outlineOffset: 2,
+              color: activeButton ? "green" : "initial",
+            },
+          }}
+          onClick={() => {
+            setShowInputs(true);
+            setActiveButton(true);
+          }}
+          onChange={() => {
+            setActiveButton(true);
+          }}
+        >
+          <CheckIcon />
         </IconButton>
-      </Grid>
+      </Box>
       {showInputs && (
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <TextField
-              fullWidth
-              label="Medication Name"
-              variant="outlined"
-              value={medicationName}
-              onChange={(event) => setMedicationName(event.target.value)}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <FormControl fullWidth variant="outlined">
-              <InputLabel id="frequency-label">Frequency</InputLabel>
-              <Select
-                labelId="frequency-label"
-                value={frequency}
-                onChange={(event) => setFrequency(event.target.value)}
-                label="Frequency"
-              >
-                <MenuItem value="once">Once a day</MenuItem>
-                <MenuItem value="twice">Twice a day</MenuItem>
-                <MenuItem value="threeTimes">Three times a day</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
+            <Box sx={{ flex: 1 }}>
+              <TextField
+                fullWidth
+                label="Medication Name"
+                variant="outlined"
+                value={medicationName}
+                onChange={(event) => setMedicationName(event.target.value)}
+              />
+            </Box>
+            <Box sx={{ flex: 1 }}>
+              <FormControl fullWidth variant="outlined">
+                <InputLabel id="frequency-label">Frequency</InputLabel>
+                <Select
+                  labelId="frequency-label"
+                  value={frequency}
+                  onChange={(event) => setFrequency(event.target.value)}
+                  label="Frequency"
+                >
+                  <MenuItem value="once">Once a day</MenuItem>
+                  <MenuItem value="twice">Twice a day</MenuItem>
+                  <MenuItem value="threeTimes">Three times a day</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+          </Box>
+          <Box>
             <Button
               variant="contained"
               color="primary"
@@ -101,29 +140,35 @@ const MedicalHistorySection = ({
             >
               Add
             </Button>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       )}
       {medications.map((medication, index) => (
-        <Grid key={index} container spacing={2} alignItems="center">
-          <Grid item xs={6}>
+        <Box
+          key={index}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            marginBottom: "8px",
+          }}
+        >
+          <Box sx={{ width: "40%" }}>
             <Typography variant="body1">{medication.name}</Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="body1">{medication.frequency}</Typography>
-          </Grid>
-          <Box ml="auto">
-            <IconButton
-              onClick={() => handleDeleteMedication(index)}
-              size="small"
-            >
-              <DeleteIcon />
-            </IconButton>
           </Box>
-          <Divider />
-        </Grid>
+          <Box sx={{ width: "40%" }}>
+            <Typography variant="body1">{medication.frequency}</Typography>
+          </Box>
+          <IconButton
+            onClick={() => handleDeleteMedication(index)}
+            size="small"
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   );
 };
 
