@@ -2,13 +2,15 @@ import styles from "../../styles/MedicalHistory/MedicalHistory.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
 import TextField from "@mui/material/TextField";
-
+import { useRadioGroup } from "@mui/material/RadioGroup";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers";
 import { InputAdornment } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import { FormControlLabel, FormLabel, RadioGroup, Radio } from "@mui/material";
+
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useState, useContext } from "react";
@@ -25,6 +27,7 @@ import { API } from "../../../src/API/API";
 import { base_url } from "../../API/API";
 
 const MedicalHistory = () => {
+  // useState variables
   const navigate = useNavigate();
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
@@ -42,6 +45,8 @@ const MedicalHistory = () => {
   const [chronicConditions, setChronicConditions] = useState<
     { name: string; date: number }[]
   >([]);
+
+  const [gender, setGender] = useState("");
   const [medicalHistoryData, setMedicalHistoryData] = useState<any>({
     height: "",
     weight: "",
@@ -50,8 +55,9 @@ const MedicalHistory = () => {
     surgeries: [],
     allergies: [],
     chronicConditions: [],
+    gender: "",
   });
-
+  // handle height,wieght and date inputs
   const handleHeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setHeight(value);
@@ -73,30 +79,34 @@ const MedicalHistory = () => {
       }));
     }
   };
+  // handle gender radio buttons
+  const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = (event.target as HTMLInputElement).value;
+    setGender(value);
+    setMedicalHistoryData((prevData: any) => ({ ...prevData, gender: value }));
+  };
 
+  // handle Medicaions component
   const handleUpdateMedications = (
     medications: { name: string; frequency: string }[]
   ) => {
-    const updatedMedications = medications.map((medication) => {
-      return ["name", "frequncey"];
-    });
-    setMedicalHistoryData({
-      ...medicalHistoryData,
-      medications: updatedMedications,
-    });
+    setMedicalHistoryData({ ...medicalHistoryData, medications: medications });
   };
+  // handle Surgeries component
   const handleUpdateSurgeries = (
     surgeries: { name: string; date: number }[]
   ) => {
     console.log("Surgeries updated:", surgeries);
     setMedicalHistoryData({ ...medicalHistoryData, surgeries: surgeries });
   };
+  // handle Allergies component
   const handleUpdateAllergies = (
     allergies: { name: string; date: number }[]
   ) => {
     console.log("Allergies updated:", allergies);
     setMedicalHistoryData({ ...medicalHistoryData, allergies: allergies });
   };
+  // handle Chronic Conditions component
   const handleUpdateChronicConditions = (
     chronicConditions: { name: string; date: number }[]
   ) => {
@@ -107,6 +117,8 @@ const MedicalHistory = () => {
     });
   };
   console.log(medicalHistoryData);
+
+  // Handle submit button
   const handleMedicalHistorySubmit = async (e: any) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -184,7 +196,28 @@ const MedicalHistory = () => {
               </LocalizationProvider>
             </div>
           </div>
-
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="female"
+              name="radio-buttons-group"
+              value={gender}
+              onChange={handleGenderChange}
+            >
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Female"
+              />
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel
+                value="other"
+                control={<Radio />}
+                label="Other"
+              />
+            </RadioGroup>
+          </FormControl>
           <div className={styles.sectionsMain}>
             <div className={styles.sections}>
               <div className={styles.section1}>
