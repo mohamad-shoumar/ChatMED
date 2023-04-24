@@ -137,6 +137,28 @@ const SurgeriesSection = ({ onUpdateSurgeries }: surgeryProps) => {
           </Box>
         </Box>
       )}
+      {surgeries.map((surgery, index) => (
+        <Box
+          key={index}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            marginBottom: "8px",
+          }}
+        >
+          <Box sx={{ width: "40%" }}>
+            <Typography variant="body1">{surgery.name}</Typography>
+          </Box>
+          <Box sx={{ width: "40%" }}>
+            <Typography variant="body1">{surgery.date}</Typography>
+          </Box>
+          <IconButton onClick={() => handleDeleteSurgery(index)} size="small">
+            <DeleteIcon />
+          </IconButton>
+        </Box>
+      ))}
     </Box>
   );
 };
