@@ -6,7 +6,7 @@ export interface IMedicalHistory extends mongoose.Document {
   weight: number;
   allergies: {
     name: string;
-    date: Date;
+    date: number;
   }[];
   medications: {
     name: string;
@@ -15,11 +15,11 @@ export interface IMedicalHistory extends mongoose.Document {
   }[];
   surgeries: {
     name: string;
-    date: Date;
+    date: number;
   }[];
   chronicConditions: {
     name: string;
-    date: Date;
+    date: number;
   }[];
   dateOfBirth: Date;
   gender: "male" | "female" | "other";
@@ -46,7 +46,7 @@ const MedicalHistorySchema = new Schema({
         required: true,
       },
       date: {
-        type: Date,
+        type: Number,
         required: true,
       },
     },
@@ -74,7 +74,7 @@ const MedicalHistorySchema = new Schema({
         required: true,
       },
       date: {
-        type: Date,
+        type: Number,
         required: true,
       },
     },
@@ -86,7 +86,7 @@ const MedicalHistorySchema = new Schema({
         required: true,
       },
       date: {
-        type: Date,
+        type: Number,
         required: true,
       },
     },
