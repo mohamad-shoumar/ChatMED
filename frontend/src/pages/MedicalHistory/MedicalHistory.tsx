@@ -10,7 +10,6 @@ import { InputAdornment } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import { FormControlLabel, FormLabel, RadioGroup, Radio } from "@mui/material";
-
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useState, useContext } from "react";
@@ -19,7 +18,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
 import SurgeriesSection from "../../components/SurgeriesSection/SurgeriesSection";
-import AllergySection from "../../components/AllergySection/AllergySection";
+import AllergiesSection from "../../components/AllergySection/AllergySection";
 import MedicalHistorySections from "../../components/MedicalHistorySections/MedicalHistorySections";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -90,7 +89,10 @@ const MedicalHistory = () => {
   const handleUpdateMedications = (
     medications: { name: string; frequency: string }[]
   ) => {
-    setMedicalHistoryData({ ...medicalHistoryData, medications: medications });
+    setMedicalHistoryData({
+      ...medicalHistoryData,
+      medications: medications,
+    });
   };
   // handle Surgeries component
   const handleUpdateSurgeries = (
@@ -122,9 +124,11 @@ const MedicalHistory = () => {
   const handleMedicalHistorySubmit = async (e: any) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+
     const data = { ...medicalHistoryData };
     const body = JSON.stringify({ medicalHistory: data });
-    console.log("Body:", body);
+    console.log(body);
+    console.log("Token:", token);
 
     const response = await API.postAPI(
       `${base_url}medicalhistory/addhistory`,
@@ -229,7 +233,7 @@ const MedicalHistory = () => {
                 />
               </div>
               <div className={styles.section1}>
-                <AllergySection />
+                <AllergiesSection onUpdateAllergies={handleUpdateAllergies} />
               </div>
             </div>
           </div>
