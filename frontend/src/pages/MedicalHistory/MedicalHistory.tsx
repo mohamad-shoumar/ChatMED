@@ -52,6 +52,28 @@ const MedicalHistory = () => {
     chronicConditions: [],
   });
 
+  const handleHeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setHeight(value);
+    setMedicalHistoryData((prevData: any) => ({ ...prevData, height: value }));
+  };
+
+  const handleWeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setWeight(value);
+    setMedicalHistoryData((prevData: any) => ({ ...prevData, weight: value }));
+  };
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+    if (date) {
+      const formattedDate = date.toISOString().substring(0, 10);
+      setMedicalHistoryData((prevData: any) => ({
+        ...prevData,
+        dateOfBirth: formattedDate,
+      }));
+    }
+  };
+
   return (
     <div>
       <NavBar />
