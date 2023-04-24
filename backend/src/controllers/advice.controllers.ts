@@ -2,13 +2,17 @@ import { Request, Response } from "express";
 import { Configuration, OpenAIApi } from "openai";
 import MedicalHistory from "../models/MedicalHistoryModel";
 import Advice from "../models/AdviceModel";
-const configuration = new Configuration({
-  apiKey: process.env.OPEN_AI_KEY,
-});
-const openai = new OpenAIApi(configuration);
 
 export const adviceByChat = async (req: Request, res: Response) => {
   try {
+    const x = process.env.OPEN_AI_KEY;
+    const configuration = new Configuration({
+      apiKey: x,
+    });
+    const openai = new OpenAIApi(configuration);
+    console.log(x);
+    console.log(process.env.OPEN_AI_KEY);
+
     const patientId = req.body.user.id;
     const retrievedMedicalhistory = await MedicalHistory.findOne({
       user: patientId,
