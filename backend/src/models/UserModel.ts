@@ -1,13 +1,12 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import { IMedicalHistory } from "./MedicalHistoryModel";
 export interface IUser extends Document {
-  username: string;
   email: string;
   password: string;
   role: string;
   picture?: string;
   fullName: string;
-  gender: "male" | "female" | "other";
+
   consultations?: {
     doctor: string;
     date: Date;
@@ -15,11 +14,6 @@ export interface IUser extends Document {
 }
 
 const UserSchema = new Schema<IUser>({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   email: {
     type: String,
     required: true,
@@ -43,11 +37,7 @@ const UserSchema = new Schema<IUser>({
     type: String,
     required: true,
   },
-  gender: {
-    type: String,
-    enum: ["male", "female", "other"],
-    required: true,
-  },
+
   consultations: [
     {
       doctor: {

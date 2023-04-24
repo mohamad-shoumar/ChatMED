@@ -9,6 +9,7 @@ export interface IMedicalHistory extends mongoose.Document {
   surgeries: string[];
   chronicConditions: string[];
   dateOfBirth: Date;
+  gender: "male" | "female" | "other";
 }
 
 const Schema = mongoose.Schema;
@@ -48,6 +49,11 @@ const MedicalHistorySchema = new Schema({
 
   dateOfBirth: {
     type: Date,
+  },
+  gender: {
+    type: String,
+    enum: ["male", "female", "other"],
+    required: true,
   },
 });
 

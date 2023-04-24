@@ -35,11 +35,9 @@ export const login = async (req: Request, res: Response) => {
 export const register = async (req: Request, res: Response) => {
   const schema = Joi.object({
     email: Joi.string().email().required(),
-    username: Joi.string().alphanum().min(3).max(30).required(),
     password: Joi.string().min(6).required(),
     role: Joi.string().valid("patient", "doctor").required(),
     fullName: Joi.string().min(3).max(50).required(),
-    gender: Joi.string().valid("male", "female", "other").required(),
   });
 
   const { error } = schema.validate(req.body);
@@ -47,7 +45,7 @@ export const register = async (req: Request, res: Response) => {
     return res.status(400).json({ message: error.message });
   }
 
-  const { email, username, password, role, fullName, gender } = req.body;
+  const { email, password, role, fullName } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -58,11 +56,10 @@ export const register = async (req: Request, res: Response) => {
     const hashedPassword: string = await bcrypt.hash(password, saltRounds);
     const user: IUser = new User({
       email,
-      username,
+
       password: hashedPassword,
       role,
       fullName,
-      gender,
     });
 
     await user.save();
