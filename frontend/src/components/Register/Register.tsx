@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-  const [UserName, setUserName] = useState("");
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +25,6 @@ const Register = () => {
       role: role,
       email: email,
       password: password,
-      username: UserName,
     };
     const url = `${base_url}auth/register`;
     console.log("Data: ", data);
@@ -37,7 +35,6 @@ const Register = () => {
       toast.success(`You Are Now Registered.`);
       if (response.data.message === "Success") {
         toast.success(`You Are Now Registered.`);
-        setUserName("");
         setFullName("");
         setEmail("");
         setPassword("");
@@ -64,29 +61,8 @@ const Register = () => {
           onChange={(e) => setFullName(e.target.value)}
           className={styles.input}
         />
-        <div className={style["btn-options"]}>
-          <label>
-            <input
-              type="radio"
-              name="role"
-              value="patient"
-              onChange={(e) => setRole("patient")}
-              className={style.input}
-            />
-            Patient
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="role"
-              value="doctor"
-              onChange={(e) => setRole("doctor")}
-              className={style.input}
-            />
-            Doctor
-          </label>
-        </div>
-        <div>
+
+        {/* <div>
           <div className={style["gender-label"]}>Gender:</div>
           <div className={style["gender-options"]}>
             <label>
@@ -120,15 +96,7 @@ const Register = () => {
               Other
             </label>
           </div>
-        </div>
-
-        <input
-          type="text"
-          placeholder="username"
-          value={UserName}
-          onChange={(e) => setUserName(e.target.value)}
-          className={styles.input}
-        />
+        </div> */}
 
         <input
           type="email"
@@ -144,6 +112,32 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
           className={styles.input}
         />
+        <div>
+          <div className={style["gender-label"]}>Role:</div>
+
+          <div className={style["btn-options"]}>
+            <label>
+              <input
+                type="radio"
+                name="role"
+                value="patient"
+                onChange={(e) => setRole("patient")}
+                className={style.input}
+              />
+              Patient
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="role"
+                value="doctor"
+                onChange={(e) => setRole("doctor")}
+                className={style.input}
+              />
+              Doctor
+            </label>
+          </div>
+        </div>
 
         <button
           className={`${styles["btn-signin"]} ${styles["ghost-signup"]} ${styles["gradient-button"]} ${styles["gradient-button-1"]}`}
