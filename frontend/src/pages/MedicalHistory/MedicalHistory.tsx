@@ -1,25 +1,34 @@
-import React from "react";
 import styles from "../../styles/MedicalHistory/MedicalHistory.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
-import { NumericFormat } from "react-number-format";
-import DatePicker from "react-datepicker";
-import "react-datetime-picker/dist/DateTimePicker.css";
-import "react-datepicker/dist/react-datepicker.css";
+import TextField from "@mui/material/TextField";
+
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers";
+import { InputAdornment } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import { useState, useContext } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
+import SurgeriesSection from "../../components/SurgeriesSection/SurgeriesSection";
+import AllergySection from "../../components/AllergySection/AllergySection";
 import MedicalHistorySections from "../../components/MedicalHistorySections/MedicalHistorySections";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { API } from "../../../src/API/API";
+import { base_url } from "../../API/API";
 
 const MedicalHistory = () => {
   const navigate = useNavigate();
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [unitSystem, setUnitSystem] = useState<"metric" | "imperial">("metric");
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [medications, setMedications] = useState<
     { name: string; frequency: string }[]
@@ -43,17 +52,6 @@ const MedicalHistory = () => {
     chronicConditions: [],
   });
 
-  const handleUpdateMedications = (
-    medications: { name: string; frequency: string }[]
-  ) => {
-    console.log("Medications updated:", medications);
-    setMedicalHistoryData({ ...medicalHistoryData, medications: medications });
-  };
-
-  const handleMedicalHistorySubmit = () => {
-    console.log("Medical history data:", medicalHistoryData);
-  };
-
   return (
     <div>
       <NavBar />
@@ -76,61 +74,58 @@ const MedicalHistory = () => {
           </div>
           <div className={styles.medicalHistoryForm}>
             <div className={styles.height}>
-              <h3>Height</h3>
-              <NumericFormat
-                placeholder="Height"
-                allowNegative={false}
-                decimalScale={2}
-                suffix="cm"
-                customInput={(props: any) => <input {...props} type="text" />}
+              <TextField
+                id="height"
+                label="Height"
+                variant="outlined"
+                type="number"
+                value={height}
+                onChange={handleHeightChange}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {unitSystem === "metric" ? "cm" : "in"}
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
             <div className={styles.weight}>
-              <h3>Weight</h3>
-              <NumericFormat
-                placeholder="Weight"
-                allowNegative={false}
-                decimalScale={2}
-                suffix="kg"
-                customInput={(props: any) => <input {...props} type="text" />}
+              <TextField
+                id="weight"
+                label="Weight"
+                variant="outlined"
+                type="number"
+                value={weight}
+                onChange={handleWeightChange}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {unitSystem === "metric" ? "kg" : "lb"}
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
-            <div className={styles.dob}>
-              <h3>Date of Birth</h3>
-              <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                dateFormat="dd/MM/yyyy"
-                showYearDropdown
-                scrollableYearDropdown
-                isClearable
-              />
+            <div className={styles.datePicker}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker onChange={handleDateChange} />
+              </LocalizationProvider>
             </div>
           </div>
 
           <div className={styles.sectionsMain}>
             <div className={styles.sections}>
-              <div>
-                <MedicalHistorySections
-                  title="Surgery"
-                  data={surgeries}
-                  setData={setSurgeries}
-                />
-                <MedicalHistorySections
-                  title="Allergies"
-                  data={allergies}
-                  setData={setAllergies}
-                />
-                <MedicalHistorySections
-                  title="Chronic Conditions"
-                  data={chronicConditions}
-                  setData={setChronicConditions}
-                />
+              <div className={styles.section1}>
+                <SurgeriesSection onUpdateSurgeries={handleUpdateSurgeries} />
               </div>
-              <div>
+              <div className={styles.section1}>
                 <MedicalHistorySection
                   onUpdateMedications={handleUpdateMedications}
                 />
+              </div>
+              <div className={styles.section1}>
+                <AllergySection />
               </div>
             </div>
           </div>
