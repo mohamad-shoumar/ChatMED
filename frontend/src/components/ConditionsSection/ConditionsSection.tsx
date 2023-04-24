@@ -98,5 +98,40 @@ return (
         <CheckIcon />
       </IconButton>
     </Box>
-
+    {showInputs && (
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
+          <Box sx={{ flex: 1 }}>
+            <InputLabel id="Condition-label">Condition</InputLabel>
+            <TextField
+              id="Condition-label"
+              fullWidth
+              label="Condition Name"
+              variant="outlined"
+              value={conditionName}
+              onChange={(event) => setConditionName(event.target.value)}
+            />
+          </Box>
+          <Box sx={{ flex: 1 }}>
+              <InputLabel id="date-label">Onset-Date</InputLabel>
+              <TextField
+                fullWidth
+                label="Onset-Date"
+                variant="outlined"
+                value={date}
+                onChange={(event) => setDate(parseInt(event.target.value))}
+              />
+            </Box>
+          </Box>
+          <Box>
+          <Button
+              variant="contained"
+              color="primary"
+              onClick={handleAddCondition}
+            >
+              Add
+            </Button>
+          </Box>
+        </Box>
+      )}
       
