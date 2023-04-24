@@ -40,6 +40,12 @@ const AllergySection = () => {
           onUpdateAllergies(updatedAllergy);
           setDate(0);
         };
+        const handleDeleteAllergy = (index: any) => {
+            const updatedAllergy = [...allergies];
+            updatedAllergy.splice(index, 1);
+            setAllergies(updatedAllergy);
+          };
+        
 
 
 
