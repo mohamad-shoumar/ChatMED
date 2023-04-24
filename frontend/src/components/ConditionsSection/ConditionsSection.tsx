@@ -74,4 +74,29 @@ return (
             setActiveButton(true);
           }}
         >
+             <ClearIcon />
+      </IconButton>
+      <IconButton
+        sx={{
+          "&:hover": {
+            color: activeButton ? "green" : "initial",
+          },
+          "&:focus": {
+            outline: activeButton ? "2px solid green" : "none",
+            outlineOffset: 2,
+            color: activeButton ? "green" : "initial",
+          },
+        }}
+        onClick={() => {
+          setShowInputs(true);
+          setActiveButton(true);
+        }}
+        onChange={() => {
+          setActiveButton(true);
+        }}
+      >
+        <CheckIcon />
+      </IconButton>
+    </Box>
+
       
