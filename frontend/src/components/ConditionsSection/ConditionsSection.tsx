@@ -32,6 +32,17 @@ const [conditions, setConditions] = useState<
 >([]);
 const [showInputs, setShowInputs] = useState(false);
 const [activeButton, setActiveButton] = useState(false);
-
+const handleAddCondition = () => {
+    const newCondition = { name: conditionName, date: date };
+    const updatedConditions = [...conditions, newCondition];
+    setConditions(updatedConditions);
+    onUpdateConditions(updatedConditions);
+    setDate(0);
+    };
+    const handleDeleteCondition = (index: any) => {
+    const updatedConditions = [...conditions];
+    updatedConditions.splice(index, 1);
+    setConditions(updatedConditions);
+    };
 
 l
