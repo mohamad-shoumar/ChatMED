@@ -4,13 +4,13 @@ import { Configuration, OpenAIApi } from "openai";
 import Patient from "../models/PatientModel";
 import Analyze from "../models/AnalyzeModel";
 import Vital from "../models/VitalModel";
-const configuration = new Configuration({
-  apiKey: process.env.OPEN_AI_KEY,
-});
-const openai = new OpenAIApi(configuration);
 
 export const analyzeByChat = async (req: Request, res: Response) => {
   try {
+    const configuration = new Configuration({
+      apiKey: process.env.OPEN_AI_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
     console.log(process.env);
     const patientId = req.body.user.id;
     const vitalspatient = await Vital.findOne({
