@@ -23,7 +23,7 @@ interface conditionProps {
 onUpdateConditions: (conditions: { name: string; date: number }[]) => void;
 }
 
-const ConditionSection = () => {
+
 const ConditionsSection = ({ onUpdateConditions }: conditionProps) => {
 const [conditionName, setConditionName] = useState("");
 const [date, setDate] = useState(0);
@@ -44,5 +44,34 @@ const handleAddCondition = () => {
     updatedConditions.splice(index, 1);
     setConditions(updatedConditions);
     };
-
-l
+return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 1,
+        p: 0,
+        width: "90%",
+      }}
+    >
+      <Typography variant="h6" gutterBottom>
+        Did you have any Conditions?
+      </Typography>
+      <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+        <IconButton
+          sx={{
+            "&:hover": {
+              color: activeButton ? "red" : "initial",
+            },
+            "&:focus": {
+              outline: activeButton ? "2px solid red" : "none",
+              outlineOffset: 2,
+              color: activeButton ? "red" : "initial",
+            },
+          }}
+          onClick={() => {
+            setShowInputs(false);
+            setActiveButton(true);
+          }}
+        >
+      
