@@ -26,6 +26,27 @@ interface surgeryProps {
 }
 
 const SurgeriesSection = ({ onUpdateSurgeries }: surgeryProps) => {
+  const [surgeryName, setSurgeryName] = useState("");
+  const [date, setDate] = useState(0);
+  const [surgeries, setSurgeries] = useState<{ name: string; date: number }[]>(
+    []
+  );
+  const [showInputs, setShowInputs] = useState(false);
+  const [activeButton, setActiveButton] = useState(false);
+  const handleAddSurgery = () => {
+    const newSurgery = { name: surgeryName, date: date };
+    const updatedSurgery = [...surgeries, newSurgery];
+    setSurgeries(updatedSurgery);
+    onUpdateSurgeries(updatedSurgery);
+    setDate(0);
+  };
+
+  const handleDeleteSurgery = (index: any) => {
+    const updatedSurgery = [...surgeries];
+    updatedSurgery.splice(index, 1);
+    setSurgeries(updatedSurgery);
+  };
+
   return (
     <Box
       sx={{
