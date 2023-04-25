@@ -31,8 +31,9 @@ bc: #ECF4F6
 }
 
 .wholeContainer {
-  /* background: linear-gradient(45deg, #244674, #01b8e2); */
-  background-color: #ecf4f6;
+  // background: linear-gradient(45deg, #244674, #01b8e2);
+  background: #ecf4f6;
+  // background: linear-gradient(90deg, #244674, #01b8e2);
   color: #ccc;
   display: flex;
   flex-direction: column;
@@ -89,7 +90,8 @@ bc: #ECF4F6
   justify-content: center;
   align-items: center;
   text-align: center;
-  // box-shadow: -10px -10px 20px rgba(105, 105, 105, 0.5);
+  border-radius: 10px;
+  box-shadow: -10px -10px 20px rgba(105, 105, 105, 0.5);
 }
 
 .social-container {

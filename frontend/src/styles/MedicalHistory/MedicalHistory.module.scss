@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@500&display=swap");
 @import " ../../../../stylesheet.scss";
 
+body {
+  background: $background;
+  font-family: "Montserrat", sans-serif;
+}
+
 .medicalHistory {
   margin-top: 7vh;
   margin-right: 10vw;
@@ -26,9 +31,10 @@
 }
 
 .medicalHistoryForm {
-  padding-left: 10%;
+  padding-left: 4%;
   display: flex;
   justify-content: space-evenly;
+  gap: 10px;
 }
 .sectionsMain {
   padding: 30px;
@@ -51,4 +57,13 @@
   padding: 15px;
   width: 100%;
   border: 1.5px solid black;
+}
+@media screen and (max-width: 768px) {
+  .medicalHistoryForm {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .section1 {
+    width: 100%;
+  }
 }
