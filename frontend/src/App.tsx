@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Authentication from "./pages/Authentication/Authentication";
 import MedicalHistory from "./pages/MedicalHistory/MedicalHistory";
+import PatientProfile from "./pages/PatientProfile/PatientProfile";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/authentication" element={<Authentication />} />
         <Route path="/medicalhistory" element={<MedicalHistory />} />
+        <Route path="/profile" element={<PatientProfile />} />
       </Routes>
     </BrowserRouter>
   );

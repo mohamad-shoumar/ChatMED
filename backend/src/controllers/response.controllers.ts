@@ -27,6 +27,7 @@ export const responseByChat = async (req: Request, res: Response) => {
       n: 1,
     });
     const responseData = JSON.parse(response.data.choices[0].text.trim());
+
     const responseModel = new ResponseModel({
       patient: patientId,
       doctor: doctorId,

@@ -5,6 +5,22 @@ import Doctor, { IDoctor } from "../models/DoctorModel";
 import MedicalHistory, { IMedicalHistory } from "../models/MedicalHistoryModel";
 import jwt from "jsonwebtoken";
 import moment from "moment";
+import multer from "multer";
+import path from "path";
+
+// const storage = multer.diskStorage({
+//   destination: "uploads",
+//   filename: function (req, file, cb) {
+//     cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname);
+//   },
+// });
+// const upload = multer({ storage: storage });
+// if (req.file) {
+//   retrievedUser.picture = {
+//     data: req.file.buffer,
+//     contentType: req.file.mimetype,
+//   };
+// }
 
 // Get all doctors
 export const getDoctors = async (req: Request, response: Response) => {
@@ -20,7 +36,7 @@ export const getDoctors = async (req: Request, response: Response) => {
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const { id } = req.body.user;
-    const { fullName, email, picture } = req.body;
+    const { fullName, email } = req.body;
 
     const retrievedUser = await User.findById(id);
 
@@ -28,9 +44,11 @@ export const editProfile = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    retrievedUser.fullName = fullName || retrievedUser.fullName;
-    retrievedUser.email = email || retrievedUser.email;
-    retrievedUser.picture = picture || retrievedUser.picture;
+    if (retrievedUser) {
+      retrievedUser.fullName = fullName || retrievedUser.fullName;
+      retrievedUser.email = email || retrievedUser.email;
+    }
+
     const updatedUser = await retrievedUser.save();
 
     res.json(updatedUser);
@@ -96,3 +114,5 @@ export const chooseDoctor = async (req: Request, response: Response) => {
     response.status(500).json({ message: error });
   }
 };
+
+// GEt response, if response found change the pending status to either chat or success

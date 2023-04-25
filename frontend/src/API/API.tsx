@@ -5,7 +5,11 @@ import toast from "react-hot-toast";
 export class API {
   static async getAPI(url: string, token?: string): Promise<any> {
     try {
-      const headers: AxiosRequestConfig["headers"] = {};
+      const headers: AxiosRequestConfig["headers"] = {
+        Authorization: token ? `Bearer ${token}` : "",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      };
       if (token) {
         headers.Authorization = `Bearer ${token}`;
       }
@@ -25,11 +29,13 @@ export class API {
     try {
       const headers: AxiosRequestConfig["headers"] = {
         Authorization: token ? `Bearer ${token}` : "",
+        "Content-Type": "application/json",
+        Accept: "application/json",
       };
       const response = await axios.post(url, api_data, { headers });
       return response.data;
     } catch (error) {
-      console.log("Error from POST API");
+      console.log(error);
       throw error;
     }
   }

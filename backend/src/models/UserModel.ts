@@ -4,7 +4,10 @@ export interface IUser extends Document {
   email: string;
   password: string;
   role: string;
-  picture?: string;
+  picture?: {
+    data: Buffer;
+    contentType: string;
+  };
   fullName: string;
 
   consultations?: {
@@ -30,7 +33,8 @@ const UserSchema = new Schema<IUser>({
     required: true,
   },
   picture: {
-    type: String,
+    data: Buffer,
+    contentType: String,
   },
 
   fullName: {
