@@ -91,3 +91,6 @@ export const getMedicalHistory = async (req: Request, response: Response) => {
     response.status(500).json({ message: "Server error" });
   }
 };
+// get response(serach response model and get the list of responses with dr id)
+
+// edit the response

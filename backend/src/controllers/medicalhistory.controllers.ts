@@ -28,6 +28,7 @@ export const addMedicalHistory = async (req: Request, response: Response) => {
       response.json({ message: "medical history added", newMedicalHistory });
     }
   } catch (error) {
+    console.log(error);
     response.status(500).json({ message: error });
   }
 };

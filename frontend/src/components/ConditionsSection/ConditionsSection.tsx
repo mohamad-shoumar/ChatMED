@@ -54,7 +54,7 @@ const ConditionsSection = ({ onUpdateConditions }: conditionProps) => {
       }}
     >
       <Typography variant="h6" gutterBottom>
-        Did you have any Conditions?
+        Did you have any Chronic Conditions?
       </Typography>
       <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
         <IconButton
@@ -158,3 +158,5 @@ const ConditionsSection = ({ onUpdateConditions }: conditionProps) => {
     </Box>
   );
 };
+
+export default ConditionsSection;

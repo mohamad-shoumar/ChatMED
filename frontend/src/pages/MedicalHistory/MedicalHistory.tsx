@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
 import SurgeriesSection from "../../components/SurgeriesSection/SurgeriesSection";
 import AllergiesSection from "../../components/AllergySection/AllergySection";
+import ConditionsSection from "../../components/ConditionsSection/ConditionsSection";
 import MedicalHistorySections from "../../components/MedicalHistorySections/MedicalHistorySections";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -234,6 +235,11 @@ const MedicalHistory = () => {
               </div>
               <div className={styles.section1}>
                 <AllergiesSection onUpdateAllergies={handleUpdateAllergies} />
+              </div>
+              <div className={styles.section1}>
+                <ConditionsSection
+                  onUpdateConditions={handleUpdateChronicConditions}
+                />
               </div>
             </div>
           </div>
