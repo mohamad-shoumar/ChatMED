@@ -14,6 +14,36 @@ const PatientProfile = () => {
   const [email, setEmail] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
 
+  const handleSubmit = async (e: any) => {
+    try {
+      e.preventDefault();
+      const token = localStorage.getItem("token");
+      const data = {
+        fullName: name,
+        email: email,
+        picture: profilePicture,
+      };
+      console.log("Data:", data);
+      const api_data = JSON.stringify(data);
+      console.log("API Data:", api_data);
+
+      const response = await API.postAPI(
+        `${base_url}patient/editProfile`,
+        api_data,
+        token!
+      );
+      const imageUrl = response.data.pictureUrl;
+      setProfilePicture(imageUrl);
+      setName("");
+      setEmail("");
+      console.log("Data:", data);
+      console.log(api_data);
+      console.log("Response:", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <NavBar />
