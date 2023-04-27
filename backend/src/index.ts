@@ -10,13 +10,14 @@ import responseRoutes from "./routes/response.routes";
 import analyzeRoutes from "./routes/analyze.routes";
 import adviceRoutes from "./routes/advice.routes";
 import { Configuration, OpenAIApi } from "openai";
-
+import job from "./cron/cron";
 import connectDB from "./configs/db.config";
 
 config();
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
 const openai = new OpenAIApi(new Configuration());
 const app: Application = express();
 const port = process.env.PORTAL;
@@ -30,6 +31,7 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
   connectDB();
+  job.start();
 });
 
 app.use("/auth", authRoutes);
