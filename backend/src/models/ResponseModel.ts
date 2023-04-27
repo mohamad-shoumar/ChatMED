@@ -6,6 +6,7 @@ export interface IResponse extends mongoose.Document {
   symptoms: string;
   diagnosis: string;
   treatmentPlan: string;
+  status: string;
   date: Date;
 }
 const Schema = mongoose.Schema;

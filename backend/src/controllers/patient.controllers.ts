@@ -8,20 +8,6 @@ import moment from "moment";
 import multer from "multer";
 import path from "path";
 
-// const storage = multer.diskStorage({
-//   destination: "uploads",
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname);
-//   },
-// });
-// const upload = multer({ storage: storage });
-// if (req.file) {
-//   retrievedUser.picture = {
-//     data: req.file.buffer,
-//     contentType: req.file.mimetype,
-//   };
-// }
-
 // Get all doctors
 export const getDoctors = async (req: Request, response: Response) => {
   try {
@@ -31,14 +17,16 @@ export const getDoctors = async (req: Request, response: Response) => {
     response.status(500).json({ message: "Server error" });
   }
 };
-
+// uplaod file
+const upload = multer({ dest: "uploads/" });
+export const uploadFile = upload.single("file");
 // edit profile
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const { id } = req.body.user;
-    const { fullName, email } = req.body;
-
+    const { fullName, email, profilePicture } = req.body;
     const retrievedUser = await User.findById(id);
+    console.log(req.body);
 
     if (!retrievedUser) {
       return res.status(404).json({ message: "User not found" });
@@ -47,8 +35,12 @@ export const editProfile = async (req: Request, res: Response) => {
     if (retrievedUser) {
       retrievedUser.fullName = fullName || retrievedUser.fullName;
       retrievedUser.email = email || retrievedUser.email;
+      retrievedUser.profilePicture =
+        profilePicture || retrievedUser.profilePicture;
     }
-
+    // if (req.file) {
+    //   retrievedUser.profilePictureUrl = req.file.path;
+    // }
     const updatedUser = await retrievedUser.save();
 
     res.json(updatedUser);

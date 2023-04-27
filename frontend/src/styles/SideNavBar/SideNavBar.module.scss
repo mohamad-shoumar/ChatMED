@@ -9,13 +9,17 @@
 }
 
 .main {
-  width: 17vw;
+  position: fixed;
+  top: 20;
+  left: 20;
+  width: 19vw;
   height: 80vh;
   background-color: $primary-color;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  overflow-y: auto;
 }
 
 .logo {

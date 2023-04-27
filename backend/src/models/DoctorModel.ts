@@ -45,7 +45,7 @@ const DoctorSchema = new Schema({
     {
       doctor: {
         type: Schema.Types.ObjectId,
-        ref: "Patient",
+        ref: "Response",
         required: true,
       },
       date: {

@@ -61,43 +61,6 @@ const Register = () => {
           onChange={(e) => setFullName(e.target.value)}
           className={styles.input}
         />
-
-        {/* <div>
-          <div className={style["gender-label"]}>Gender:</div>
-          <div className={style["gender-options"]}>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                onChange={(e) => setGender(e.target.value)}
-                className={style.input}
-              />
-              Male
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                onChange={(e) => setGender(e.target.value)}
-                className={style.input}
-              />
-              Female
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="other"
-                onChange={(e) => setGender(e.target.value)}
-                className={styles.input}
-              />
-              Other
-            </label>
-          </div>
-        </div> */}
-
         <input
           type="email"
           placeholder="Email"

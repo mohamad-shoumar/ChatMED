@@ -101,7 +101,6 @@ const ConditionsSection = ({ onUpdateConditions }: conditionProps) => {
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
             <Box sx={{ flex: 1 }}>
-              <InputLabel id="Condition-label">Condition</InputLabel>
               <TextField
                 id="Condition-label"
                 fullWidth
@@ -112,7 +111,6 @@ const ConditionsSection = ({ onUpdateConditions }: conditionProps) => {
               />
             </Box>
             <Box sx={{ flex: 1 }}>
-              <InputLabel id="date-label">Onset-Date</InputLabel>
               <TextField
                 fullWidth
                 label="Onset-Date"

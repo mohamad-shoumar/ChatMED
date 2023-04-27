@@ -103,7 +103,6 @@ const AllergiesSection = ({ onUpdateAllergies }: allergyProps) => {
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
             <Box sx={{ flex: 1 }}>
-              <InputLabel id="Allergy-label">Allergy</InputLabel>
               <TextField
                 id="Allergy-label"
                 fullWidth
@@ -114,7 +113,6 @@ const AllergiesSection = ({ onUpdateAllergies }: allergyProps) => {
               />
             </Box>
             <Box sx={{ flex: 1 }}>
-              <InputLabel id="date-label">Onset-Date</InputLabel>
               <TextField
                 fullWidth
                 label="Onset-Date"

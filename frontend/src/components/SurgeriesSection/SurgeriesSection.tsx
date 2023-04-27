@@ -105,7 +105,6 @@ const SurgeriesSection = ({ onUpdateSurgeries }: surgeryProps) => {
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
             <Box sx={{ flex: 1 }}>
-              <InputLabel id="Surgery-label">Surgery</InputLabel>
               <TextField
                 id="Surgery-label"
                 fullWidth
@@ -116,7 +115,6 @@ const SurgeriesSection = ({ onUpdateSurgeries }: surgeryProps) => {
               />
             </Box>
             <Box sx={{ flex: 1 }}>
-              <InputLabel id="date-label">Onset-Date</InputLabel>
               <TextField
                 fullWidth
                 label="Onset-Date"

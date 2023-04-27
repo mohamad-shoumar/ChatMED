@@ -4,12 +4,8 @@ export interface IUser extends Document {
   email: string;
   password: string;
   role: string;
-  picture?: {
-    data: Buffer;
-    contentType: string;
-  };
+  profilePicture: string;
   fullName: string;
-
   consultations?: {
     doctor: string;
     date: Date;
@@ -32,9 +28,9 @@ const UserSchema = new Schema<IUser>({
     enum: ["patient", "doctor"],
     required: true,
   },
-  picture: {
-    data: Buffer,
-    contentType: String,
+  profilePicture: {
+    type: String,
+    default: null,
   },
 
   fullName: {

@@ -58,6 +58,11 @@ const MedicalHistorySection = ({
         gap: 1,
         p: 0,
         width: "90%",
+        maxWidth: "600px",
+        "@media (max-width: 600px)": {
+          fontSize: "14px",
+          gap: "0.5rem",
+        },
       }}
     >
       <Typography variant="h6" gutterBottom>
@@ -109,6 +114,7 @@ const MedicalHistorySection = ({
           <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
             <Box sx={{ flex: 1 }}>
               <TextField
+                size="medium"
                 fullWidth
                 label="Medication Name"
                 variant="outlined"
@@ -120,6 +126,7 @@ const MedicalHistorySection = ({
               <FormControl fullWidth variant="outlined">
                 <InputLabel id="frequency-label">Frequency</InputLabel>
                 <Select
+                  size="medium"
                   labelId="frequency-label"
                   value={frequency}
                   onChange={(event) => setFrequency(event.target.value)}

@@ -14,7 +14,6 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useState, useContext } from "react";
 import axios from "axios";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
 import SurgeriesSection from "../../components/SurgeriesSection/SurgeriesSection";
@@ -143,6 +142,7 @@ const MedicalHistory = () => {
   return (
     <div>
       <NavBar />
+
       <div className={styles.medicalHistory}>
         <SideNavBar />
         <div className={styles.medicalHistoryContainer}>
@@ -163,6 +163,7 @@ const MedicalHistory = () => {
           <div className={styles.medicalHistoryForm}>
             <div className={styles.height}>
               <TextField
+                size="small"
                 id="height"
                 label="Height"
                 variant="outlined"
@@ -180,6 +181,7 @@ const MedicalHistory = () => {
             </div>
             <div className={styles.weight}>
               <TextField
+                size="small"
                 id="weight"
                 label="Weight"
                 variant="outlined"
@@ -197,13 +199,21 @@ const MedicalHistory = () => {
             </div>
             <div className={styles.datePicker}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker onChange={handleDateChange} />
+                <DatePicker
+                  slotProps={{ textField: { size: "small" } }}
+                  onChange={handleDateChange}
+                />
               </LocalizationProvider>
             </div>
           </div>
-          <FormControl>
+
+          <FormControl
+            size="small"
+            sx={{ marginLeft: "25px", marginTop: "30px" }}
+          >
             <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
             <RadioGroup
+              row
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="radio-buttons-group"
