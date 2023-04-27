@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?profiley=Montserrat&family=Ubuntu:wght@500&display=swap");
+@import " ../../../../stylesheet.scss";
+
+body {
+  background: $background;
+  font-family: "Montserrat", sans-serif;
+}
+
+.main {
+  margin-top: 7vh;
+  padding-top: 8vh;
+  padding-left: 4vw;
+  display: flex;
+}
+.profile {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  margin-left: 40vh;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+.mainForm {
+  padding-left: 2%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+// import NavBar from "../../components/NavBar/NavBar";
+// import SideNavBar from "../../components/SideNavBar/SideNavBar";
+// import styles from "../../styles/Structure/Structure.module.scss";
+// <div>
+// <NavBar />
+// <div className={styles.main}>
+//   <SideNavBar />
+//   <div className={styles.mainContainer}>
+//     <div className={styles.headerContainer}>
+//       <div className={styles.mainForm}></div>
+//     </div>
+//   </div>
+// </div>
+// </div>
+.profile {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  padding: 31.97px 25px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+}
+.img {
+  width: 176.64px;
+  height: 176.64px;
+  margin-right: 25.58px;
+  border-radius: 50%;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.name {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  color: rgba(17, 17, 17, 1);
+  margin-bottom: 10.39px;
+}
+.email {
+  margin-bottom: 10.39px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.deanCom {
+  margin-bottom: 4.8px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: black;
+}
+.deanComEmphasis0 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: black;
+}
+.dateicon {
+  display: flex;
+  align-items: center;
+}
+.dateRange {
+  margin-right: 7.19px;
+  width: 19.18px;
+  height: 19.18px;
+}
+.date {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: black;
+}
+.editbtn {
+  background-color: rgba(36, 70, 116, 1);
+  border-radius: 4px;
+  padding: 7.99px 12.79px;
+  box-shadow: 0 2px 2px 0 black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 17.59px;
+  width: 56.74px;
+}
+.edit {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: rgba(255, 255, 255, 1);
+}
+.adviceMain {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  width: 45%;
+}
