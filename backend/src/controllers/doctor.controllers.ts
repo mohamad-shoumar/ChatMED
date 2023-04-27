@@ -116,3 +116,24 @@ export const editResponse = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+// submit response
+export const submitResponse = async (req: Request, res: Response) => {
+  const responseId = req.params.id;
+  const { diagnosis, treatmentPlan } = req.body;
+
+  try {
+    const responseObj = await ResponseModel.findById(responseId);
+    if (!responseObj) {
+      return res.status(404).json({ message: "Response not found" });
+    }
+    responseObj.diagnosis = diagnosis || responseObj.diagnosis;
+    responseObj.treatmentPlan = treatmentPlan || responseObj.treatmentPlan;
+    responseObj.status = "submitted";
+    await responseObj.save();
+    return res.json(responseObj);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
