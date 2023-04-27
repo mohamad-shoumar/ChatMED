@@ -1,5 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?profiley=Montserrat&family=Ubuntu:wght@500&display=swap");
+
 $primary-color: #244674;
 $sec: #01b8e2;
 $subText: #a0acb7;
 $text: #121c38;
 $background: #ecf4f6;
+$base-font-size: 16px;
+$heading-font-weight: 700;
+
+// Base typography
+html {
+  font-size: $base-font-size;
+  font-family: Ubuntu, Montserrat;
+  color: $text;
+}
+
+body {
+  background-color: $background;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $heading-font-weight;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+// Text
+p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+a {
+  color: $sec;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Subtext
+.small {
+  font-size: 0.8rem;
+  color: $subText;
+}
