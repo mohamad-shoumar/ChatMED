@@ -4,12 +4,14 @@ import Doctor, { IDoctor } from "../models/DoctorModel";
 import User, { IUser } from "../models/UserModel";
 import MedicalHistory from "../models/MedicalHistoryModel";
 import Vitals, { IVital } from "../models/VitalModel";
+import ResponseModel from "../models/ResponseModel";
 
 // edit profile
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const userId = req.body.user.id;
-    const { fullName, price, workingHours, email, picture } = req.body;
+    const { fullName, price, workingHours, email, profilePictureUrl } =
+      req.body;
     console.log(req.body);
     console.log(userId);
     console.log(workingHours);
@@ -30,7 +32,8 @@ export const editProfile = async (req: Request, res: Response) => {
     }
     retrievedUser.fullName = fullName || retrievedUser.fullName;
     retrievedUser.email = email || retrievedUser.email;
-    retrievedUser.picture = picture || retrievedUser.picture;
+    retrievedUser.profilePictureUrl =
+      profilePictureUrl || retrievedUser.profilePictureUrl;
     const updatedUser = await retrievedUser.save();
     res.json({ updatedDoctor, updatedUser });
   } catch (error) {
@@ -91,6 +94,25 @@ export const getMedicalHistory = async (req: Request, response: Response) => {
     response.status(500).json({ message: "Server error" });
   }
 };
-// get response(serach response model and get the list of responses with dr id)
+// get responses(serach response collection and get the list of responses with dr id)
 
 // edit the response
+export const editResponse = async (req: Request, res: Response) => {
+  const responseId = req.params.id;
+  const { diagnosis, treatmentPlan } = req.body;
+
+  try {
+    const responseObj = await ResponseModel.findById(responseId);
+    if (!responseObj) {
+      return res.status(404).json({ message: "Response not found" });
+    }
+    responseObj.diagnosis = diagnosis || responseObj.diagnosis;
+    responseObj.treatmentPlan = treatmentPlan || responseObj.treatmentPlan;
+    responseObj.status = "edited";
+    await responseObj.save();
+    return res.json(responseObj);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
