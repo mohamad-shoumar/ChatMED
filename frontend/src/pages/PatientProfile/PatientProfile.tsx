@@ -1,10 +1,10 @@
-import styles from "../../styles/MedicalHistory/MedicalHistory.module.scss";
+import styles from "../../styles/Profile/Profile.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
 import TextField from "@mui/material/TextField";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Container, Box } from "@mui/material";
+import { Button, Container, Box, InputLabel } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { API } from "../../../src/API/API";
 import { base_url } from "../../API/API";
@@ -12,32 +12,36 @@ import { base_url } from "../../API/API";
 const PatientProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [profilePicture, setProfilePicture] = useState("");
+  const [file, setFile] = useState("");
 
+  const handleFileChange = (e: any) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
   const handleSubmit = async (e: any) => {
     try {
       e.preventDefault();
       const token = localStorage.getItem("token");
-      const data = {
-        fullName: name,
-        email: email,
-        picture: profilePicture,
-      };
-      console.log("Data:", data);
-      const api_data = JSON.stringify(data);
-      console.log("API Data:", api_data);
+      const formData = new FormData();
+      formData.append("fullName", name);
+      formData.append("email", email);
+      formData.append("profilePicture", file);
+
+      console.log("API Data:", formData);
+      console.log(file);
 
       const response = await API.postAPI(
         `${base_url}patient/editProfile`,
-        api_data,
+        formData,
         token!
       );
       const imageUrl = response.data.pictureUrl;
-      setProfilePicture(imageUrl);
+      console.log("Response:", response);
+
       setName("");
       setEmail("");
-      console.log("Data:", data);
-      console.log(api_data);
+      console.log(formData);
       console.log("Response:", response);
     } catch (error) {
       console.log(error);
@@ -53,12 +57,14 @@ const PatientProfile = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
+          height: "80vh",
           marginTop: "15vh",
         }}
       >
         <SideNavBar />
         <Container
           sx={{
+            marginLeft: "20vw",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -78,7 +84,6 @@ const PatientProfile = () => {
             <Button
               sx={{
                 borderRadius: "0px",
-                size: "meduim",
               }}
               variant="contained"
               color="secondary"
@@ -90,28 +95,30 @@ const PatientProfile = () => {
           <Box
             sx={{
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
-              width: "50%",
-              height: "70%",
+              marginTop: "40px",
+              width: "85%",
+              height: "80%",
               margin: "auto",
-              gap: 3,
-              border: "3px solid #000",
+              border: "1px solid #000",
+              borderRadius: "10px",
             }}
           >
-            <img
-              src="https://picsum.photos/200"
-              alt="profile"
-              style={{ borderRadius: "50%" }}
-            />
-            <input type="file" name="pic" accept="image/*" />
-            <TextField id="name" label="Name" variant="outlined" />
-            <TextField id="email" label="Email" variant="outlined" />
-            <TextField
-              id="dateOfBirth"
-              label="Date of Birth"
-              variant="outlined"
-            />
+            <Box
+              sx={{
+                width: "35%",
+                height: "100%",
+                padding: "10px",
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                backgroundColor: (theme) => theme.palette.primary.main,
+              }}
+            >
+              <img
+                src="https://picsum.photos/200"
+                alt="profile"
+ 
           </Box>
         </Container>
       </Container>
