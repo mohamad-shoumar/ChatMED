@@ -118,7 +118,63 @@ const PatientProfile = () => {
               <img
                 src="https://picsum.photos/200"
                 alt="profile"
- 
+                style={{
+                  borderRadius: "50%",
+                  width: "80%",
+                  height: "40%",
+                  border: "3px solid text",
+                }}
+              />
+              <br />
+              <Button color="secondary" variant="contained" component="label">
+                Upload
+                <input
+                  onChange={handleFileChange}
+                  hidden
+                  accept="image/*"
+                  multiple
+                  type="file"
+                />
+              </Button>
+            </Box>
+            <Box
+              sx={{
+                flexDirection: "column",
+                display: "flex",
+                justifyContent: "space-evenly",
+                gap: "8px",
+                marginLeft: "15px",
+                width: "55%",
+              }}
+            >
+              {" "}
+              <InputLabel id="Allergy-label">Full Name</InputLabel>
+              <TextField
+                size="small"
+                id="name"
+                placeholder="name"
+                variant="filled"
+                fullWidth
+                onChange={(e) => setName(e.target.value)}
+              />
+              <InputLabel id="date-label">Email</InputLabel>
+              <TextField
+                size="small"
+                id="email"
+                placeholder="email"
+                variant="filled"
+                fullWidth
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <InputLabel id="date-label">Date of Birth</InputLabel>
+              <TextField
+                size="small"
+                id="dateOfBirth"
+                placeholder="DOB"
+                variant="filled"
+                fullWidth
+              />
+            </Box>
           </Box>
         </Container>
       </Container>
