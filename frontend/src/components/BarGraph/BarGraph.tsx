@@ -92,4 +92,10 @@ export default function BloodPressure() {
     };
     getBloodPressure();
   }, []);
+
+  return (
+    <div className="card">
+      <Chart type="line" data={chartData} options={chartOptions} />
+    </div>
+  );
 }
