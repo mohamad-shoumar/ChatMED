@@ -73,4 +73,10 @@ export default function BloodSugarGraph() {
 
     fetchBloodSugarData();
   }, []);
+
+  return (
+    <div className="card">
+      <Chart type="line" data={chartData} options={chartOptions} />
+    </div>
+  );
 }
