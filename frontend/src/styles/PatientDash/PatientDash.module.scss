@@ -7,11 +7,18 @@ body {
 }
 
 .main {
-  margin-top: 7vh;
-  padding-top: 8vh;
+  padding-top: 5vh;
   padding-left: 4vw;
   display: flex;
 }
+.mainContainer {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 15;
+  left: 30;
+}
+
 .profile {
   width: 80%;
   height: 100%;
@@ -20,41 +27,30 @@ body {
   padding: 0 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .headerContainer {
   width: 100%;
+  height: 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 10px 20px;
+
+  padding: 0px 20px;
 }
 
 .mainForm {
+  margin-left: 40vh;
   padding-left: 2%;
   display: flex;
   justify-content: space-evenly;
-  gap: 10px;
+  flex-direction: column;
 }
 
-// import NavBar from "../../components/NavBar/NavBar";
-// import SideNavBar from "../../components/SideNavBar/SideNavBar";
-// import styles from "../../styles/Structure/Structure.module.scss";
-// <div>
-// <NavBar />
-// <div className={styles.main}>
-//   <SideNavBar />
-//   <div className={styles.mainContainer}>
-//     <div className={styles.headerContainer}>
-//       <div className={styles.mainForm}></div>
-//     </div>
-//   </div>
-// </div>
-// </div>
 .profile {
   background-color: rgba(255, 255, 255, 1);
   border-radius: 8px;
-  padding: 31.97px 25px;
+  padding: 20px 15px;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: row;
@@ -63,31 +59,33 @@ body {
   width: 45%;
 }
 .img {
-  width: 176.64px;
-  height: 176.64px;
-  margin-right: 25.58px;
+  width: 140.64px;
+  height: 140.64px;
+  margin-right: 21.58px;
   border-radius: 50%;
+}
+.divBack {
+  background-color: $background;
+  border-radius: 6px;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 5px;
 }
 .info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 0px;
 }
 .name {
   font-size: 22px;
   font-weight: 700;
   line-height: 22px;
   color: rgba(17, 17, 17, 1);
-  margin-bottom: 10.39px;
 }
-.email {
-  margin-bottom: 10.39px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+
 .deanCom {
-  margin-bottom: 4.8px;
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
@@ -137,4 +135,10 @@ body {
   align-items: flex-start;
   padding: 10px;
   width: 45%;
+}
+.formTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+  color: $text;
 }
