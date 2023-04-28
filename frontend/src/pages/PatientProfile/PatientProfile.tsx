@@ -8,17 +8,44 @@ import { Button, Container, Box, InputLabel } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { API } from "../../../src/API/API";
 import { base_url } from "../../API/API";
+import { FileUpload, FileUploadHandlerEvent } from "primereact/fileupload";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
+import { storage } from "../../FireBase";
+declare global {
+  interface File {
+    objectURL: string;
+  }
+}
 
 const PatientProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [file, setFile] = useState("");
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
+  const imagesListRef = ref(storage, "images/");
 
   const handleFileChange = (e: any) => {
     if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+      setImageUrls(e.target.files[0]);
     }
   };
+
+  // const uploadFile = () => {
+  //   if (imageUpload == null) return;
+  //   const imageRef = ref(storage, `images/${imageUpload.name}`);
+  //   uploadBytes(imageRef, imageUpload).then((snapshot) => {
+  //     getDownloadURL(snapshot.ref).then((url) => {
+  //       setImageUrls((prev) => [...prev, url]);
+  //     });
+  //   });
+  // };
+
   const handleSubmit = async (e: any) => {
     try {
       e.preventDefault();
@@ -26,17 +53,16 @@ const PatientProfile = () => {
       const formData = new FormData();
       formData.append("fullName", name);
       formData.append("email", email);
-      formData.append("profilePicture", file);
+      // formData.append("link", imageUrls);
 
       console.log("API Data:", formData);
-      console.log(file);
 
       const response = await API.postAPI(
         `${base_url}patient/editProfile`,
         formData,
         token!
       );
-      const imageUrl = response.data.pictureUrl;
+      // const imageUrl = response.data.pictureUrl;
       console.log("Response:", response);
 
       setName("");
