@@ -1,28 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@500&display=swap");
 @import " ../../../../stylesheet.scss";
+
 .global {
   overflow-x: hidden;
   overflow-y: hidden;
 }
 .mainContainer {
+  margin-top: 10vh;
+  flex-wrap: nowrap;
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  margin-left: 15%;
-  padding: 0 1em 0 6em;
+  border: 2px solid red;
   overflow-x: hidden;
+  padding: 0 2rem 0 0;
 }
 .headerButtons {
   color: $sec;
 }
-
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: 2px solid blue;
+  padding-left: 1.5rem;
+}
 .headerContainer {
-  margin: 0em 0 2em 1em;
+  border: 2px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.inputsContainer {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-around;
+}
 
-.mainContent {
-  margin: 0em 0 0em 1em;
+.logsContainer {
+  display: flex;
+}
+.pressureVertical {
+  display: flex;
+  flex-direction: column;
+}
+.pressureHorizantal {
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
