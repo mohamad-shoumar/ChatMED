@@ -32,8 +32,8 @@ export const editProfile = async (req: Request, res: Response) => {
     }
     retrievedUser.fullName = fullName || retrievedUser.fullName;
     retrievedUser.email = email || retrievedUser.email;
-    retrievedUser.profilePictureUrl =
-      profilePictureUrl || retrievedUser.profilePictureUrl;
+    // retrievedUser.profilePictureUrl =
+    //   profilePictureUrl || retrievedUser.profilePictureUrl;
     const updatedUser = await retrievedUser.save();
     res.json({ updatedDoctor, updatedUser });
   } catch (error) {

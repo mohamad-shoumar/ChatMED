@@ -24,8 +24,9 @@ export const uploadFile = upload.single("file");
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const { id } = req.body.user;
-    const { fullName, email, profilePicture } = req.body;
+    const { fullName, email, link } = req.body;
     const retrievedUser = await User.findById(id);
+
     console.log(req.body);
 
     if (!retrievedUser) {
@@ -35,15 +36,15 @@ export const editProfile = async (req: Request, res: Response) => {
     if (retrievedUser) {
       retrievedUser.fullName = fullName || retrievedUser.fullName;
       retrievedUser.email = email || retrievedUser.email;
-      retrievedUser.profilePicture =
-        profilePicture || retrievedUser.profilePicture;
-    }
-    // if (req.file) {
-    //   retrievedUser.profilePictureUrl = req.file.path;
-    // }
-    const updatedUser = await retrievedUser.save();
+      // retrievedUser.link = link || retrievedUser.link;
 
-    res.json(updatedUser);
+      // if (req.file) {
+      //   retrievedUser.profilePictureUrl = req.file.path;
+      // }
+      const updatedUser = await retrievedUser.save();
+
+      res.json(updatedUser);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
