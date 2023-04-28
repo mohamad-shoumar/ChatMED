@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@500&display=swap");
+@import " ../../../../stylesheet.scss";
+.global {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.mainContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  padding: 0 1em 0 6em;
+  overflow-x: hidden;
+}
+.headerButtons {
+  color: $sec;
+}
+
+.headerContainer {
+  margin: 0em 0 2em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainContent {
+  margin: 0em 0 0em 1em;
+}
