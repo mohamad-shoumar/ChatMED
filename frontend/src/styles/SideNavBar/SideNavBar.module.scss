@@ -10,16 +10,24 @@
 
 .main {
   position: fixed;
-  top: 20;
-  left: 20;
+  margin-left: 2rem;
+  margin-top: 2rem;
   width: 19vw;
-  height: 80vh;
+  min-height: 75vh;
   background-color: $primary-color;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  overflow-y: auto;
+  overflow-y: hidden;
+}
+.mainLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 65vh;
 }
 
 .logo {
@@ -87,6 +95,20 @@
   size: 0.2rem;
   cursor: pointer;
 }
+.space {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  height: 58vh;
+}
+.mainLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 .link:hover {
   filter: brightness(1.2);
   background-color: rgb(15, 15, 85);
@@ -95,10 +117,23 @@
 .word {
   color: $background;
   font-weight: bold;
-  font-size: 0.6rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 .linkleft {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
+  width: 85%;
+  border-radius: 5px;
+  padding: 5px 5px;
+  size: 1rem;
+  font-weight: bold;
+  font-size: 0.5rem;
+  font-weight: bold;
+}
+.darkmodeloc {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -110,4 +145,60 @@
   font-weight: bold;
   font-size: 0.5rem;
   font-weight: bold;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 1300px) {
+  .logo > img {
+    width: 35px;
+  }
+  .word {
+    color: $background;
+    font-weight: bold;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  .linkleft > img {
+    width: 1rem;
+  }
+  .submain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+  }
+  .dash {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    color: $background;
+    width: 85%;
+    background-color: $sec;
+    border-radius: 5px;
+    padding: 6px 6px 6px 12px;
+    size: 0.2rem;
+    font-size: 0.7rem;
+    font-weight: bolder;
+  }
+  .darkmodeloc {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
+    width: 85%;
+    border-radius: 5px;
+    padding: 5px 5px;
+    size: 0.2rem;
+    font-weight: bold;
+    font-size: 0.5rem;
+    font-weight: bold;
+  }
+
+  .link:hover {
+    filter: brightness(1.2);
+    background-color: rgb(15, 15, 85);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
 }
