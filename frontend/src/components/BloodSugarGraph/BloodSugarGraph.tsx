@@ -16,5 +16,61 @@ export default function BloodSugarGraph() {
     const surfaceBorder = documentStyle.getPropertyValue("--surface-border");
     const token = localStorage.getItem("token");
 
-    
+    const fetchBloodSugarData = async () => {
+      try {
+        const response = await API.getAPI(`${base_url}vitals/sugar`, token!);
+        console.log(response);
+        const data = {
+          labels: response.bloodsugar.map((item: any) =>
+            item.timestamp.substring(0, 10)
+          ),
+          datasets: [
+            {
+              label: "Blood Sugar",
+              data: response.bloodsugar.map((item: any) => item.value),
+              fill: false,
+              tension: 0.4,
+              borderColor: documentStyle.getPropertyValue("--blue-500"),
+            },
+          ],
+        };
+        const options = {
+          maintainAspectRatio: false,
+          aspectRatio: 2,
+          plugins: {
+            legend: {
+              labels: {
+                color: textColor,
+              },
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: textColorSecondary,
+              },
+              grid: {
+                color: surfaceBorder,
+              },
+            },
+            y: {
+              ticks: {
+                color: textColorSecondary,
+              },
+              grid: {
+                color: surfaceBorder,
+              },
+            },
+          },
+        };
+
+        setChartData(data);
+        setChartOptions(options);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchBloodSugarData();
+  }, []);
 }
