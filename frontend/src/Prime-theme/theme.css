@@ -48,6 +48,9 @@
   --highlight-text-color: #244674;
   color-scheme: light;
 }
+html {
+  font-size: 15px;
+}
 /* @font-face {
   font-family: "Montserrat";
   font-style: normal;
@@ -74,6 +77,9 @@
 } */
 * {
   box-sizing: border-box;
+}
+.sec {
+  color: var(--secondary-color);
 }
 .p-component {
   font-family: Montserrat, Helvetica Neue Light, Helvetica Neue, Helvetica,
@@ -132,6 +138,7 @@
   }
 }
 :root {
+  --secondary-color: #01b8e2;
   --blue-50: #f4fafe;
   --blue-100: #cae6fc;
   --blue-200: #a0d2fa;
