@@ -19,58 +19,62 @@ const SideNavBar = () => {
         <div className={styles.logo}>
           <img src={Union} alt="logo" />
         </div>
-        <div className={styles.submain}>
-          <div
-            className={`${styles.dash} ${styles.hover}`}
-            onClick={() => navigate("/dashboard")}
-          >
-            <img src={dash} alt="logo" />
-            <div className={styles.Dashboard}>Dashboard</div>
-          </div>
-          <div
-            className={`${styles.link} ${styles.hover}`}
-            onClick={() => navigate("/medicalhistory")}
-          >
-            <div className={styles.linkleft}>
-              <img src={history} alt="logo" />
-              <div className={styles.word}>Medical Hsitory</div>
+        <div className={styles.space}>
+          <div className={styles.submain}>
+            <div
+              className={`${styles.dash} ${styles.hover}`}
+              onClick={() => navigate("/dashboard")}
+            >
+              <img src={dash} alt="logo" />
+              <div className={styles.Dashboard}>Dashboard</div>
             </div>
-            <img src={Icon} alt="arrow" />
-          </div>
-          <div
-            className={`${styles.link} ${styles.hover}`}
-            onClick={() => navigate("/vitals")}
-          >
-            <div className={styles.linkleft}>
-              <img src={vitals} alt="logo" />
-              <div className={styles.word}> Vitals</div>
+            <div
+              className={`${styles.link} ${styles.hover}`}
+              onClick={() => navigate("/medicalhistory")}
+            >
+              <div className={styles.linkleft}>
+                <img src={history} alt="logo" />
+                <div className={styles.word}>Medical Hsitory</div>
+              </div>
+              <img src={Icon} alt="arrow" />
             </div>
-            <img src={Icon} alt="arrow" />
-          </div>
-          <div
-            className={`${styles.link} ${styles.hover}`}
-            onClick={() => navigate("/chat")}
-          >
-            <div className={styles.linkleft}>
-              <img src={chats} alt="logo" />
-              <div className={styles.word}>Chats</div>
+            <div
+              className={`${styles.link} ${styles.hover}`}
+              onClick={() => navigate("/vitals")}
+            >
+              <div className={styles.linkleft}>
+                <img src={vitals} alt="logo" />
+                <div className={styles.word}> Vitals</div>
+              </div>
+              <img src={Icon} alt="arrow" />
             </div>
-            <img src={Icon} alt="arrow" />
-          </div>
-          <div
-            className={`${styles.link} ${styles.hover}`}
-            onClick={() => navigate("")}
-          >
-            <div className={styles.linkleft}>
-              <img src={logs} alt="logo" />
-              <div className={styles.word}>Log Out</div>
+            <div
+              className={`${styles.link} ${styles.hover}`}
+              onClick={() => navigate("/chat")}
+            >
+              <div className={styles.linkleft}>
+                <img src={chats} alt="logo" />
+                <div className={styles.word}>Chats</div>
+              </div>
+              <img src={Icon} alt="arrow" />
             </div>
-            <img src={Icon} alt="arrow" />
+            <div
+              className={`${styles.link} ${styles.hover}`}
+              onClick={() => navigate("")}
+            >
+              <div className={styles.linkleft}>
+                <img src={logs} alt="logo" />
+                <div className={styles.word}>Log Out</div>
+              </div>
+              <img src={Icon} alt="arrow" />
+            </div>
           </div>
-          <div className={`${styles.darkmode} ${styles.hover}`}>
-            <div className={styles.linkleft}>
-              <img src={sun} alt="logo" />
-              <div className={styles.word}>Dark Mode</div>
+          <div className={`${styles.darkmodeloc}`}>
+            <div className={`${styles.darkmode} ${styles.hover}`}>
+              <div className={styles.linkleft}>
+                <img src={sun} alt="logo" />
+                <div className={styles.word}>Dark Mode</div>
+              </div>
             </div>
           </div>
         </div>

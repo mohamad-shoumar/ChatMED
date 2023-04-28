@@ -124,7 +124,6 @@ const MedicalHistory = () => {
   const handleMedicalHistorySubmit = async (e: any) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-
     const data = { ...medicalHistoryData };
     const body = JSON.stringify({ medicalHistory: data });
     console.log(body);

@@ -1,9 +1,15 @@
-import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
 import styles from "../../styles/PatientDash/PatientDash.module.scss";
 import { DateRange } from "@mui/icons-material";
 import { Card } from "primereact/card";
+import BloodPressure from "../../components/BarGraph/BarGraph";
+import BloodSugar from "../../components/BloodSugarGraph/BloodSugarGraph";
+import { Chart } from "primereact/chart";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 
 const PatientDashboard = () => {
   return (
@@ -31,9 +37,6 @@ const PatientDashboard = () => {
                     <p className={styles.date}>25/05/1998</p>
                   </div>
                 </div>
-                <div className={styles.editbtn}>
-                  <p className={styles.edit}>Edit</p>
-                </div>
               </div>
             </div>
             <div className={styles.adviceMain}>
@@ -41,16 +44,25 @@ const PatientDashboard = () => {
                 {/* <p className={styles.adviceTitle}>Tip of the Day</p> */}
                 <div className={styles.advice}>
                   <div className="card">
-                    <Card title="Tip of the Day" className="md:w-25rem">
-                      <p className="m-0">
+                    <Card title="Tip of the Day">
+                      <div className={styles.divBack}>
                         Lorem ipsum dolor sit amet consectetur adipisicing
-                      </p>
+                      </div>
                     </Card>
                   </div>
                 </div>
               </div>
             </div>
-            <div className={styles.mainForm}></div>
+          </div>
+          <div className={styles.mainForm}>
+            <div className={styles.formHeader}>
+              <p className={styles.formTitle}>Blood Pressure</p>
+            </div>
+            <BloodPressure />
+            <div className={styles.formHeader}>
+              <p className={styles.formTitle}>Blood Sugar</p>
+            </div>
+            <BloodSugar />
           </div>
         </div>
       </div>
