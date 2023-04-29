@@ -21,18 +21,34 @@ import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { Tag } from "primereact/tag";
 
-interface logs {
-  id: string;
+interface log {
+  id: string | null;
   value?: number;
   systolic?: number;
   diastolic?: number;
-  Date: Date;
+  Date: Date | string;
 }
 
 const Vitals = () => {
+  let emptylog = {
+    id: null,
+    value: 0,
+    systolic: 0,
+    diastolic: 0,
+    Date: "",
+  };
+
+  const [logs, setlogs] = useState<log[] | null>(null);
+  const [logDialog, setlogDialog] = useState<boolean>(false);
+  const [deletelogDialog, setDeletelogDialog] = useState<boolean>(false);
+  const [deletelogsDialog, setDeletelogsDialog] = useState<boolean>(false);
+  const [log, setlog] = useState<log>(emptylog);
+  const [selectedlogs, setSelectedlogs] = useState<log[] | null>(null);
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [globalFilter, setGlobalFilter] = useState<string | null>(null);
+  const toast = useRef<Toast>(null);
   const [sys, setSys] = useState<number | null | undefined>(20);
   const [dais, setDais] = useState<number | null | undefined>(20);
-  const [logs, setLogs] = useState<logs[]>([]);
   const [sugar, setSugar] = useState<number | null | undefined>(20);
 
   return (
