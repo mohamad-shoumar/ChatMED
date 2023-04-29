@@ -73,7 +73,9 @@ const Vitals = () => {
     );
   };
   // export csv
-
+  const exportCSV = () => {
+    dt.current.exportCSV();
+  };
   // right toolbar template
   const rightToolbarTemplate = () => {
     return (
@@ -216,11 +218,6 @@ const Vitals = () => {
                       style={{ minWidth: "16rem" }}
                     ></Column>
                     <Column
-                      field="image"
-                      header="Image"
-                      body={imageBodyTemplate}
-                    ></Column>
-                    <Column
                       field="price"
                       header="Price"
                       body={priceBodyTemplate}
@@ -232,13 +229,6 @@ const Vitals = () => {
                       header="Category"
                       sortable
                       style={{ minWidth: "10rem" }}
-                    ></Column>
-                    <Column
-                      field="rating"
-                      header="Reviews"
-                      body={ratingBodyTemplate}
-                      sortable
-                      style={{ minWidth: "12rem" }}
                     ></Column>
                     <Column
                       field="inventoryStatus"
@@ -254,6 +244,39 @@ const Vitals = () => {
                     ></Column>
                   </DataTable>
                 </div>
+                <Dialog visible={productDialog} style={{ width: '32rem' }} breakpoints={{ '960px': '75vw', '641px': '90vw' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
+                <div className="field">
+                    <label htmlFor="name" className="font-bold">
+                        Name
+                    </label>   
+                     <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                    {submitted && !product.name && <small className="p-error">Name is required.</small>}
+                </div> 
+                <div className="field">
+                    <label htmlFor="description" className="font-bold">
+                        Description
+                    </label>
+                    <InputTextarea id="description" value={product.description} onChange={(e) => onInputChange(e, 'description')} required rows={3} cols={20} />
+                </div>
+                <Dialog/>
+
+                <Dialog visible={deleteProductDialog} style={{ width: '32rem' }} breakpoints={{ '960px': '75vw', '641px': '90vw' }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
+                <div className="confirmation-content">
+                    <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
+                    {product && (
+                        <span>
+                            Are you sure you want to delete <b>{product.name}</b>?
+                        </span>
+                    )}
+                </div>
+            </Dialog>
+            <Dialog visible={deleteProductsDialog} style={{ width: '32rem' }} breakpoints={{ '960px': '75vw', '641px': '90vw' }} header="Confirm" modal footer={deleteProductsDialogFooter} onHide={hideDeleteProductsDialog}>
+                <div className="confirmation-content">
+                    <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
+                    {product && <span>Are you sure you want to delete the selected products?</span>}
+                </div>
+            </Dialog>
+
               </div>
             </div>
           </div>
