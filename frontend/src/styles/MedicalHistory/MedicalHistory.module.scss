@@ -4,19 +4,21 @@
 body {
   background: $background;
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
 .medicalHistory {
-  margin-top: 7vh;
-  padding-top: 8vh;
-  padding-left: 4vw;
+  border: 2px solid black;
+  margin-top: 4.8%;
+
+  width: 100vw;
   display: flex;
+  justify-content: space-between;
 }
 .medicalHistoryContainer {
-  width: 80%;
+  width: 78vw;
   height: 100%;
-  margin: 0 auto;
-  margin-left: 40vh;
+  border: 2px solid red;
   padding: 0 10px;
   display: flex;
   flex-direction: column;

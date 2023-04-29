@@ -7,10 +7,17 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-
+.globalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 95vh;
+  width: 22vw;
+}
 .main {
-  margin-left: 2rem;
-  margin-top: 2rem;
+  // margin-left: 2rem;
+  // margin-top: 3rem;
   width: 19vw;
   min-height: 75vh;
   background-color: $primary-color;
