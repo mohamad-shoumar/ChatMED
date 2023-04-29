@@ -2,7 +2,7 @@ import styles from "../../styles/Profile/Profile.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
 import TextField from "@mui/material/TextField";
-import { useState, useContext } from "react";
+import { useState, useContext, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Box, InputLabel } from "@mui/material";
 import Typography from "@mui/material/Typography";
@@ -27,10 +27,10 @@ const PatientProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [imageUpload, setImageUpload] = useState(null);
-  const [imageUrls, setImageUrls] = useState([]);
+  const [imageUrls, setImageUrls] = useState<File>();
   const imagesListRef = ref(storage, "images/");
 
-  const handleFileChange = (e: any) => {
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setImageUrls(e.target.files[0]);
     }
@@ -49,25 +49,26 @@ const PatientProfile = () => {
   const handleSubmit = async (e: any) => {
     try {
       e.preventDefault();
+      if (imageUrls == null) return;
       const token = localStorage.getItem("token");
-      const formData = new FormData();
-      formData.append("fullName", name);
-      formData.append("email", email);
+      // const formData = new FormData();
+      // formData.append("fullName", name);
+      // formData.append("email", email);
       // formData.append("link", imageUrls);
-
-      console.log("API Data:", formData);
+      const data = { name, email, imageUrls };
+      const body = JSON.stringify({ patientProfile: data });
+      // console.log("API Data:", formData.getAll("fullName"));
 
       const response = await API.postAPI(
         `${base_url}patient/editProfile`,
-        formData,
+        body,
         token!
       );
-      // const imageUrl = response.data.pictureUrl;
       console.log("Response:", response);
 
       setName("");
       setEmail("");
-      console.log(formData);
+      // console.log(formData);
       console.log("Response:", response);
     } catch (error) {
       console.log(error);
@@ -76,7 +77,7 @@ const PatientProfile = () => {
 
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <Container
         fixed
         sx={{
