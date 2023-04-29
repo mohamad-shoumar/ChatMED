@@ -88,6 +88,36 @@ const Vitals = () => {
     );
   };
 
+  const header = (
+    <div className="flex flex-wrap gap-2 align-items-center justify-content-between">
+        <h4 className="m-0">Manage Products</h4>
+        <span className="p-input-icon-left">
+            <i className="pi pi-search" />
+            <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+        </span>
+    </div>
+);
+const productDialogFooter = (
+    <React.Fragment>
+        <Button label="Cancel" icon="pi pi-times" outlined onClick={hideDialog} />
+        <Button label="Save" icon="pi pi-check" onClick={saveProduct} />
+    </React.Fragment>
+);
+const deleteProductDialogFooter = (
+    <React.Fragment>
+        <Button label="No" icon="pi pi-times" outlined onClick={hideDeleteProductDialog} />
+        <Button label="Yes" icon="pi pi-check" severity="danger" onClick={deleteProduct} />
+    </React.Fragment>
+);
+const deleteProductsDialogFooter = (
+    <React.Fragment>
+        <Button label="No" icon="pi pi-times" outlined onClick={hideDeleteProductsDialog} />
+        <Button label="Yes" icon="pi pi-check" severity="danger" onClick={deleteSelectedProducts} />
+    </React.Fragment>
+);
+
+
+
   return (
     <>
       <div className={styles.global}>

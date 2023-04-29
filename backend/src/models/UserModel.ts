@@ -4,7 +4,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   role: string;
-  profilePicture: string;
+  file: string;
   fullName: string;
   consultations?: {
     doctor: string;
@@ -28,7 +28,7 @@ const UserSchema = new Schema<IUser>({
     enum: ["patient", "doctor"],
     required: true,
   },
-  profilePicture: {
+  file: {
     type: String,
     default: null,
   },
