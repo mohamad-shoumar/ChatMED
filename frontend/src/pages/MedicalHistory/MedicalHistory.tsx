@@ -13,7 +13,6 @@ import { FormControlLabel, FormLabel, RadioGroup, Radio } from "@mui/material";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { useState, useContext } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
 import SurgeriesSection from "../../components/SurgeriesSection/SurgeriesSection";
