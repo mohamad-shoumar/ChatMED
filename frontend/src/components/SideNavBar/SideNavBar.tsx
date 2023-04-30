@@ -25,14 +25,14 @@ const SideNavBar = () => {
             <div className={styles.submain}>
               <div
                 className={`${styles.dash} ${styles.hover}`}
-                onClick={() => navigate("/dashboard")}
+                onClick={() => navigate("/patient/dashboard")}
               >
                 <img src={dash} alt="logo" />
                 <div className={styles.Dashboard}>Dashboard</div>
               </div>
               <div
                 className={`${styles.link} ${styles.hover}`}
-                onClick={() => navigate("/medicalhistory")}
+                onClick={() => navigate("/patient/medicalhistory")}
               >
                 <div className={styles.linkleft}>
                   <img src={history} alt="logo" />
@@ -42,7 +42,7 @@ const SideNavBar = () => {
               </div>
               <div
                 className={`${styles.link} ${styles.hover}`}
-                onClick={() => navigate("/vitals")}
+                onClick={() => navigate("/patient/vitals")}
               >
                 <div className={styles.linkleft}>
                   <img src={vitals} alt="logo" />
@@ -52,7 +52,7 @@ const SideNavBar = () => {
               </div>
               <div
                 className={`${styles.link} ${styles.hover}`}
-                onClick={() => navigate("/consultation")}
+                onClick={() => navigate("/patient/consultation")}
               >
                 <div className={styles.linkleft}>
                   <img src={doc} alt="logo" />
@@ -62,7 +62,7 @@ const SideNavBar = () => {
               </div>
               <div
                 className={`${styles.link} ${styles.hover}`}
-                onClick={() => navigate("/chat")}
+                onClick={() => navigate("/patient/consultation")}
               >
                 <div className={styles.linkleft}>
                   <img src={chats} alt="logo" />
