@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@500&display=swap");
+@import " ../../../../stylesheet.scss";
+
+.global {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex;
+  margin-top: 10vh;
+  gap: 30px;
+  padding: 0 6vw;
+}
+.title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #1e1e1e;
+  margin-bottom: 2rem;
+}
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 40vh;
+  margin-top: 2rem;
+}
+// .details {
+//     margin-top: 10;
+// }
+.topLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 35%;
+  background-color: white;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 0px 10px 20px;
+}
+.details {
+  width: 100%;
+}
+.imgDoc {
+  width: 6rem;
+  height: 6rem;
+}
+.text {
+  gap: 0;
+}
+.bottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 55%;
+}
