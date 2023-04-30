@@ -12,6 +12,7 @@ import { InputText } from "primereact/inputtext";
 import { Tag } from "primereact/tag";
 import { API } from "../../API/API";
 import { base_url } from "../../API/API";
+import BloodSugarTable from "../../components/BloodSugarTable/BloodSugarTable";
 
 const Vitals = () => {
   const [sys, setSys] = useState<number | null | undefined>(20);
@@ -24,9 +25,7 @@ const Vitals = () => {
       </div>
 
       <div className={styles.mainContainer}>
-        <div className={styles.sideBar}>
-          <SideNavBar />
-        </div>
+        <SideNavBar />
         <div className={styles.rightSection}>
           <div className={styles.headerContainer}>
             <h2>Vitals</h2>
@@ -35,7 +34,7 @@ const Vitals = () => {
             </div>
           </div>
           <div className={styles.mainContent}>
-            <div className={styles.inputsContainer}>
+            {/* <div className={styles.inputsContainer}>
               <div className={styles.pressureInput}>
                 <div className={styles.pressureVertical}>
                   <h6>Enter BloodPressure</h6>
@@ -99,16 +98,13 @@ const Vitals = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.logsContainer}>
-              <div className={styles.sugarLogs}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Expedita, fugit. Earum dolorem dignissimos sint inventore fuga
-                quo, ipsum iste cum vitae debitis. Quaerat amet, tempora
-                voluptas quos ad sequi corrupti!
-              </div>
+            </div> */}
+            {/* <div className={styles.logsContainer}>
+              <div className={styles.sugarLogs}> */}
+            <BloodSugarTable />
+            {/* </div>
               <div className={styles.pressureLogs}></div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

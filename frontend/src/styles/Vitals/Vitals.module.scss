@@ -10,6 +10,7 @@
   flex-wrap: nowrap;
   flex-grow: 1;
   display: flex;
+  justify-content: space-between;
   border: 2px solid red;
   overflow-x: hidden;
   padding: 0 2rem 0 0;
@@ -18,6 +19,8 @@
   color: $sec;
 }
 .rightSection {
+  margin-left: 21vw;
+  width: 72vw;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
