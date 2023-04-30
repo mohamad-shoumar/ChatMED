@@ -15,8 +15,9 @@ const PatientDashboard = () => {
   return (
     <div>
       <NavBar />
-      <SideNavBar />
+
       <div className={styles.main}>
+        <SideNavBar />
         <div className={styles.mainContainer}>
           <div className={styles.headerContainer}>
             <div className={styles.profile}>

@@ -16,19 +16,19 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-import { storage } from "../../FireBase";
-declare global {
-  interface File {
-    objectURL: string;
-  }
-}
+// import { storage } from "../../FireBase";
+// declare global {
+//   interface File {
+//     objectURL: string;
+//   }
+// }
 
 const PatientProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState<File>();
-  const imagesListRef = ref(storage, "images/");
+  // const imagesListRef = ref(storage, "images/");
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -77,24 +77,25 @@ const PatientProfile = () => {
 
   return (
     <div>
-      {/* <NavBar /> */}
-      <Container
-        fixed
+      <NavBar />
+
+      <Box
         sx={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
-          height: "80vh",
-          marginTop: "15vh",
+          width: "100vw",
+          justifyContent: "space-between",
+          height: "90vh",
+          marginTop: "10vh",
         }}
       >
         <SideNavBar />
-        <Container
+        <Box
           sx={{
-            marginLeft: "20vw",
+            width: "78%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            justifyContent: "flex-start",
           }}
         >
           <Box
@@ -102,7 +103,7 @@ const PatientProfile = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              margin: "0 15px",
+              margin: "50px 15px",
             }}
           >
             <Typography variant="h3" color="text">
@@ -123,10 +124,10 @@ const PatientProfile = () => {
             sx={{
               display: "flex",
               alignItems: "center",
-              marginTop: "40px",
-              width: "85%",
-              height: "80%",
-              margin: "auto",
+              marginBottom: "30px",
+              width: "70%",
+              height: "70%",
+              marginLeft: "8vw",
               border: "1px solid #000",
               borderRadius: "10px",
             }}
@@ -203,8 +204,8 @@ const PatientProfile = () => {
               />
             </Box>
           </Box>
-        </Container>
-      </Container>
+        </Box>
+      </Box>
     </div>
   );
 };
