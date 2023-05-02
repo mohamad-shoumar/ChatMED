@@ -42,4 +42,26 @@ export default function BloodSugarTable() {
   const [globalFilter, setGlobalFilter] = useState<string>("");
   const toast = useRef<Toast>(null);
   const dt = useRef<DataTable<Log[]>>(null);
-}
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = API.getAPI(`${base_url}vitals/sugar`, token!);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const openNew = () => {
+    setLog(emptyLog);
+    setSubmitted(false);
+    setLogDialog(true);
+  };
+
+  const hideDialog = () => {
+    setSubmitted(false);
+    setLogDialog(false);
+  };
+
+
