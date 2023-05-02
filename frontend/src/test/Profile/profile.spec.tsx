@@ -18,8 +18,7 @@ describe("DoctorProfile", () => {
       const target = e.currentTarget;
       target.src = "/default-image.png";
     };
-    const imgElement = screen.getByAltText("docpic");
     expect(imgElement).toBeInTheDocument();
-    expect(imgElement.src).toContain("docpic.png");
+    expect(imgElement?.src).toContain("docpic.png");
   });
 });
