@@ -130,4 +130,27 @@ export default function BloodSugarTable() {
     });
   };
 
+  const findIndexById = (id: number) => {
+    let index = -1;
+
+    for (let i = 0; i < logs.length; i++) {
+      if (logs[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+    return index;
+  };
+
+  const createId = (): number | string => {
+    let id = "";
+    let chars =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < 5; i++) {
+      id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    return id;
+  };
 
