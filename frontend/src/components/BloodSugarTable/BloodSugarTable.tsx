@@ -188,3 +188,15 @@ export default function BloodSugarTable() {
     setLog(_log);
   };
 
+  const onInputNumberChange = (
+    e: InputNumberChangeEvent,
+    value: number | string
+  ) => {
+    const val = e.value || 0;
+    let _log = { ...log };
+
+    _log[`${value}`] = val;
+
+    setLog(_log);
+  };
+
