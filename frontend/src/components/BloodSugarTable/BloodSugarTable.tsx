@@ -316,4 +316,18 @@ export default function BloodSugarTable() {
     </React.Fragment>
   );
 
- 
+  return (
+    <div>
+      <Toast ref={toast} />
+      <div className="card">
+        <Toolbar
+          // className="mb-4"
+          left={leftToolbarTemplate}
+          right={rightToolbarTemplate}
+          style={{
+            transform: "scale(1)",
+            border: "1px solid #ebebeb",
+            maxWidth: "95%",
+          }}
+        ></Toolbar>
+
