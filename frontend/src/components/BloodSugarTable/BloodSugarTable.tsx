@@ -25,5 +25,21 @@ interface Log {
   [key: string]: any;
 }
 
-
+export default function BloodSugarTable() {
+  const emptyLog = {
+    id: null,
+    value: 0,
+    status: "",
+    date: null,
+  };
+  const [logs, setLogs] = useState<Log[]>([]);
+  const [logDialog, setLogDialog] = useState<boolean>(false);
+  const [deleteLogDialog, setDeleteLogDialog] = useState<boolean>(false);
+  const [deleteLogsDialog, setDeleteLogsDialog] = useState<boolean>(false);
+  const [log, setLog] = useState<Log>(emptyLog);
+  const [selectedLogs, setSelectedLogs] = useState<Log[]>([]);
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [globalFilter, setGlobalFilter] = useState<string>("");
+  const toast = useRef<Toast>(null);
+  const dt = useRef<DataTable<Log[]>>(null);
 }
