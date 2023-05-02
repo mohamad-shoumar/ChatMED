@@ -350,4 +350,35 @@ export default function BloodSugarTable() {
             maxWidth: "95%",
           }}
         >
-         
+          <Column selectionMode="multiple" exportable={false}></Column>
+
+          <Column
+            field="value"
+            header="Blood Sugar Value"
+            body={valueBodyTemplate}
+            sortable
+            style={{ minWidth: "8rem" }}
+          ></Column>
+
+          <Column
+            field="date"
+            header="Date"
+            body={dateBodyTemplate}
+            sortable
+            style={{ minWidth: "12rem" }}
+          ></Column>
+          <Column
+            field="status"
+            header="Status"
+            body={statusBodyTemplate}
+            sortable
+            style={{ minWidth: "12rem" }}
+          ></Column>
+          <Column
+            body={actionBodyTemplate}
+            exportable={false}
+            style={{ minWidth: "12rem" }}
+          ></Column>
+        </DataTable>
+      </div>
+
