@@ -283,3 +283,16 @@ export default function BloodSugarTable() {
       return "danger";
     }
   };
+  const header = (
+    <div className="flex flex-wrap gap-2 align-items-center justify-content-between">
+      <h4 className="m-0">Blood Sugar Logs </h4>
+      <span className="p-input-icon-left">
+        <i className="pi pi-search" />
+        <InputText
+          type="search"
+          onInput={(e: any) => setGlobalFilter(e.target.value)}
+          placeholder="Search..."
+        />
+      </span>
+    </div>
+  );
