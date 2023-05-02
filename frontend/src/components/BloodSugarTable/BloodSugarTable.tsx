@@ -106,3 +106,28 @@ export default function BloodSugarTable() {
     }
   };
 
+  const editlog = (log: Log) => {
+    setLog({ ...log });
+    setLogDialog(true);
+  };
+
+  const confirmDeletelog = (log: Log) => {
+    setLog(log);
+    setDeleteLogDialog(true);
+  };
+
+  const deletelog = () => {
+    let _logs = logs.filter((val: { id: number | null }) => val.id !== log.id);
+
+    setLogs(_logs);
+    setDeleteLogDialog(false);
+    setLog(emptyLog);
+    toast.current?.show({
+      severity: "success",
+      summary: "Successful",
+      detail: "log Deleted",
+      life: 3000,
+    });
+  };
+
+
