@@ -309,4 +309,11 @@ export default function BloodSugarTable() {
     </React.Fragment>
   );
 
-  
+  const deletelogsDialogFooter = (
+    <React.Fragment>
+      <Button label="No" outlined onClick={hideDeletelogsDialog} />
+      <Button label="Yes" severity="danger" onClick={deleteSelectedlogs} />
+    </React.Fragment>
+  );
+
+ 
