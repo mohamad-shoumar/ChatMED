@@ -7,40 +7,37 @@ body {
 }
 
 .main {
-  padding-top: 5vh;
+  margin-top: 4.8%;
   padding-left: 4vw;
+  width: 100vw;
   display: flex;
+  justify-content: space-between;
 }
 .mainContainer {
+  width: 78vw;
+  height: 100%;
+
+  padding: 40px 30px;
   display: flex;
-  position: absolute;
   flex-direction: column;
-  top: 15;
-  left: 30;
 }
 
 .profile {
-  width: 80%;
   height: 100%;
-  margin: 0 auto;
-  margin-left: 40vh;
+
   padding: 0 10px;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 .headerContainer {
   width: 100%;
-  height: 15%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  padding: 0px 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
 }
 
 .mainForm {
-  margin-left: 40vh;
   padding-left: 2%;
   display: flex;
   justify-content: space-evenly;
@@ -130,15 +127,21 @@ body {
   color: rgba(255, 255, 255, 1);
 }
 .adviceMain {
+  min-height: 100%;
+  margin: 0 15px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 10px;
-  width: 45%;
 }
 .formTitle {
   font-size: 20px;
   font-weight: 700;
   line-height: 20px;
   color: $text;
+}
+.adviceHeader {
+  height: 100%;
+}
+
+.divBack {
+  max-height: 100%;
 }

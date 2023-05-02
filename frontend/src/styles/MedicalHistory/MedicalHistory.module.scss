@@ -18,8 +18,7 @@ body {
 .medicalHistoryContainer {
   width: 78vw;
   height: 100%;
-  border: 2px solid red;
-  padding: 0 10px;
+  padding: 15px 35px 0 0;
   display: flex;
   flex-direction: column;
 }
@@ -35,7 +34,7 @@ body {
 .medicalHistoryForm {
   padding-left: 2%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 10px;
 }
 .sectionsMain {
@@ -58,7 +57,8 @@ body {
   border-radius: 10px;
   padding: 15px;
   width: 95%;
-  border: 1.5px solid black;
+  background-color: white;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 }
 .datePicker {
   margin-right: 40px;
