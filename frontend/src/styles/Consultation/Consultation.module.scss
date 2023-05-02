@@ -4,8 +4,13 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
+.headerContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-self: start;
+}
 .mainContainer {
-  border: 2px solid black;
   margin-top: 4.8%;
   width: 100vw;
   display: flex;
@@ -17,11 +22,30 @@
 .rightSection {
   width: 78vw;
   height: 100%;
-  border: 2px solid red;
+
   padding: 0 10px;
   display: flex;
   flex-direction: column;
 }
-.top {
+
+.bot {
+  display: flex;
+  height: 57vh;
+  width: 70vw;
   border: 2px solid red;
+  margin-top: 2rem;
+}
+
+.botLeft {
+  border: 2px solid red;
+  padding: 10 5px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.docCards {
+  background-color: rgb(47, 47, 47);
+  max-width: 100%;
 }
