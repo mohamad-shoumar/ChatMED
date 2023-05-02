@@ -417,3 +417,25 @@ export default function BloodSugarTable() {
         </div>
       </Dialog>
 
+      <Dialog
+        visible={deleteLogDialog}
+        style={{ width: "32rem" }}
+        breakpoints={{ "960px": "75vw", "641px": "90vw" }}
+        header="Confirm"
+        modal
+        footer={deletelogDialogFooter}
+        onHide={hideDeletelogDialog}
+      >
+        <div className="confirmation-content">
+          <i
+            className="pi pi-exclamation-triangle mr-3"
+            style={{ fontSize: "2rem" }}
+          />
+          {log && (
+            <span>Are you sure you want to delete the blood sugar log?</span>
+          )}
+        </div>
+      </Dialog>
+    </div>
+  );
+}
