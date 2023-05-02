@@ -274,3 +274,12 @@ export default function BloodSugarTable() {
       </React.Fragment>
     );
   };
+  const getSeverity = (log: Log) => {
+    if (log.value < 100) {
+      return "success";
+    } else if (log.value < 200) {
+      return "warning";
+    } else {
+      return "danger";
+    }
+  };
