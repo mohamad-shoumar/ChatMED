@@ -162,4 +162,17 @@ export default function BloodSugarTable() {
     setDeleteLogsDialog(true);
   };
 
+  const deleteSelectedlogs = () => {
+    const _logs = logs.filter((val) => !selectedLogs.includes(val));
+
+    setLogs(_logs);
+    setDeleteLogsDialog(false);
+    setSelectedLogs([]);
+    toast.current?.show({
+      severity: "success",
+      summary: "Successful",
+      detail: "logs Deleted",
+      life: 3000,
+    });
+  };
 
