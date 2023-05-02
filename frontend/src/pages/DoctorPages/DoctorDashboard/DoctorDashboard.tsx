@@ -44,9 +44,9 @@ const DoctorDashboard = () => {
         </div>
 
         <div className={styles.bottom}>
-          <div className={styles.title}>
+          {/* <div className={styles.title}>
             <h4>My patients</h4>
-          </div>
+          </div> */}
           <RowExpansionDemo />
         </div>
       </div>
