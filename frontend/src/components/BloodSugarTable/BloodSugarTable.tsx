@@ -254,3 +254,23 @@ export default function BloodSugarTable() {
     return <Tag value={`${label}`} severity={severity}></Tag>;
   };
 
+  const actionBodyTemplate = (rowData: Log) => {
+    return (
+      <React.Fragment>
+        <Button
+          icon="pi pi-pencil"
+          rounded
+          outlined
+          className="mr-2"
+          onClick={() => editlog(rowData)}
+        />
+        <Button
+          icon="pi pi-trash"
+          rounded
+          outlined
+          severity="danger"
+          onClick={() => confirmDeletelog(rowData)}
+        />
+      </React.Fragment>
+    );
+  };
