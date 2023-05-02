@@ -122,16 +122,16 @@ const MedicalHistory = () => {
   // Handle submit button
   const handleMedicalHistorySubmit = async (e: any) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token") ?? undefined;
     const data = { ...medicalHistoryData };
-    const body = JSON.stringify({ medicalHistory: data });
+    const body = { medicalHistory: data };
     console.log(body);
     console.log("Token:", token);
 
     const response = await API.postAPI(
       `${base_url}medicalhistory/addhistory`,
       body,
-      token!
+      token
     );
     console.log("Response:", response);
     console.log("Medical history data:", medicalHistoryData);
@@ -140,7 +140,6 @@ const MedicalHistory = () => {
   return (
     <div>
       <NavBar />
-
       <div className={styles.medicalHistory}>
         <SideNavBar />
         <div className={styles.medicalHistoryContainer}>
@@ -150,6 +149,8 @@ const MedicalHistory = () => {
             </div>
             <div className={styles.submitbtn}>
               <Button
+                size="large"
+                sx={{ marginRight: "17px" }}
                 variant="contained"
                 color="secondary"
                 onClick={handleMedicalHistorySubmit}
