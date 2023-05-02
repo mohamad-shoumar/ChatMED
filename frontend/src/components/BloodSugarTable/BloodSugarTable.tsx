@@ -331,3 +331,23 @@ export default function BloodSugarTable() {
           }}
         ></Toolbar>
 
+        <DataTable
+          ref={dt}
+          value={logs}
+          selection={selectedLogs}
+          onSelectionChange={(e: any) => setSelectedLogs(e.value)}
+          dataKey="id"
+          paginator
+          rows={10}
+          rowsPerPageOptions={[5, 10, 25]}
+          paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} logs"
+          globalFilter={globalFilter}
+          header={header}
+          style={{
+            transform: "scale(1)",
+            border: "3px solid #ebebeb",
+            maxWidth: "95%",
+          }}
+        >
+         
