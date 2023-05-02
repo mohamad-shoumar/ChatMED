@@ -154,3 +154,12 @@ export default function BloodSugarTable() {
     return id;
   };
 
+  const exportCSV = () => {
+    dt.current?.exportCSV();
+  };
+
+  const confirmDeleteSelected = () => {
+    setDeleteLogsDialog(true);
+  };
+
+
