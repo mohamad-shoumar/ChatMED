@@ -230,3 +230,16 @@ export default function BloodSugarTable() {
       />
     );
   };
+
+  const valueBodyTemplate = (rowData: Log) => {
+    return <span>{rowData.value}</span>;
+  };
+  const dateBodyTemplate = (rowData: Log) => {
+    if (!rowData.date) return <span></span>;
+    const date = new Date(rowData.date);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString();
+    return <span>{`${day}/${month}/${year}`}</span>;
+  };
+
