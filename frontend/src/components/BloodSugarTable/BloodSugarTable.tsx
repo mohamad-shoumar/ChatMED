@@ -382,3 +382,38 @@ export default function BloodSugarTable() {
         </DataTable>
       </div>
 
+      <Dialog
+        visible={logDialog}
+        style={{ width: "32rem" }}
+        breakpoints={{ "960px": "75vw", "641px": "90vw" }}
+        header="Log Details"
+        modal
+        className="p-fluid"
+        footer={logDialogFooter}
+        onHide={hideDialog}
+      >
+        <div className="formgrid grid">
+          <div className="field col">
+            <label htmlFor="value" className="font-bold">
+              Blood Sugar Value
+            </label>
+            <InputNumber
+              id="value"
+              value={log.value}
+              onValueChange={(e: any) => onInputNumberChange(e, "value")}
+            />
+          </div>
+          <div className="field col">
+            <label htmlFor="date" className="font-bold">
+              Date
+            </label>
+            <Calendar
+              id="date"
+              value={log.date}
+              onChange={(e: any) => onInputChange(e, "date")}
+              dateFormat="dd/mm/yyyy"
+            />
+          </div>
+        </div>
+      </Dialog>
+
