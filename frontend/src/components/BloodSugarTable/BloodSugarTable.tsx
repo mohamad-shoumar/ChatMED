@@ -64,4 +64,11 @@ export default function BloodSugarTable() {
     setLogDialog(false);
   };
 
+  const hideDeletelogDialog = () => {
+    setDeleteLogDialog(false);
+  };
+
+  const hideDeletelogsDialog = () => {
+    setDeleteLogsDialog(false);
+  };
 
