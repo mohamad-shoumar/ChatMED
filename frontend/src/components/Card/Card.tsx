@@ -3,7 +3,16 @@ import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import "primereact/resources/primereact.min.css";
 
-export default function DoctorCard() {
+interface DoctorCardProps {
+  doctor: {
+    name: string;
+    avatar: string;
+    price: number;
+    specialty: string;
+  };
+}
+
+export default function DoctorCard({ doctor }: DoctorCardProps) {
   const header = (
     <img
       alt="Card"
