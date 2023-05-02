@@ -25,7 +25,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Montserrat",
-    fontSize: 12,
+    fontSize: 11,
     h1: {
       fontWeight: 700,
       fontSize: "2.5rem",

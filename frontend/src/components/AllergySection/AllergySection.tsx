@@ -29,6 +29,8 @@ const AllergiesSection = ({ onUpdateAllergies }: allergyProps) => {
   const [allergies, setAllergies] = useState<{ name: string; date: number }[]>(
     []
   );
+  const [yesActive, setYesActive] = useState(false);
+  const [noActive, setNoActive] = useState(false);
   const [showInputs, setShowInputs] = useState(false);
   const [activeButton, setActiveButton] = useState(false);
   const handleAddAllergy = () => {
@@ -48,57 +50,65 @@ const AllergiesSection = ({ onUpdateAllergies }: allergyProps) => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
+        alighItems: "center",
         gap: 1,
         p: 0,
         width: "90%",
       }}
     >
-      <Typography variant="h6" gutterBottom>
-        Did you have any Allergies?
-      </Typography>
-      <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-        <IconButton
-          sx={{
-            "&:hover": {
-              color: activeButton ? "red" : "initial",
-            },
-            "&:focus": {
-              outline: activeButton ? "2px solid red" : "none",
-              outlineOffset: 2,
-              color: activeButton ? "red" : "initial",
-            },
-          }}
-          onClick={() => {
-            setShowInputs(false);
-            setActiveButton(true);
-          }}
-        >
-          <ClearIcon />
-        </IconButton>
-        <IconButton
-          sx={{
-            "&:hover": {
-              color: activeButton ? "green" : "initial",
-            },
-            "&:focus": {
-              outline: activeButton ? "2px solid green" : "none",
-              outlineOffset: 2,
-              color: activeButton ? "green" : "initial",
-            },
-          }}
-          onClick={() => {
-            setShowInputs(true);
-            setActiveButton(true);
-          }}
-          onChange={() => {
-            setActiveButton(true);
-          }}
-        >
-          <CheckIcon />
-        </IconButton>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 1,
+          p: 0,
+          width: "90%",
+        }}
+      >
+        <Typography variant="h6" gutterBottom>
+          Did you have any Allergies?
+        </Typography>
+        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+          <Button
+            variant={yesActive ? "contained" : "outlined"}
+            sx={{
+              color: yesActive ? "white" : "initial",
+              borderColor: "#244674",
+              backgroundColor: yesActive ? "#244674" : "initial",
+              "&:hover": {
+                backgroundColor: yesActive ? "#244674" : "initial",
+              },
+            }}
+            onClick={() => {
+              setYesActive(!yesActive);
+              setShowInputs(true);
+              setNoActive(false);
+            }}
+          >
+            Yes
+          </Button>
+          <Button
+            variant={noActive ? "contained" : "outlined"}
+            sx={{
+              color: noActive ? "white" : "initial",
+              borderColor: "#244674",
+              backgroundColor: noActive ? "#244674" : "initial",
+              "&:hover": {
+                outlineOffset: 2,
+                backgroundColor: noActive ? "#244674" : "initial",
+              },
+            }}
+            onClick={() => {
+              setShowInputs(false);
+              setNoActive(!noActive);
+              setYesActive(false);
+            }}
+          >
+            No
+          </Button>
+        </Box>
       </Box>
-
       {showInputs && (
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Box sx={{ display: "flex", flexDirection: "row", gap: 2 }}>
