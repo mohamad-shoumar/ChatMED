@@ -18,16 +18,33 @@ export const getDoctors = async (req: Request, response: Response) => {
   }
 };
 // uplaod file
-const upload = multer({ dest: "uploads/" });
-export const uploadFile = upload.single("file");
+export const uploadFile = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.body.user;
+    const { imageUrl } = req.body;
+    const retreiveduser = await User.findById(id);
+    if (!retreiveduser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    if (retreiveduser) {
+      retreiveduser.imageUrl = imageUrl || retreiveduser.imageUrl;
+      const updatedUser = await retreiveduser.save();
+      res.json(updatedUser);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 // edit profile
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const { id } = req.body.user;
-    const { fullName, email, link } = req.body;
+    const { fullName, email, imageUrls } = req.body;
     const retrievedUser = await User.findById(id);
 
-    console.log(req.body);
+    console.log("controller: ", req.body);
 
     if (!retrievedUser) {
       return res.status(404).json({ message: "User not found" });

@@ -6,6 +6,8 @@ import MedicalHistory from "../models/MedicalHistoryModel";
 import Vitals, { IVital } from "../models/VitalModel";
 import ResponseModel from "../models/ResponseModel";
 
+// get file
+
 // edit profile
 export const editProfile = async (req: Request, res: Response) => {
   try {

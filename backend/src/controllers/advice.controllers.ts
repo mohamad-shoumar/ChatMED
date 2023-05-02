@@ -25,6 +25,7 @@ export const adviceByChat = async (req: Request, res: Response) => {
       n: 1,
     });
     console.log(response.data);
+    console.log(retrievedMedicalhistory);
 
     const responseText = response.data.choices[0].text?.trim();
     if (!responseText) {
@@ -58,7 +59,7 @@ const generatePrompt = (retrievedMedicalhistory: any) => {
         ------------------------------
         Given the above information,
           patient x has the following medical history: ${retrievedMedicalhistory}.
-         provide a personalized advice for the patient, the advice should be related to the medical history of the patient, it must be between 20 and 50 words.
+         provide a personalized advice for the patient, the advice should be related to the medical history of the patient, it must be between 20 and 50 words and be in the form of talking directley to the patient.
          Reurtn only a JSON parsable object with the following schema (Do not include any explanation before or after the JSON object):
          const Schema = mongoose.Schema;
 const AdviceSchema = new Schema({user:{type: Schema.Types.ObjectId,ref:"User",},medicalHistory: {type: Schema.Types.ObjectId,ref: "MedicalHistory",

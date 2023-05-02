@@ -12,6 +12,7 @@ import adviceRoutes from "./routes/advice.routes";
 import { Configuration, OpenAIApi } from "openai";
 import job from "./cron/cron";
 import connectDB from "./configs/db.config";
+import fileUpload from "express-fileupload";
 
 config();
 const configuration = new Configuration({
@@ -25,15 +26,16 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 };
-app.use(cors());
-app.use(express.json());
-app.use(errorHandler);
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
   connectDB();
   job.start();
 });
-
+app.use(cors());
+app.use(express.json());
+app.use(errorHandler);
+app.use(fileUpload({}));
 app.use("/auth", authRoutes);
 app.use("/patient", patientRoutes);
 app.use("/doctor", doctorRoutes);

@@ -6,6 +6,8 @@ export const addMedicalHistory = async (req: Request, response: Response) => {
   try {
     const userId = req.body.user.id;
     const medicalHistory = req.body.medicalHistory;
+    console.log(medicalHistory);
+
     let newMedicalHistory = await MedicalHistory.findOne({ user: userId });
     if (newMedicalHistory) {
       return response
