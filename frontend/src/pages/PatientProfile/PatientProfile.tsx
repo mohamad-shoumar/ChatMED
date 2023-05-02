@@ -6,7 +6,7 @@ import { useState, useContext, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Box, InputLabel } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { API } from "../../../src/API/API";
+import { API } from "../../API/API";
 import { base_url } from "../../API/API";
 import { FileUpload, FileUploadHandlerEvent } from "primereact/fileupload";
 import {
@@ -16,63 +16,57 @@ import {
   listAll,
   list,
 } from "firebase/storage";
-// import { storage } from "../../FireBase";
-// declare global {
-//   interface File {
-//     objectURL: string;
-//   }
-// }
+import { v4 as uuidV4 } from "uuid";
+import { storage } from "../../FireBase";
+import axios from "axios";
+
+declare global {
+  interface File {
+    objectURL: string;
+  }
+}
 
 const PatientProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [imageUpload, setImageUpload] = useState(null);
-  const [imageUrls, setImageUrls] = useState<File>();
-  // const imagesListRef = ref(storage, "images/");
+  const [image, setImage] = useState(null);
+  const [imageUrls, setImageUrls] = useState("");
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImageUrls(e.target.files[0]);
+  const handleFileChange = (e: any) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
     }
   };
 
-  // const uploadFile = () => {
-  //   if (imageUpload == null) return;
-  //   const imageRef = ref(storage, `images/${imageUpload.name}`);
-  //   uploadBytes(imageRef, imageUpload).then((snapshot) => {
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       setImageUrls((prev) => [...prev, url]);
-  //     });
-  //   });
-  // };
-
-  const handleSubmit = async (e: any) => {
-    try {
-      e.preventDefault();
-      if (imageUrls == null) return;
-      const token = localStorage.getItem("token");
-      // const formData = new FormData();
-      // formData.append("fullName", name);
-      // formData.append("email", email);
-      // formData.append("link", imageUrls);
-      const data = { name, email, imageUrls };
-      const body = JSON.stringify({ patientProfile: data });
-      // console.log("API Data:", formData.getAll("fullName"));
-
-      const response = await API.postAPI(
-        `${base_url}patient/editProfile`,
-        body,
-        token!
-      );
-      console.log("Response:", response);
-
-      setName("");
-      setEmail("");
-      // console.log(formData);
-      console.log("Response:", response);
-    } catch (error) {
-      console.log(error);
+  const handleFileSubmit = () => {
+    if (!image) {
+      console.log("No image selected");
+      return;
     }
+    const imageRef = ref(storage, `${uuidV4()}`);
+    uploadBytes(imageRef, image).then(() => {
+      getDownloadURL(imageRef).then((url: string) => {
+        setImageUrls(url);
+
+        console.log(url);
+        axios
+          .post(
+            `${base_url}upload`,
+            { imageUrl: url },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    });
   };
 
   return (
@@ -115,7 +109,7 @@ const PatientProfile = () => {
               }}
               variant="contained"
               color="secondary"
-              onClick={handleSubmit}
+              onClick={handleFileSubmit}
             >
               Edit
             </Button>
