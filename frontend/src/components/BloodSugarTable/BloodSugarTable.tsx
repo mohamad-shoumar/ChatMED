@@ -296,3 +296,17 @@ export default function BloodSugarTable() {
       </span>
     </div>
   );
+  const logDialogFooter = (
+    <React.Fragment>
+      <Button label="Cancel" icon="pi pi-times" outlined onClick={hideDialog} />
+      <Button label="Save" icon="pi pi-check" onClick={savelog} />
+    </React.Fragment>
+  );
+  const deletelogDialogFooter = (
+    <React.Fragment>
+      <Button label="No" outlined onClick={hideDeletelogDialog} />
+      <Button label="Yes" severity="danger" onClick={deletelog} />
+    </React.Fragment>
+  );
+
+  
