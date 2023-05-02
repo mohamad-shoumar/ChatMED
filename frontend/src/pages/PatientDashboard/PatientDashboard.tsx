@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
 import styles from "../../styles/PatientDash/PatientDash.module.scss";
@@ -6,12 +7,27 @@ import { Card } from "primereact/card";
 import BloodPressure from "../../components/BarGraph/BarGraph";
 import BloodSugar from "../../components/BloodSugarGraph/BloodSugarGraph";
 import { Chart } from "primereact/chart";
+import { API } from "../../API/API";
+import { base_url } from "../../API/API";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 
 const PatientDashboard = () => {
+  const [advices, setAdvices] = useState("");
+
+  useEffect(() => {
+    API.getAPI(`${base_url}advice/`)
+      .then((res: any) => {
+        console.log(res.data);
+        setAdvices(res.data);
+      })
+      .catch((err: Error) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
       <NavBar />
@@ -41,18 +57,18 @@ const PatientDashboard = () => {
               </div>
             </div>
             <div className={styles.adviceMain}>
-              <div className={styles.adviceHeader}>
-                {/* <p className={styles.adviceTitle}>Tip of the Day</p> */}
-                <div className={styles.advice}>
-                  <div className="card">
-                    <Card title="Tip of the Day">
-                      <div className={styles.divBack}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing
-                      </div>
-                    </Card>
-                  </div>
+              <Card
+                style={{ minHeight: "100%", flexGrow: "1" }}
+                title="Tip of the Day"
+              >
+                <div className={styles.divBack}>
+                  Lorem ipsum dolor Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Odio modi illum assumenda aut quis, diandae!
+                  sit amet consectetur adipisicing Lorem ipsum, dolor si Aliquid
+                  doloribudffodfjiojhidfhnis nihil voluptatem dolore id aliquam
+                  ipsum omnis beatae repudiandae quis!
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
           <div className={styles.mainForm}>
