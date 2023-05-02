@@ -200,3 +200,23 @@ export default function BloodSugarTable() {
     setLog(_log);
   };
 
+  const leftToolbarTemplate = () => {
+    return (
+      <div className="flex flex-wrap gap-2">
+        <Button
+          label="New"
+          icon="pi pi-plus"
+          color="primary"
+          onClick={openNew}
+        />
+        <Button
+          label="Delete"
+          icon="pi pi-trash"
+          severity="danger"
+          onClick={confirmDeleteSelected}
+          disabled={!selectedLogs || !selectedLogs.length}
+        />
+      </div>
+    );
+  };
+
