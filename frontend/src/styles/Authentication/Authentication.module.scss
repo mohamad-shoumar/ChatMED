@@ -1,10 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@500&display=swap");
-/* color palate:
-main:  #244674;
-text: #ffffff; #121C38, #A0ACB7
-sec:#01B8E2
-bc: #ECF4F6
- */
 
 * {
   margin: 0;
@@ -31,10 +25,8 @@ bc: #ECF4F6
 }
 
 .wholeContainer {
-  // background: linear-gradient(45deg, #244674, #01b8e2);
-  background: #ecf4f6;
-  // background: linear-gradient(90deg, #244674, #01b8e2);
-  color: #ccc;
+  background: linear-gradient(to right, #89cff0 0%, #01b8e2 51%, #244674 100%);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
