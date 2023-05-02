@@ -23,7 +23,7 @@ const Navbar = () => {
         />
         <img
           onClick={(e) => {
-            navigate("/profile");
+            navigate("/patient/profile");
           }}
           src={profileImage}
           alt="profile"
