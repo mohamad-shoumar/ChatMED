@@ -243,3 +243,14 @@ export default function BloodSugarTable() {
     return <span>{`${day}/${month}/${year}`}</span>;
   };
 
+  const statusBodyTemplate = (rowData: Log) => {
+    const severity = getSeverity(rowData);
+    const label =
+      severity === "success"
+        ? "Normal"
+        : severity === "warning"
+        ? "Normal high"
+        : "High";
+    return <Tag value={`${label}`} severity={severity}></Tag>;
+  };
+
