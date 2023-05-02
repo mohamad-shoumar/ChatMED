@@ -176,3 +176,15 @@ export default function BloodSugarTable() {
     });
   };
 
+  const onInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: number | Date | string
+  ) => {
+    const val = (e.target && e.target.value) || "";
+    let _log = { ...log };
+
+    _log[`${value}`] = val;
+
+    setLog(_log);
+  };
+
