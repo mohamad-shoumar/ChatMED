@@ -220,3 +220,13 @@ export default function BloodSugarTable() {
     );
   };
 
+  const rightToolbarTemplate = () => {
+    return (
+      <Button
+        label="Export"
+        icon="pi pi-upload"
+        severity="secondary"
+        onClick={exportCSV}
+      />
+    );
+  };
