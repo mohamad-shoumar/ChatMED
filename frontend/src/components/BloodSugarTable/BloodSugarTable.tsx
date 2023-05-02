@@ -72,3 +72,37 @@ export default function BloodSugarTable() {
     setDeleteLogsDialog(false);
   };
 
+  const savelog = () => {
+    setSubmitted(true);
+
+    if (log.value) {
+      let _logs = [...logs];
+      let _log = { ...log };
+
+      if (log.id) {
+        const index = findIndexById(log.id);
+
+        _logs[index] = _log;
+        toast.current?.show({
+          severity: "success",
+          summary: "Successful",
+          detail: "log Updated",
+          life: 3000,
+        });
+      } else {
+        _log.id = createId();
+        _logs.push(_log);
+        toast.current?.show({
+          severity: "success",
+          summary: "Successful",
+          detail: "log Created",
+          life: 3000,
+        });
+      }
+
+      setLogs(_logs);
+      setLogDialog(false);
+      setLog(emptyLog);
+    }
+  };
+
