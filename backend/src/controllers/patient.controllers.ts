@@ -36,6 +36,20 @@ export const uploadFile = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+// get file
+export const getFile = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.body.user;
+    const retrievedFile = await User.findById(id);
+    if (!retrievedFile) {
+      return res.status(404).json({ message: "File not found" });
+    }
+    res.json(retrievedFile);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 
 // edit profile
 export const editProfile = async (req: Request, res: Response) => {
