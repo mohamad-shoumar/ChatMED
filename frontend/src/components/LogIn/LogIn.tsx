@@ -43,7 +43,7 @@ const Login = () => {
       className={`${styles["form-container"]} ${styles["sign-in-container"]}`}
     >
       <form>
-        <h1 className={styles.title}>Sign In</h1>
+        <h1 className={styles.title2}>Sign In</h1>
         <span className={styles.span}>Already have an account? </span>
         <input
           type="email"

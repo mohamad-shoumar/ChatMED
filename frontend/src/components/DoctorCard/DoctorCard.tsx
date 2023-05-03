@@ -1,7 +1,7 @@
 import styles from "./DoctorCard.module.scss";
 interface DoctorCardProps {
   doctor: {
-    name: string;
+    fullName: string;
     avatar: string;
     price: number;
     specialty: string;
@@ -11,10 +11,10 @@ interface DoctorCardProps {
 function DoctorCard({ doctor }: DoctorCardProps) {
   return (
     <div className={styles.doctorCard}>
-      <img src={doctor.avatar} alt={doctor.name} />
-      <h3>{doctor.name}</h3>
+      {/* <img src={doctor.avatar} alt={doctor.fullName} />
+      <p>{doctor.fullName}</p>
       <p>Price: {doctor.price}</p>
-      <p>Specialty: {doctor.specialty}</p>
+      <p>Specialty: {doctor.specialty}</p> */}
     </div>
   );
 }
