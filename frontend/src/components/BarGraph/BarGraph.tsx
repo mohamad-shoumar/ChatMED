@@ -57,7 +57,7 @@ export default function BloodPressure() {
         };
         const options = {
           maintainAspectRatio: false,
-          aspectRatio: 2,
+          aspectRatio: 1.5,
           plugins: {
             legend: {
               labels: {
