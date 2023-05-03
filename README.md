@@ -8,11 +8,18 @@
 
 > | Pateint Dashboard                                                                        |
 > | ------------------------------------------------------------------------------ |
-> | ![ChatMED](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medical desk.png) |
+> | ![ChatMED](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicaldesk.png) |
 
 > | Pateint Dashboard                                                                        |
 > | ------------------------------------------------------------------------------ |
-> | ![ChatMED](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medical lap.png) |
+> | ![ChatMED](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicallap.png) |
 
 
+> | medical History                                                                          | Patient Dashboard                                                                              |
+> | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+> | ![medical History](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicallap.png) | ![Profile](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/dashLap.png) |
 
+
+> | medical History                                                                          | Patient Dashboard                                                                              |
+> | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+> | ![medical History](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicalDesk.png) | ![Profile](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/dashDesk.png) |
