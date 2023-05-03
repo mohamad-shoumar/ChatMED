@@ -7,7 +7,7 @@ import PatientProfile from "./pages/PatientProfile/PatientProfile";
 import PatientDashboard from "./pages/PatientDashboard/PatientDashboard";
 import Vitals from "./pages/Vitals/Vitals";
 import Consultation from "./pages/Consultation/Consultation";
-import Chats from "./pages/Chats/Chats";
+import Chats from "./pages/ChatPage/ChatPage";
 
 import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
