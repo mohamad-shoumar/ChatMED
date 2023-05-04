@@ -136,4 +136,31 @@ export default function TemplateDemo() {
       setVisible(true);
     }
   };
+
+  return (
+    <div className="card">
+      <DataTable
+        value={products}
+        header={header}
+        tableStyle={{ minWidth: "60rem" }}
+        onRowSelect={handleRowSelect}
+        selectionMode="single"
+        metaKeySelection={false}
+      >
+        <Column field="name" header="Name"></Column>
+        <Column header="Image" body={(rowData) => rowData.image}></Column>
+
+        <Column header="Status" body={statusBodyTemplate}></Column>
+      </DataTable>
+      <Dialog
+        header="ChatGPT Response"
+        visible={visible}
+        style={{ width: "50vw" }}
+        onHide={() => setVisible(false)}
+        footer={footer}
+      >
+        {dialogContent}
+      </Dialog>
+    </div>
+  );
 }
