@@ -129,8 +129,11 @@ export default function TemplateDemo() {
       ) : null}
     </div>
   );
-
+  const handleRowSelect = (event: any) => {
+    const selectedProduct = event.data;
+    if (selectedProduct && selectedProduct.inventoryStatus === "pending") {
+      setSelectedProduct(selectedProduct);
+      setVisible(true);
+    }
   };
-
-
 }
