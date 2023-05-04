@@ -38,4 +38,39 @@ export default function TemplateDemo() {
   useEffect(() => {
     ProductService.getProductsMini().then((data) => setProducts(data));
   }, []);
+
+  const imageBodyTemplate = (product: Product) => {
+    return (
+      <img
+        src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`}
+        alt={product.image}
+        className="w-6rem shadow-2 border-round"
+      />
+    );
+  };
+
+  const statusBodyTemplate = (product: Product) => {
+    return (
+      <Tag
+        value={product.inventoryStatus}
+        severity={getSeverity(product)}
+      ></Tag>
+    );
+  };
+
+  const getSeverity = (product: Product) => {
+    switch (product.inventoryStatus) {
+      case "Validated":
+        return "success";
+
+      case "Inprogress":
+        return "warning";
+
+      case "pending":
+        return "danger";
+
+      default:
+        return null;
+    }
+  };
 }
