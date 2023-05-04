@@ -23,6 +23,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { API } from "../../../src/API/API";
 import { base_url } from "../../API/API";
+import Button2 from "../../components/Button2/Button2";
 
 const MedicalHistory = () => {
   // useState variables
@@ -148,15 +149,16 @@ const MedicalHistory = () => {
               <h2>Medical History</h2>
             </div>
             <div className={styles.submitbtn}>
-              <Button
+              <Button2 onClick={handleMedicalHistorySubmit} />
+              {/* <Button
                 size="large"
                 sx={{ marginRight: "17px" }}
                 variant="contained"
                 color="secondary"
                 onClick={handleMedicalHistorySubmit}
-              >
-                <Typography variant="button">Sumbit</Typography>
-              </Button>
+              > */}
+              {/* <Typography variant="button">Sumbit</Typography>
+              </Button> */}
             </div>
           </div>
           <div className={styles.medicalHistoryForm}>
