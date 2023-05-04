@@ -8,15 +8,13 @@
 
 | Login screen  | Register screen |  
 | ---| ---|
-| ![Landing]([./readme/demo/1440x1024.png](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/signinlap.png)) | ![fsdaf](./readme/demo/1440x1024.png) | 
+| ![login](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/signinlap.png) | 
 
 > | medical History                                                                          | Profile                                                                              |
 > | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 > | ![medical History](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medical.png) | ![Profile](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/profileedit.png) |
 
-> | Pateint Dashboard                                                                        |
-> | ------------------------------------------------------------------------------ |
-> | ![ChatMED](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicaldesk.png) |
+
 
 > | Pateint Dashboard                                                                        |
 > | ------------------------------------------------------------------------------ |
