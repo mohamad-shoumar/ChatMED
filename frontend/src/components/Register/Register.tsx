@@ -26,6 +26,24 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [file, setFile] = useState<any>(null);
+  const [imageUrls, setImageUrls] = useState("");
+  const nav = useNavigate();
+  const url = `${base_url}auth/register`;
+  const toast = useRef<Toast>(null);
+  const show = () => {
+    toast.current?.show({
+      severity: "info",
+      summary: "Info",
+      detail: "Doctor Selected",
+    });
+  };
+  const handleFileChange = (e: any) => {
+    if (e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
+  console.log(file);
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
