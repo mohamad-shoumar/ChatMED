@@ -101,4 +101,36 @@ export default function TemplateDemo() {
       <Button label="Submit" icon="pi pi-check" className="p-button-success" />
     </div>
   );
+
+  const dialogContent = (
+    <div className="p-grid">
+      <div className="p-col-12 p-md-6">
+        <div className="card">
+          <h5>Symptoms</h5>
+          <hr />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            suscipit massa auctor lacus sodales faucibus.
+          </p>
+        </div>
+      </div>
+      {editingResponse ? (
+        <div className="p-col-12 p-md-6">
+          <div className="card">
+            <h5>Response</h5>
+            <hr />
+            <textarea
+              value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit massa auctor lacus sodales faucibus."
+              onChange={(e) => {}}
+              className="w-full p-2 border rounded"
+            ></textarea>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+
+  };
+
+
 }
