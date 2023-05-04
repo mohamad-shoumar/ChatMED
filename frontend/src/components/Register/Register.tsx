@@ -3,62 +3,118 @@ import { API } from "../../API/API";
 import { base_url } from "../../API/API";
 import style from "../../styles/Authentication/Register.module.scss";
 import styles from "../../styles/Authentication/Authentication.module.scss";
-import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { useState, useRef } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import Add from "../../assets/Chats/add.png";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+  uploadBytes,
+} from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, storage, db } from "../../FireBaseChat";
+import { Toast } from "primereact/toast";
+import { v4 as uuidV4 } from "uuid";
 
 const Register = () => {
-  const [fullname, setFullName] = useState("");
+  const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [gender, setGender] = useState("");
   const [role, setRole] = useState("");
-  let nav = useNavigate();
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
-    const data = {
-      fullName: fullname,
-      gender: gender,
+    setLoading(true);
+    setErr(false);
+    let data2 = {
+      displayName: displayName,
       role: role,
+      imageUrl: "",
+      file: file,
       email: email,
       password: password,
     };
-    const url = `${base_url}auth/register`;
-    console.log("Data: ", data);
-    console.log("URL: ", url);
     try {
-      const response = await API.postAPI(url, data);
-      console.log("Response: ", response);
-      toast.success(`You Are Now Registered.`);
-      if (response.data.message === "Success") {
-        toast.success(`You Are Now Registered.`);
-        setFullName("");
-        setEmail("");
-        setPassword("");
-        nav("/medicalhistory");
-      } else {
-        toast.error("Error signing up.");
-      }
-    } catch (error) {
-      console.log("Error: ", error);
-      toast.error("Error signing up.");
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      //Create a unique image name
+      const date = new Date().getTime();
+      const storageRef = ref(storage, `${uuidV4()}`);
+      await uploadBytesResumable(storageRef, file).then(() => {
+        getDownloadURL(storageRef).then(async (downloadURL) => {
+          data2.imageUrl = downloadURL;
+          try {
+            //Update profile
+            await updateProfile(res.user, {
+              displayName,
+              photoURL: downloadURL,
+            });
+            //create user on firestore
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL,
+            });
+
+            // create empty user chats on firestore
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+            nav("patient/medicalhistory");
+
+            console.log(data2);
+
+            // save user in db
+            const response = await API.postAPI(url, data2);
+            console.log(response);
+
+            if (response.message === "Success") {
+              toast.current?.show({
+                severity: "success",
+                summary: "Success",
+                detail: `You Are Now Registered.`,
+              });
+              setDisplayName("");
+              setEmail("");
+              setPassword("");
+              nav("patient/medicalhistory");
+            } else {
+              toast.current?.show({
+                severity: "warn",
+                summary: "Warn",
+                detail: `Error signing up.`,
+              });
+            }
+          } catch (err) {
+            console.log(err);
+            setErr(true);
+            setLoading(false);
+          }
+        });
+      });
+    } catch (err: any) {
+      console.log(err);
+      console.log(err.message);
+      setErr(true);
+      setLoading(false);
     }
   };
+
   return (
     <div
       className={styles["form-container"] + " " + styles["sign-up-container"]}
     >
       <form>
-        <h1 className={styles.title}>Create New Account</h1>
+        <h1 className={styles.title2}>Create New Account</h1>
 
         <input
           type="text"
           placeholder="Full Name"
-          value={fullname}
-          onChange={(e) => setFullName(e.target.value)}
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
           className={styles.input}
         />
         <input
@@ -101,7 +157,18 @@ const Register = () => {
             </label>
           </div>
         </div>
-
+        <input
+          required
+          style={{ display: "none" }}
+          type="file"
+          accept="*/*"
+          id="file"
+          onChange={handleFileChange}
+        />
+        <label htmlFor="file">
+          <img src={Add} alt="" />
+          <span>Add a Picture</span>
+        </label>
         <button
           className={`${styles["btn-signin"]} ${styles["ghost-signup"]} ${styles["gradient-button"]} ${styles["gradient-button-1"]}`}
           id="sup"
@@ -109,6 +176,8 @@ const Register = () => {
         >
           Sign Up
         </button>
+        <Toast ref={toast} />
+        {loading && "Uploading and compressing the image please wait..."}
       </form>
     </div>
   );
