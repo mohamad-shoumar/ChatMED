@@ -27,7 +27,39 @@ const DoctorProfile = () => {
             <div className={styles.name}>Dr. John Doe</div>
             <div className={styles.email}>Dr.JohnDoe22@gmail.com</div>
           </div>
-        
+          <div className={styles.right}>
+            <div className={styles.header}>
+              <h3>Edit Profile</h3>
+              <div className={styles.headerButtons}>
+                <Button label="Edit" size="small" style={{ height: "2rem" }} />
+              </div>
+            </div>
+
+            <div className={styles.editFields}>
+              <FloatLabelDemo
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                label="Name"
+              />
+
+              <FloatLabelDemo
+                value={workingHours}
+                onChange={(e) => setWorkingHours(e.target.value)}
+                label="Working Hours"
+              />
+
+              <FloatLabelDemo
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                label="Price"
+              />
+
+              <FloatLabelDemo
+                value={specialization}
+                onChange={(e) => setSpecialization(e.target.value)}
+                label="Specialization"
+              />
+            </div>
           </div>
         </div>
       </div>
