@@ -83,4 +83,22 @@ export default function TemplateDemo() {
   const handleEditClick = () => {
     setEditingResponse(true);
   };
+  const footer = (
+    <div className="flex justify-content-between gap-2">
+      <div>
+        <Button
+          label="Edit"
+          icon="pi pi-pencil"
+          className="p-button-text p-button-plain"
+          onClick={handleEditClick}
+        />
+        <Button
+          label="Chat"
+          icon="pi pi-comment"
+          className="p-button-text p-button-plain"
+        />
+      </div>
+      <Button label="Submit" icon="pi pi-check" className="p-button-success" />
+    </div>
+  );
 }
