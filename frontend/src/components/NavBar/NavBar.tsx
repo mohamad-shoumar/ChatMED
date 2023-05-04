@@ -4,9 +4,12 @@ import logoImage from "../../assets/navbar/logo1.png";
 import bellIconImage from "../../assets/navbar/bell-fill.png";
 import profileImage from "../../assets/navbar/person-circle.png";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { currentUser } = React.useContext(AuthContext);
+  console.log(currentUser);
 
   return (
     <div className={styles.navmain}>
@@ -22,15 +25,17 @@ const Navbar = () => {
             src={bellIconImage}
             alt="bell-icon"
           />
-          <div style={{ fontSize: "1rem", color: "white" }}>Notifications</div>
+          <div style={{ fontSize: "0.8rem", color: "white" }}>
+            Notifications
+          </div>
         </div>
         <div className={styles.noti}>
           <img
             onClick={(e) => {
               navigate("/patient/profile");
             }}
-            src={profileImage}
-            alt="profile"
+            src={currentUser?.photoURL}
+            alt={currentUser?.displayName}
           />
           <div style={{ fontSize: "1rem", color: "white" }}>Profile</div>
         </div>
