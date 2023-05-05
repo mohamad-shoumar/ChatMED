@@ -12,7 +12,6 @@
   width: 100vw;
   position: fixed;
   top: 0;
-  // margin-bottom: 20px;
   z-index: 1;
 }
 
@@ -31,12 +30,26 @@
   text-decoration: none;
   margin-top: 13px;
 }
-
+.noti {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
 .navleft {
   display: flex;
   align-items: center;
   padding-right: 30px;
 }
+.noti > img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
 .navright > img {
   margin-top: 7px;
 }
@@ -48,7 +61,7 @@
   cursor: pointer;
 }
 .bell {
-  margin-right: 40px;
+  transform: scale(0.55);
 }
 
 @media screen and (min-width: 768px) {
