@@ -52,5 +52,25 @@ const Chats = (): JSX.Element => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };
 
+  return (
+    <div className={styles.chats}>
+      {Object.entries(chats)
+        ?.sort((a, b) => b[1].date.seconds - a[1].date.seconds)
+        .map((chat) => (
+          <div
+            className={styles.userChat}
+            key={chat[0]}
+            onClick={() => handleSelect(chat[1].userInfo)}
+          >
+            <img src={chat[1].userInfo.photoURL} alt="" />
+            <div className={styles.userChatInfo}>
+              <span>{chat[1].userInfo.displayName}</span>
+              <p>{chat[1].lastMessage?.text}</p>
+            </div>
+          </div>
+        ))}
+    </div>
+  );
+};
 
 export default Chats;
