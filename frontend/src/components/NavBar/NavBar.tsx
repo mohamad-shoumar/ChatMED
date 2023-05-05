@@ -37,7 +37,9 @@ const Navbar = () => {
             src={currentUser?.photoURL}
             alt={currentUser?.displayName}
           />
-          <div style={{ fontSize: "1rem", color: "white" }}>Profile</div>
+          <div style={{ fontSize: "0.7rem", color: "white" }}>
+            {currentUser?.displayName}
+          </div>
         </div>
       </div>
     </div>
