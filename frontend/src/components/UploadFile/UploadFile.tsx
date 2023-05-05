@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import emptyImage from "../../assets/emptyImage.png";
-import { storage } from "../../FireBase";
+import { storage } from "../../FireBaseChat";
 import { getDownloadURL, uploadBytes, ref } from "firebase/storage";
 import { v4 as uuidV4 } from "uuid";
 import "./UploadFile.scss";
