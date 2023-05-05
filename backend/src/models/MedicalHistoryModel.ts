@@ -10,7 +10,6 @@ export interface IMedicalHistory extends mongoose.Document {
   }[];
   medications: {
     name: string;
-    dosage: string;
     frequency: string;
   }[];
   surgeries: {
@@ -57,10 +56,7 @@ const MedicalHistorySchema = new Schema({
         type: String,
         required: true,
       },
-      dosage: {
-        type: String,
-        required: true,
-      },
+
       frequency: {
         type: String,
         required: true,
