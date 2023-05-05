@@ -4,8 +4,8 @@ export interface IUser extends Document {
   email: string;
   password: string;
   role: string;
-  imageUrl: string;
-  fullName: string;
+  imageUrl?: string;
+  displayName: string;
   consultations?: {
     doctor: string;
     date: Date;
@@ -33,7 +33,7 @@ const UserSchema = new Schema<IUser>({
     default: null,
   },
 
-  fullName: {
+  displayName: {
     type: String,
     required: true,
   },
