@@ -8,20 +8,22 @@ import { base_url } from "../../API/API";
 import { API } from "../../../src/API/API";
 import Search from "../../components/Search/Search";
 import SortDoctor from "../../components/sortDoctor/sortDoctor";
-import { Button, Dialog } from "@mui/material";
 import DoctorCard from "../../components/DoctorCard/DoctorCard";
 import Button2 from "../../components/Button2/Button2";
 import { Card } from "primereact/card";
-
+import { Dialog } from "primereact/dialog";
+import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
-
 import ConsultationCard from "../../components/ConsultationCard/ConsultationCard";
+import Sort from "../../components/Sort/Sort";
 interface Doctor {
   id: number;
   fullName: string;
   price: number;
   specialty: string;
+  avatar: string;
 }
+
 const Consultation = () => {
   const toast = useRef<Toast>(null);
   const show = () => {
@@ -31,9 +33,16 @@ const Consultation = () => {
       detail: "Doctor Selected",
     });
   };
+  const [visible, setVisible] = useState(false);
+  const showDialog = () => {
+    setVisible(true);
+  };
+  const hideDialog = () => {
+    setVisible(false);
+  };
   const token = localStorage.getItem("token");
   const [doctors, setDoctors] = useState<Doctor[]>([]);
-  const [specialtyFilter, setSpecialtyFilter] = useState<string>("all");
+  const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [selectedDoctorId, setSelectedDoctorId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -42,32 +51,41 @@ const Consultation = () => {
       console.log(response);
     });
   }, []);
-  const handleSpecialtyChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSpecialtyFilter(event.target.value);
+
+  const handleSpecialtyChange = (filterFn: (doctor: Doctor) => boolean) => {
+    const filtered = doctors.filter(filterFn);
+    setFilteredDoctors(filtered);
   };
   const handleDoctorCardClick = (doctorId: number) => {
     setSelectedDoctorId(doctorId);
   };
-  const filteredDoctors =
-    specialtyFilter === "all"
-      ? doctors
-      : doctors.filter((doctor) => doctor.specialty === specialtyFilter);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!selectedDoctorId) {
-      alert("Please select a doctor.");
+      toast.current?.show({
+        severity: "error",
+        summary: "error",
+        detail: `Please Choose a doctor`,
+      });
       return;
     }
+    toast.current?.show({
+      severity: "info",
+      summary: "info",
+      detail: `Pending, waiting for doctor's response`,
+    });
     const body: any = {
       doctorId: selectedDoctorId,
       response: "hello",
     };
-    API.postAPI(`${base_url}advice/`, token!, body).then((response) => {
-      console.log(response);
-    });
+    try {
+      API.postAPI(`${base_url}advice/`, token!, body).then((response) => {
+        console.log(response);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -89,7 +107,7 @@ const Consultation = () => {
               <div className={styles.botLeft}>
                 <h5>Choose a Doctor</h5>
                 <Toast ref={toast} />
-                <SortDoctor onChange={handleSpecialtyChange} />
+                <Sort onChange={handleSpecialtyChange} />
                 <div className={styles.docCards}>
                   {filteredDoctors.map((doctor) => (
                     <DoctorCard
@@ -110,11 +128,28 @@ const Consultation = () => {
               <div className={styles.botRight}>
                 <div className={styles.symptoms}>
                   <h5> Past Consultations</h5>
-                  <Button2 />
+                  <Button2 onClick={showDialog} label="New Consultation" />
+                  <Dialog
+                    header="Enter Symptoms"
+                    visible={visible}
+                    onHide={hideDialog}
+                    footer={
+                      <div>
+                        <Button2 label="Submit" onClick={handleSubmit} />
+                      </div>
+                    }
+                  >
+                    <div className="p-fluid">
+                      <div className="p-field">
+                        <label htmlFor="symptoms">Symptoms</label>
+                        <input id="symptoms" type="text" />
+                      </div>
+                    </div>
+                  </Dialog>
                 </div>
+
                 <div className={styles.response}>
                   <ConsultationCard />
-                  <Dialog open={false} />
                 </div>
               </div>
             </div>
