@@ -12,7 +12,7 @@ import ResponseModel from "../models/ResponseModel";
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const userId = req.body.user.id;
-    const { fullName, price, workingHours, email, profilePictureUrl } =
+    const { displayName, price, workingHours, email, profilePictureUrl } =
       req.body;
     console.log(req.body);
     console.log(userId);
@@ -32,7 +32,7 @@ export const editProfile = async (req: Request, res: Response) => {
     if (!retrievedUser) {
       return res.status(404).json({ message: "User not found" });
     }
-    retrievedUser.fullName = fullName || retrievedUser.fullName;
+    retrievedUser.displayName = displayName || retrievedUser.displayName;
     retrievedUser.email = email || retrievedUser.email;
     // retrievedUser.profilePictureUrl =
     //   profilePictureUrl || retrievedUser.profilePictureUrl;
