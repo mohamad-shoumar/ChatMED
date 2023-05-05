@@ -55,7 +55,7 @@ export const getFile = async (req: Request, res: Response) => {
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const { id } = req.body.user;
-    const { fullName, email, imageUrls } = req.body;
+    const { displayName, email, imageUrls } = req.body;
     const retrievedUser = await User.findById(id);
 
     console.log("controller: ", req.body);
@@ -65,7 +65,7 @@ export const editProfile = async (req: Request, res: Response) => {
     }
 
     if (retrievedUser) {
-      retrievedUser.fullName = fullName || retrievedUser.fullName;
+      retrievedUser.displayName = displayName || retrievedUser.displayName;
       retrievedUser.email = email || retrievedUser.email;
       // retrievedUser.link = link || retrievedUser.link;
 
