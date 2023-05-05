@@ -2,25 +2,23 @@ import styles from "../../styles/MedicalHistory/MedicalHistory.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
 import TextField from "@mui/material/TextField";
-import { useRadioGroup } from "@mui/material/RadioGroup";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers";
 import { InputAdornment } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
+import { Toast } from "primereact/toast";
+
 import { FormControlLabel, FormLabel, RadioGroup, Radio } from "@mui/material";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import { useState, useContext } from "react";
+
+import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import MedicalHistorySection from "../../components/MedicalHistorySection/MedicalHistorySection";
 import SurgeriesSection from "../../components/SurgeriesSection/SurgeriesSection";
 import AllergiesSection from "../../components/AllergySection/AllergySection";
 import ConditionsSection from "../../components/ConditionsSection/ConditionsSection";
 import MedicalHistorySections from "../../components/MedicalHistorySections/MedicalHistorySections";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+
 import { API } from "../../../src/API/API";
 import { base_url } from "../../API/API";
 import Button2 from "../../components/Button2/Button2";
@@ -44,6 +42,14 @@ const MedicalHistory = () => {
   const [chronicConditions, setChronicConditions] = useState<
     { name: string; date: number }[]
   >([]);
+  const toast = useRef<Toast>(null);
+  const show = () => {
+    toast.current?.show({
+      severity: "warn",
+      summary: "warn",
+      detail: "Error Occured!",
+    });
+  };
 
   const [gender, setGender] = useState("");
   const [medicalHistoryData, setMedicalHistoryData] = useState<any>({
@@ -123,19 +129,37 @@ const MedicalHistory = () => {
   // Handle submit button
   const handleMedicalHistorySubmit = async (e: any) => {
     e.preventDefault();
-    const token = localStorage.getItem("token") ?? undefined;
-    const data = { ...medicalHistoryData };
-    const body = { medicalHistory: data };
-    console.log(body);
-    console.log("Token:", token);
+    try {
+      const token = localStorage.getItem("token") ?? undefined;
+      const data = { ...medicalHistoryData };
+      const body = { medicalHistory: data };
+      console.log(body);
+      console.log("Token:", token);
 
-    const response = await API.postAPI(
-      `${base_url}medicalhistory/addhistory`,
-      body,
-      token
-    );
-    console.log("Response:", response);
-    console.log("Medical history data:", medicalHistoryData);
+      const response = await API.postAPI(
+        `${base_url}medicalhistory/addhistory`,
+        body,
+        token
+      );
+      console.log("Response:", response);
+      console.log("Medical history data:", medicalHistoryData);
+      toast.current?.show({
+        severity: "success",
+        summary: "Success",
+        detail: `Medical-History added.`,
+      });
+      setTimeout(() => {
+        window.location.href = "/patient/dashboard";
+      }, 1000);
+    } catch (error) {
+      console.log("error");
+      toast.current?.show({
+        severity: "warn",
+        summary: "Warn",
+        detail: `Error adding medical history.`,
+        sticky: true,
+      });
+    }
   };
 
   return (
