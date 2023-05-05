@@ -31,21 +31,44 @@
 .bot {
   display: flex;
   height: 57vh;
-  width: 70vw;
-  border: 2px solid red;
+  width: 72vw;
+
   margin-top: 2rem;
 }
 
 .botLeft {
-  border: 2px solid red;
-  padding: 10 5px;
-  width: 20%;
+  overflow-y: scroll;
+
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 .docCards {
-  background-color: rgb(47, 47, 47);
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 100%;
+  gap: 0.7rem;
+}
+.botRight {
+  padding: 10 5px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 10px;
+}
+.symptoms {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 15%;
+}
+.response {
+  min-width: 100%;
+  overflow-x: auto;
 }
