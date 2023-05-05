@@ -18,6 +18,31 @@ interface User {
   displayName: string;
   photoURL: string;
 }
+const Search = () => {
+  const [username, setUsername] = useState<string>("");
+  const [user, setUser] = useState<User | null>(null);
+  const [err, setErr] = useState<boolean>(false);
+
+  const { currentUser } = useContext(AuthContext);
+  const handleSearch = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("displayName", "==", username)
+    );
+
+    try {
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setUser(doc.data() as User);
+      });
+    } catch (err) {
+      setErr(true);
+    }
+  };
+
+    setUser(null);
+    setUsername("");
+  };
 
   return (
     <div className={styles.search}>
