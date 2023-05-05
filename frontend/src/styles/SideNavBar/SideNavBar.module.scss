@@ -92,7 +92,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
-
+.activeLink {
+  color: $background;
+  background-color: $sec;
+}
 .link {
   display: flex;
   justify-content: space-between;
@@ -103,6 +106,9 @@
   padding: 5px 8px;
   size: 0.2rem;
   cursor: pointer;
+}
+.selected {
+  background-color: lightblue;
 }
 .space {
   display: flex;
