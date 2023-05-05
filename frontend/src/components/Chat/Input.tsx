@@ -16,6 +16,19 @@ import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const Input = () => {
+  const [text, setText] = useState("");
+  const [img, setImg] = useState<File | null>(null);
+
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+
+  const handleSend = async () => {
+    if (img) {
+      const storageRef = ref(storage, uuid());
+
+      const uploadTask = uploadBytesResumable(storageRef, img);
+
+
   return (
     <div className={styles.input}>
       <input
