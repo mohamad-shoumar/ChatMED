@@ -10,6 +10,8 @@ import sun from "../../assets/sidebar/sun.png";
 import Icon from "../../assets/sidebar/Icon.png";
 import doc from "../../assets/sidebar/doc.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../FireBaseChat";
 
 const SideNavBar = () => {
   const navigate = useNavigate();
@@ -95,7 +97,7 @@ const SideNavBar = () => {
                 } ${styles.hover}`}
                 onClick={() => {
                   handleClick(4);
-                  navigate("/patient/chats");
+                  navigate("/patient/chat");
                 }}
               >
                 <div className={styles.linkleft}>
@@ -110,7 +112,9 @@ const SideNavBar = () => {
               >
                 <div className={styles.linkleft}>
                   <img src={logs} alt="logo" />
-                  <div className={styles.word}>Log Out</div>
+                  <div className={styles.word} onClick={() => signOut(auth)}>
+                    Log Out
+                  </div>
                 </div>
                 <img src={Icon} alt="arrow" />
               </div>
