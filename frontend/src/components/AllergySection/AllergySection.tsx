@@ -50,7 +50,7 @@ const AllergiesSection = ({ onUpdateAllergies }: allergyProps) => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         alighItems: "center",
         gap: 1,
         p: 0,
