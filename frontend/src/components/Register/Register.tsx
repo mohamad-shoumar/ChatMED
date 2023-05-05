@@ -75,13 +75,13 @@ const Register = () => {
             await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
+              role: role,
               email,
               photoURL: downloadURL,
             });
 
             // create empty user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
-            nav("patient/medicalhistory");
 
             console.log(data2);
 
@@ -98,7 +98,7 @@ const Register = () => {
               setDisplayName("");
               setEmail("");
               setPassword("");
-              nav("patient/medicalhistory");
+              nav("/patient/medicalhistory");
             } else {
               toast.current?.show({
                 severity: "warn",
