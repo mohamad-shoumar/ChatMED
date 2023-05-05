@@ -150,15 +150,6 @@ const MedicalHistory = () => {
             </div>
             <div className={styles.submitbtn}>
               <Button2 onClick={handleMedicalHistorySubmit} />
-              {/* <Button
-                size="large"
-                sx={{ marginRight: "17px" }}
-                variant="contained"
-                color="secondary"
-                onClick={handleMedicalHistorySubmit}
-              > */}
-              {/* <Typography variant="button">Sumbit</Typography>
-              </Button> */}
             </div>
           </div>
           <div className={styles.medicalHistoryForm}>
