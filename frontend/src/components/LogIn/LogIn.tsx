@@ -4,37 +4,56 @@ import "../../styles/Authentication/Authentication.module.scss";
 import styles from "../../styles/Authentication/Authentication.module.scss";
 import { API } from "../../../src/API/API";
 import { base_url } from "../../API/API";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Toast } from "primereact/toast";
+import { auth } from "../../FireBaseChat";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let nav = useNavigate();
+  const toast = useRef<Toast>(null);
+  const show = () => {
+    toast.current?.show({
+      severity: "warn",
+      summary: "warn",
+      detail: "Error Occured!",
+    });
+  };
   const handleSignin = async (e: any) => {
     e.preventDefault();
-    const api_data = { email: email, password: password };
-    const response = await API.postAPI(`${base_url}auth/login`, api_data);
-    const token = response.token;
-    console.log(response);
-    localStorage.setItem("token", token);
-    let user: JwtPayload = jwt_decode(token);
     try {
-      if (user.role === "pateint") {
-        toast.success(`You Are Now Logged in.`);
-        nav("/pateint");
+      await signInWithEmailAndPassword(auth, email, password);
+      const user2 = auth.currentUser;
+      console.log(user2);
+      const api_data = { email: email, password: password };
+      const response = await API.postAPI(`${base_url}auth/login`, api_data);
+      const token = response.token;
+      console.log(response);
+      localStorage.setItem("token", token);
+      let user: JwtPayload = jwt_decode(token);
+      console.log(user);
+
+      if (user.role === "patient") {
+        nav("/patient/dashboard");
       } else {
-        toast.success(`You Are Now Logged in.`);
-        nav("/doctor");
+        nav("/doctor/dashboard");
       }
       setEmail("");
       setPassword("");
     } catch {
       console.log("error");
-      toast.error("Failed.");
+      toast.current?.show({
+        severity: "warn",
+        summary: "Warn",
+        detail: `Error signing up.`,
+        sticky: true,
+      });
     }
   };
 
