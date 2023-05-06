@@ -7,6 +7,8 @@ import {
   getDoctors,
   getProfile,
   chooseDoctor,
+  postConsultation,
+  getConsultation,
 } from "../controllers/patient.controllers";
 
 router.get("/getdoctors", authMiddleware, patientMiddleware, getDoctors);
@@ -18,6 +20,9 @@ router.post(
   patientMiddleware,
   editProfile
 );
+router.post("/postconsultation", authMiddleware, postConsultation);
+router.get("/getconsultation", authMiddleware, getConsultation);
+
 router.post("/choosedoctor", authMiddleware, patientMiddleware, chooseDoctor);
 
 export default router;
