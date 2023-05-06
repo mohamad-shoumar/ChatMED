@@ -5,26 +5,16 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Rating } from "primereact/rating";
 import { Tag } from "primereact/tag";
+import "primeicons/primeicons.css";
 import { ProductService } from "../service/PatientList";
 /* <DataTable value={products} size={size} tableStyle={{ minWidth: '50rem' }}> */
 
-// export pdf
-// const exportPdf = () => {
-//   import('jspdf').then((jsPDF) => {
-//       import('jspdf-autotable').then(() => {
-//           const doc = new jsPDF.default(0, 0);
-
-//           doc.autoTable(exportColumns, products);
-//           doc.save('products.pdf');
-//       });
-//   });
-// };
 interface Product {
   id: string;
   code: string;
   name: string;
   description: string;
-  image: any;
+  image?: any;
   inventoryStatus?: any;
 }
 
@@ -57,17 +47,27 @@ export default function TemplateDemo() {
       ></Tag>
     );
   };
+  const historyTemplate = (product: Product) => {
+    const handleClick = () => {
+      // add action here
+      console.log("Medical history clicked for:", product.name);
+    };
 
+    return (
+      <Button
+        icon="pi pi-ellipsis-h"
+        onClick={handleClick}
+        className="p-button-text"
+      />
+    );
+  };
   const getSeverity = (product: Product) => {
     switch (product.inventoryStatus) {
       case "Validated":
         return "success";
 
-      case "Inprogress":
-        return "warning";
-
       case "pending":
-        return "danger";
+        return "warning";
 
       default:
         return null;
@@ -136,6 +136,19 @@ export default function TemplateDemo() {
       setVisible(true);
     }
   };
+  // const history = (rowData) => {
+  //   return (
+  //     <div className="flex align-items-center gap-2">
+  //       <img
+  //         alt="flag"
+  //         src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
+  //         className={`flag flag-${rowData.country.code}`}
+  //         style={{ width: "24px" }}
+  //       />
+  //       <span>{rowData.country.name}</span>
+  //     </div>
+  //   );
+  // };
 
   return (
     <div className="card">
@@ -147,10 +160,11 @@ export default function TemplateDemo() {
         selectionMode="single"
         metaKeySelection={false}
       >
-        <Column field="name" header="Name"></Column>
         <Column header="Image" body={(rowData) => rowData.image}></Column>
-
+        <Column field="First Name" header="First Name"></Column>
+        <Column field="Last Name" header="Last name"></Column>
         <Column header="Status" body={statusBodyTemplate}></Column>
+        <Column header="Medical History" body={historyTemplate}></Column>
       </DataTable>
       <Dialog
         header="ChatGPT Response"
