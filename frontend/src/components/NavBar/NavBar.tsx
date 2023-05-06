@@ -9,8 +9,15 @@ import { AuthContext } from "../../context/AuthContext";
 const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = React.useContext(AuthContext);
-  console.log(currentUser);
+  const handleProfileClick = () => {
+    const role = currentUser?.role;
 
+    if (role === "patient") {
+      navigate("/patientprofile");
+    } else if (role === "doctor") {
+      navigate("/doctorprofile");
+    }
+  };
   return (
     <div className={styles.navmain}>
       <div className={styles.navright}>
@@ -31,9 +38,7 @@ const Navbar = () => {
         </div>
         <div className={styles.noti}>
           <img
-            onClick={(e) => {
-              navigate("/patient/profile");
-            }}
+            onClick={handleProfileClick}
             src={currentUser?.photoURL}
             alt={currentUser?.displayName}
           />
