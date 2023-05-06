@@ -10,48 +10,64 @@ import Consultation from "./pages/Consultation/Consultation";
 import Chats from "./pages/ChatPage/ChatPage";
 import { useContext, ReactNode } from "react";
 import { AuthContext } from "./context/AuthContext";
-
+import jwt_decode from "jwt-decode";
 import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import DoctorDashboard from "./pages/DoctorPages/DoctorDashboard/DoctorDashboard";
 import DoctorProfile from "./pages/DoctorPages/DoctorProfile/DoctorProfile";
+import DoctorView from "./pages/DoctorPages/DoctorView/DoctorView";
+import { JwtPayload } from "jsonwebtoken";
 type ProtectedRouteProps = {
   children: ReactNode;
   currentUser: any;
 };
 
-const ProtectedRoute = ({ children, currentUser }: ProtectedRouteProps) => {
-  if (!currentUser) {
-    return <Navigate to="/authentication" />;
-  }
-
-  return children;
-};
 function App() {
-  const { currentUser } = useContext(AuthContext);
+  const token = localStorage.getItem("token");
+  let user: JwtPayload | null = null;
+
+  if (token) {
+    user = jwt_decode(token) as JwtPayload;
+  }
+  // if (!token) {
+  //   return <Navigate to="/authentication" />;
+  // }
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="authentication" element={<Authentication />} />
-        <Route path="/patient/*">
-          <Route path="chat" element={<Chats />} />
-          <Route path="medicalhistory" element={<MedicalHistory />} />
-          <Route path="profile" element={<PatientProfile />} />
-          <Route path="dashboard" element={<PatientDashboard />} />
-          <Route path="vitals" element={<Vitals />} />
-          <Route path="consultation" element={<Consultation />} />
-        </Route>
-        <Route path="/doctor/*">
-          <Route path="chat" element={<Chats />} />
-          <Route path="authentication" element={<Authentication />} />
-          <Route path="dashboard" element={<DoctorDashboard />} />
-          <Route path="profile" element={<DoctorProfile />} />
-        </Route>
+
+        {user && user.role === "patient" && (
+          <>
+            <Route path="chat" element={<Chats />} />
+            <Route path="medicalhistory" element={<MedicalHistory />} />
+            <Route path="patientprofile" element={<PatientProfile />} />
+            <Route path="dashboard" element={<PatientDashboard />} />
+            <Route path="vitals" element={<Vitals />} />
+            <Route path="consultation" element={<Consultation />} />
+          </>
+        )}
+        {user && user.role === "doctor" && (
+          <>
+            <Route path="chat" element={<Chats />} />
+            <Route path="docdashboard" element={<DoctorDashboard />} />
+            <Route path="doctorprofile" element={<DoctorProfile />} />
+            <Route path="doctorview" element={<DoctorView />} />
+          </>
+        )}
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+// const ProtectedRoute = ({ children, currentUser }: ProtectedRouteProps) => {
+//   if (!currentUser) {
+//     return <Navigate to="/authentication" />;
+//   }
+
+//   return children;
+// };
