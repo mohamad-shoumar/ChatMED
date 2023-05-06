@@ -8,7 +8,7 @@ export interface IUser extends Document {
   displayName: string;
   consultations?: {
     doctor: string;
-    date: Date;
+    date?: Date;
   }[];
 }
 
@@ -45,9 +45,14 @@ const UserSchema = new Schema<IUser>({
         ref: "Doctor",
         required: true,
       },
+      response: {
+        type: Schema.Types.ObjectId,
+        ref: "ResponseModel",
+      },
       date: {
         type: Date,
         required: true,
+        default: Date.now,
       },
     },
   ],
