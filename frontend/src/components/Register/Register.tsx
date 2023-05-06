@@ -89,27 +89,24 @@ const Register = () => {
             const response = await API.postAPI(url, data2);
             console.log(response);
 
-            if (response.message === "Success") {
-              toast.current?.show({
-                severity: "success",
-                summary: "Success",
-                detail: `You Are Now Registered.`,
-              });
-              setDisplayName("");
-              setEmail("");
-              setPassword("");
-              nav("/patient/medicalhistory");
-            } else {
-              toast.current?.show({
-                severity: "warn",
-                summary: "Warn",
-                detail: `Error signing up.`,
-              });
-            }
+            toast.current?.show({
+              severity: "success",
+              summary: "Success",
+              detail: `Registered succesfully, please Sign in.`,
+              sticky: true,
+            });
+            setDisplayName("");
+            setEmail("");
+            setPassword("");
           } catch (err) {
             console.log(err);
             setErr(true);
             setLoading(false);
+            toast.current?.show({
+              severity: "warn",
+              summary: "Warn",
+              detail: `Error signing up.`,
+            });
           }
         });
       });
@@ -127,6 +124,7 @@ const Register = () => {
     >
       <form>
         <h1 className={styles.title2}>Create New Account</h1>
+        <span className={styles.span}>Already have an account? sign in </span>
 
         <input
           type="text"
@@ -194,7 +192,7 @@ const Register = () => {
         >
           Sign Up
         </button>
-        <Toast ref={toast} />
+        <Toast ref={toast} position="top-left" />
         {loading && "Uploading and compressing the image please wait..."}
       </form>
     </div>
