@@ -18,10 +18,10 @@ import ConsultationCard from "../../components/ConsultationCard/ConsultationCard
 import Sort from "../../components/Sort/Sort";
 interface Doctor {
   id: number;
-  fullName: string;
-  price: number;
-  specialty: string;
-  avatar: string;
+  displayName: string;
+  price?: number;
+  specialty?: string;
+  imageUrl: string;
 }
 
 const Consultation = () => {
@@ -41,15 +41,28 @@ const Consultation = () => {
     setVisible(false);
   };
   const token = localStorage.getItem("token");
+  const [consultation, setConsultation] = useState<any>([]);
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [selectedDoctorId, setSelectedDoctorId] = useState<number | null>(null);
 
   useEffect(() => {
     API.getAPI(`${base_url}patient/getdoctors`, token!).then((response) => {
-      setDoctors(response);
+      const doctors = response;
+      setDoctors(doctors);
+      setFilteredDoctors(doctors);
       console.log(response);
     });
+  }, []);
+
+  useEffect(() => {
+    API.getAPI(`${base_url}patient/getconsultation`, token!).then(
+      (response) => {
+        const consultation = response;
+        setConsultation(consultation);
+        console.log(response);
+      }
+    );
   }, []);
 
   const handleSpecialtyChange = (filterFn: (doctor: Doctor) => boolean) => {
@@ -80,7 +93,7 @@ const Consultation = () => {
       response: "hello",
     };
     try {
-      API.postAPI(`${base_url}advice/`, token!, body).then((response) => {
+      API.postAPI(`${base_url}response`, token!, body).then((response) => {
         console.log(response);
       });
     } catch (error) {
@@ -114,9 +127,9 @@ const Consultation = () => {
                       key={doctor.id}
                       doctor={{
                         id: doctor.id,
-                        fullName: doctor.fullName,
-                        avatar: "",
-                        price: doctor.price,
+                        displayName: doctor.displayName,
+                        imageUrl: doctor.imageUrl,
+                        price: 50,
                         specialty: doctor.specialty,
                       }}
                       onClick={() => handleDoctorCardClick(doctor.id)}
