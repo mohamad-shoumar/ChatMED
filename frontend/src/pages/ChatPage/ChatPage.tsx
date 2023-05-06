@@ -3,12 +3,14 @@ import Chat from "../../components/Chat/Chat";
 import SideBar from "../../components/Chat/SideBar";
 import styles from "../../styles/ChatPage/ChatPage.module.scss";
 import Navbar from "../../components/NavBar/NavBar";
+import SideNavBar from "../../components/SideNavBar/SideNavBar";
 
 const Chats = () => {
   return (
     <div>
+      <Navbar />
       <div className={styles.home}>
-        <Navbar />
+        <SideNavBar />
         <div className={styles.container}>
           <SideBar />
           <Chat />
