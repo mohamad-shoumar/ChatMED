@@ -154,10 +154,9 @@ const MedicalHistory = () => {
     } catch (error) {
       console.log("error");
       toast.current?.show({
-        severity: "warn",
-        summary: "Warn",
+        severity: "error",
+        summary: "Error",
         detail: `Error adding medical history.`,
-        sticky: true,
       });
     }
   };
@@ -165,6 +164,7 @@ const MedicalHistory = () => {
   return (
     <div>
       <NavBar />
+      <Toast ref={toast} />
       <div className={styles.medicalHistory}>
         <SideNavBar />
         <div className={styles.medicalHistoryContainer}>
