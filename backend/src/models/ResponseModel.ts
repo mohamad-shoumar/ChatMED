@@ -8,6 +8,10 @@ export interface IResponse extends mongoose.Document {
   treatmentPlan: string;
   status: string;
   date: Date;
+  consultations?: {
+    consultation: string;
+    date: Date;
+  }[];
 }
 const Schema = mongoose.Schema;
 
@@ -44,6 +48,19 @@ const ResponseSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  consultations: [
+    {
+      consultation: {
+        type: Schema.Types.ObjectId,
+        ref: "Consultation",
+        required: true,
+      },
+      date: {
+        type: Date,
+        required: true,
+      },
+    },
+  ],
 });
 
 const ResponseModel = mongoose.model<IResponse>(
