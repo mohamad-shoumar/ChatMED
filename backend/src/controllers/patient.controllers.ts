@@ -7,6 +7,8 @@ import jwt from "jsonwebtoken";
 import moment from "moment";
 import multer from "multer";
 import path from "path";
+import ResponseModel from "../models/ResponseModel";
+import { date } from "joi";
 
 // Get all doctors
 export const getDoctors = async (req: Request, response: Response) => {
@@ -102,7 +104,7 @@ export const getProfile = async (req: Request, response: Response) => {
 };
 // chooseDoctor
 export const chooseDoctor = async (req: Request, response: Response) => {
-  const id = req.body.user.id;
+  const id = req.body.user;
   const doctorEmail = req.body.email;
   console.log(id);
   console.log(doctorEmail);
@@ -139,4 +141,35 @@ export const chooseDoctor = async (req: Request, response: Response) => {
   }
 };
 
-// GEt response, if response found change the pending status to either chat or success
+// post consultation
+export const postConsultation = async (req: Request, res: Response) => {
+  try {
+    const userId = req.body.user.id;
+    const { doctorId, responseId } = req.body;
+
+    const retreiveduser = await User.findById(userId);
+    if (!retreiveduser) {
+      return res.status(404).json({ error: "Patient not found" });
+    }
+    const doctor = await Doctor.findById(doctorId);
+    if (!doctor) {
+      return res.status(404).json({ error: "Doctor not found" });
+    }
+    const response = await ResponseModel.findById(responseId);
+    if (!response) {
+      return res.status(404).json({ error: "Response not found" });
+    }
+
+    const consultation = {
+      doctor: doctorId,
+      response: responseId,
+      date: new Date(),
+    };
+    retreiveduser.consultations?.push(consultation);
+    await retreiveduser.save();
+    res.status(200).json({ message: "Consultation saved successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
