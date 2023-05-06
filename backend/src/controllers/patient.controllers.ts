@@ -173,3 +173,23 @@ export const postConsultation = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const getConsultation = async (req: Request, res: Response) => {
+  try {
+    const userId = req.body.user.id;
+
+    const consultations = await User.findById(userId).populate({
+      path: "consultations.response",
+      select: "diagnosis treatmentPlan",
+    });
+
+    if (!consultations) {
+      return res.status(404).json({ error: "Patient not found" });
+    }
+
+    res.status(200).json({ consultations });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
