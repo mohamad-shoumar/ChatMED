@@ -4,7 +4,7 @@ export interface IPatient extends mongoose.Document {
   user: string;
   consultations: {
     doctor: string;
-    date: Date;
+    date?: Date;
   }[];
 }
 
@@ -18,12 +18,17 @@ const PatientSchema = new Schema({
     {
       doctor: {
         type: Schema.Types.ObjectId,
-        ref: "Response",
+        ref: "Doctor",
         required: true,
+      },
+      response: {
+        type: Schema.Types.ObjectId,
+        ref: "Response",
       },
       date: {
         type: Date,
         required: true,
+        default: Date.now,
       },
     },
   ],
