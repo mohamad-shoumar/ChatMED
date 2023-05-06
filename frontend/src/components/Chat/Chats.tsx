@@ -62,11 +62,15 @@ const Chats = (): JSX.Element => {
             key={chat[0]}
             onClick={() => handleSelect(chat[1].userInfo)}
           >
-            <img src={chat[1].userInfo.photoURL} alt="" />
             <div className={styles.userChatInfo}>
+              <img
+                className={styles.cardimage}
+                src={chat[1].userInfo.photoURL}
+                alt=""
+              />
               <span>{chat[1].userInfo.displayName}</span>
-              <p>{chat[1].lastMessage?.text}</p>
             </div>
+            <p>{chat[1].lastMessage?.text}</p>
           </div>
         ))}
     </div>
