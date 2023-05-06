@@ -37,9 +37,12 @@
 }
 
 .botLeft {
+  background-color: white;
   overflow-y: scroll;
-
-  width: 30%;
+  overflow-x: hidden;
+  border-radius: 20px;
+  padding: 0 10px;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,12 +51,15 @@
 .docCards {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid $subText;
   padding: 5px;
   width: 100%;
   gap: 0.7rem;
 }
 .botRight {
+  background-color: white;
   padding: 10 5px;
+  border-radius: 20px;
   width: 80%;
   display: flex;
   flex-direction: column;
