@@ -5,7 +5,10 @@ body {
   background: $background;
   font-family: "Montserrat", sans-serif;
 }
-
+.advice {
+  font-size: 14px;
+  color: $text;
+}
 .main {
   margin-top: 4.8%;
   padding-left: 1vw;
@@ -60,6 +63,7 @@ body {
   height: 140.64px;
   margin-right: 21.58px;
   border-radius: 50%;
+  object-fit: fill;
 }
 .divBack {
   background-color: $background;
