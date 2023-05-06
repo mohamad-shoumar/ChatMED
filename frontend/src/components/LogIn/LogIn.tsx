@@ -34,24 +34,22 @@ const Login = () => {
       const api_data = { email: email, password: password };
       const response = await API.postAPI(`${base_url}auth/login`, api_data);
       const token = response.token;
+      console.log(token);
       console.log(response);
       localStorage.setItem("token", token);
       let user: JwtPayload = jwt_decode(token);
       console.log(user);
 
       if (user.role === "patient") {
-        nav("/patient/dashboard");
+        nav("/dashboard");
       } else {
-        nav("/doctor/dashboard");
+        nav("/docdashboard");
       }
-      setEmail("");
-      setPassword("");
     } catch {
-      console.log("error");
       toast.current?.show({
         severity: "warn",
         summary: "Warn",
-        detail: `Error signing up.`,
+        detail: `Wrong email or password.`,
         sticky: true,
       });
     }
@@ -61,9 +59,9 @@ const Login = () => {
     <div
       className={`${styles["form-container"]} ${styles["sign-in-container"]}`}
     >
+      <Toast ref={toast} />
       <form>
         <h1 className={styles.title2}>Sign In</h1>
-        <span className={styles.span}>Already have an account? </span>
         <input
           type="email"
           placeholder="Email"
