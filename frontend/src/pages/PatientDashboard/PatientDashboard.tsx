@@ -14,18 +14,42 @@ import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 
+interface Patient {
+  id: number;
+  displayName: string;
+  email: string;
+  imageUrl: string;
+}
+
 const PatientDashboard = () => {
   const [advices, setAdvices] = useState("");
+  const [patient, setPatient] = useState<Patient | undefined>(undefined);
 
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    API.getAPI(`${base_url}advice/`)
-      .then((res: any) => {
-        console.log(res.data);
-        setAdvices(res.data);
-      })
-      .catch((err: Error) => {
-        console.log(err);
-      });
+    const fetchAdviceData = async () => {
+      try {
+        const response = await API.getAPI(`${base_url}advice`, token!);
+        console.log(response.data);
+        const advicesString = JSON.stringify(response.data.advice);
+        setAdvices(advicesString);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const fetchPatientData = async () => {
+      try {
+        const response = await API.getAPI(`${base_url}patient/profile`, token!);
+        console.log(response);
+        setPatient(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAdviceData();
+    fetchPatientData();
   }, []);
 
   return (
@@ -37,22 +61,19 @@ const PatientDashboard = () => {
         <div className={styles.mainContainer}>
           <div className={styles.headerContainer}>
             <div className={styles.profile}>
-              <img
-                alt=""
-                className={styles.img}
-                src="https://static.overlay-tech.com/assets/b1b8ea57-988b-464a-81f3-b90aa14bf0ce.png"
-              />
+              <img alt="" className={styles.img} src={patient?.imageUrl} />
               <div className={styles.info}>
-                <p className={styles.name}>Alexander Dean</p>
+                <p className={styles.name}>{patient?.displayName}</p>
                 <div className={styles.email}>
                   <p className={styles.deanCom}>
-                    <strong className={styles.deanComEmphasis0}>Dean</strong>
-                    &#64;gmail.com
+                    {patient?.email}
+                    {/* <strong className={styles.deanComEmphasis0}>Dean</strong>
+                    &#64;gmail.com */}
                   </p>
-                  <div className={styles.dateicon}>
+                  {/* <div className={styles.dateicon}>
                     <DateRange className={styles.dateRange} />
-                    <p className={styles.date}>25/05/1998</p>
-                  </div>
+                    <p className={styles.date}> </p>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -62,11 +83,7 @@ const PatientDashboard = () => {
                 title="Tip of the Day"
               >
                 <div className={styles.divBack}>
-                  Lorem ipsum dolor Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Odio modi illum assumenda aut quis, diandae!
-                  sit amet consectetur adipisicing Lorem ipsum, dolor si Aliquid
-                  doloribudffodfjiojhidfhnis nihil voluptatem dolore id aliquam
-                  ipsum omnis beatae repudiandae quis!
+                  <p className={styles.advice}>{advices}</p>
                 </div>
               </Card>
             </div>
