@@ -119,3 +119,37 @@
       flex: 0.75;
       background-color: $primary-color;
       position: relative;
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        background-color: $sec;
+        height: 50px;
+
+        padding: 10px;
+        justify-content: space-between;
+        color: $background;
+
+        .logo {
+          font-weight: bold;
+          @include tablet {
+            display: none;
+          }
+        }
+        .user > img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .user {
+          display: flex;
+          gap: 10px;
+          padding: 0 0.7rem;
+          img {
+            background-color: $background;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
