@@ -78,10 +78,7 @@ const PatientDashboard = () => {
               </div>
             </div>
             <div className={styles.adviceMain}>
-              <Card
-                style={{ minHeight: "100%", flexGrow: "1" }}
-                title="Tip of the Day"
-              >
+              <Card style={{ minHeight: "95%" }} title="Tip of the Day">
                 <div className={styles.divBack}>
                   <p className={styles.advice}>{advices}</p>
                 </div>

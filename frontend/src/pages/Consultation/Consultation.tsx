@@ -16,8 +16,10 @@ import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import ConsultationCard from "../../components/ConsultationCard/ConsultationCard";
 import Sort from "../../components/Sort/Sort";
+import { InputTextarea } from "primereact/inputtextarea";
+
 interface Doctor {
-  id: number;
+  _id: number;
   displayName: string;
   price?: number;
   specialty?: string;
@@ -45,14 +47,23 @@ const Consultation = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [selectedDoctorId, setSelectedDoctorId] = useState<number | null>(null);
+  const [symptoms, setSymptoms] = useState("");
 
   useEffect(() => {
-    API.getAPI(`${base_url}patient/getdoctors`, token!).then((response) => {
-      const doctors = response;
-      setDoctors(doctors);
-      setFilteredDoctors(doctors);
-      console.log(response);
-    });
+    const fetchDoctors = async () => {
+      try {
+        const response = await API.getAPI(
+          `${base_url}patient/getdoctors`,
+          token!
+        );
+        setDoctors(response);
+        setFilteredDoctors(response);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDoctors();
   }, []);
 
   useEffect(() => {
@@ -73,8 +84,9 @@ const Consultation = () => {
     setSelectedDoctorId(doctorId);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async (symptoms: string) => {
+    console.log(symptoms);
+
     if (!selectedDoctorId) {
       toast.current?.show({
         severity: "error",
@@ -87,15 +99,27 @@ const Consultation = () => {
       severity: "info",
       summary: "info",
       detail: `Pending, waiting for doctor's response`,
+      sticky: true,
     });
+
+    hideDialog();
     const body: any = {
-      doctorId: selectedDoctorId,
-      response: "hello",
+      doctor: selectedDoctorId,
+      symptoms: symptoms,
+    };
+    const body2: any = {
+      doctor: selectedDoctorId,
     };
     try {
-      API.postAPI(`${base_url}response`, token!, body).then((response) => {
-        console.log(response);
-      });
+      console.log(token);
+      const response1 = await API.postAPI(`${base_url}response`, body, token!);
+      console.log(response1);
+      const response2 = await API.postAPI(
+        `${base_url}patient/choosedoctor`,
+        body2,
+        token!
+      );
+      console.log(response2);
     } catch (error) {
       console.log(error);
     }
@@ -124,16 +148,16 @@ const Consultation = () => {
                 <div className={styles.docCards}>
                   {filteredDoctors.map((doctor) => (
                     <DoctorCard
-                      key={doctor.id}
+                      key={doctor._id}
                       doctor={{
-                        id: doctor.id,
+                        _id: doctor._id,
                         displayName: doctor.displayName,
                         imageUrl: doctor.imageUrl,
                         price: 50,
                         specialty: doctor.specialty,
                       }}
-                      onClick={() => handleDoctorCardClick(doctor.id)}
-                      isSelected={selectedDoctorId === doctor.id}
+                      onClick={handleDoctorCardClick}
+                      isSelected={selectedDoctorId === doctor._id}
                     />
                   ))}
                 </div>
@@ -143,19 +167,40 @@ const Consultation = () => {
                   <h5> Past Consultations</h5>
                   <Button2 onClick={showDialog} label="New Consultation" />
                   <Dialog
-                    header="Enter Symptoms"
+                    header="MediDoc Here!"
                     visible={visible}
                     onHide={hideDialog}
+                    style={{ width: "50%", height: "50%" }}
                     footer={
                       <div>
-                        <Button2 label="Submit" onClick={handleSubmit} />
+                        <Button2
+                          label="Submit"
+                          onClick={() => handleSubmit(symptoms)}
+                        />
+                        <Button
+                          label="Cancel"
+                          onClick={hideDialog}
+                          style={{ color: "black" }}
+                        />
                       </div>
                     }
                   >
                     <div className="p-fluid">
                       <div className="p-field">
-                        <label htmlFor="symptoms">Symptoms</label>
-                        <input id="symptoms" type="text" />
+                        <label
+                          htmlFor="symptoms"
+                          style={{ fontWeight: "bold", fontSize: "1.2rem" }}
+                        >
+                          Enter Your Symptoms
+                        </label>
+                        <input
+                          id="symptoms"
+                          type="text"
+                          style={{ borderRadius: "5px" }}
+                          value={symptoms}
+                          onChange={(e) => setSymptoms(e.target.value)}
+                          className="p-input p-input-lg"
+                        />
                       </div>
                     </div>
                   </Dialog>
