@@ -104,32 +104,24 @@ export const getProfile = async (req: Request, response: Response) => {
 };
 // chooseDoctor
 export const chooseDoctor = async (req: Request, response: Response) => {
-  const id = req.body.user;
-  const doctorEmail = req.body.email;
-  console.log(id);
-  console.log(doctorEmail);
+  const id = req.body.user.id;
+  const doctorid = req.body.doctor;
+  console.log("patientid", id);
+  console.log("docid", doctorid);
   try {
-    const patient = await Patient.findOne({ user: id });
-    const doctor = await User.findOne({ email: doctorEmail });
-    let doctorId = doctor?._id;
-    console.log(doctorId);
+    const patient = await User.findOne({ user: id });
+    const doctor = await User.findOne({ id: doctorid });
 
-    if (!patient) {
-      response.status(404).json({ message: "Patient not found" });
-      return;
-    }
-    if (!doctor) {
-      response.status(404).json({ message: "Doctor not found" });
-      return;
-    }
+    console.log(doctorid);
+
     let docList: any = {};
-    docList = await Doctor.findOne({ user: doctorId }, { patients: 1 });
+    docList = await Doctor.findOne({ user: doctorid }, { patients: 1 });
     if (!docList) {
-      docList = new Doctor({ user: doctorId, patients: [id] });
+      docList = new Doctor({ user: doctorid, patients: [id] });
       await docList.save();
     } else {
       docList = await Doctor.findOneAndUpdate(
-        { user: doctorId },
+        { user: doctorid },
         { $push: { patients: id } },
         { new: true }
       );
@@ -144,7 +136,7 @@ export const chooseDoctor = async (req: Request, response: Response) => {
 // post consultation
 export const postConsultation = async (req: Request, res: Response) => {
   try {
-    const userId = req.body.user.id;
+    const userId = req.body.user;
     const { doctorId, responseId } = req.body;
 
     const retreiveduser = await User.findById(userId);
