@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@500&display=swap");
+@import " ../../../../stylesheet.scss";
+
+.main {
+  padding: 0 3.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 1rem;
+}
