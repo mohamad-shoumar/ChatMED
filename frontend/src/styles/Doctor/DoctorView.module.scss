@@ -68,3 +68,34 @@
     border-radius: 50%;
   }
 }
+// weight and heigh card css
+.bodycomposition {
+  width: 20%;
+  height: 13rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+// lower section
+.lowerection {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.infocontainer {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1rem;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+  text-align: center;
+}
