@@ -10,11 +10,11 @@ interface Category {
   icon: string;
 }
 interface Doctor {
-  id: number;
-  fullName: string;
-  price: number;
-  specialty: string;
-  avatar: string;
+  _id: number;
+  displayName: string;
+  price?: number;
+  specialty?: string;
+  imageUrl: string;
 }
 
 export default function SortDoctor({ onChange }: SortBySpecialtyProps) {
@@ -51,13 +51,16 @@ export default function SortDoctor({ onChange }: SortBySpecialtyProps) {
   return (
     <div className="card flex justify-content-center">
       <Dropdown
-        value={setSelectedCategory}
+        value={selectedCategory}
         onChange={(e: DropdownChangeEvent) => handleSpecialtyChange(e.value)}
         options={category}
-        style={{ transform: "scale(0.7)" }}
+        style={{
+          width: "17rem",
+
+          borderRadius: "20px",
+        }}
         optionLabel="name"
         placeholder="Select a specialty"
-        className="w-full md:w-14rem"
       />
     </div>
   );
