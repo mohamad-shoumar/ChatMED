@@ -47,8 +47,8 @@ const Login = () => {
       }
     } catch {
       toast.current?.show({
-        severity: "warn",
-        summary: "Warn",
+        severity: "error",
+        summary: "Error Occured!",
         detail: `Wrong email or password.`,
         sticky: true,
       });
