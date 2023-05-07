@@ -37,3 +37,53 @@ const DoctorView = () => {
           <div style={{ fontWeight: "Bold" }}>Back to Dashboard</div>
           <Search />
         </div>
+        <div className={styles.body}>
+          <div className={styles.bodyheader}>
+            <div className={styles.title}>Patient Profile</div>
+          </div>
+          <div className={styles.bodycontent}>
+            <div className={styles.uppersection}>
+              <div className={styles.bodyuser}>
+                <div className={styles.bodyuserdetails}>
+                  <img
+                    src="https://www.w3schools.com/howto/img_avatar.png"
+                    alt="Avatar"
+                  />
+                  <h5>Alexander Dean</h5>
+                  <p>ID: 9172876387</p>
+                  <div>Age:26</div>
+                </div>
+              </div>
+              <div className={styles.bodycomposition}>
+                <div className={styles.bodyWeight}>
+                  <Height image={height} title="Weight" value={75} unit="kg" />
+                </div>
+                <div className={styles.bodyHeight}>
+                  <Height image={weight} title="Height" value={180} unit="cm" />
+                </div>
+              </div>
+            </div>
+            <div className={styles.lowerection}>
+              <div className={styles.infocontainer}>
+                <InforCard
+                  Gender="male"
+                  Allergies="Nasal"
+                  Surgeries={"Openheart(2013)"}
+                  Diseases={"Daibetes(2005)"}
+                />
+              </div>
+              <div className={styles.info}>
+                <div className={styles.infoheader}>
+                  <div className={styles.infoheaderleft}>Name</div>
+                  <div className={styles.grpahs}>Graph1 Graph2</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default DoctorView;
