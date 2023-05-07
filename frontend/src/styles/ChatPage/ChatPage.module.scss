@@ -153,3 +153,80 @@
             border-radius: 50%;
             object-fit: cover;
           }
+
+          button {
+            background-color: $primary-color;
+            color: $background;
+            font-size: 10px;
+            border: none;
+            cursor: pointer;
+            @include tablet {
+              position: absolute;
+              bottom: 10px;
+            }
+          }
+        }
+      }
+      .search {
+        border-radius: 20px;
+        margin: 15px 5px;
+        width: 90%;
+        border: 1px solid $background;
+
+        .searchForm {
+          padding: 10px;
+
+          input {
+            background-color: transparent;
+            border: none;
+            color: white;
+            outline: none;
+
+            &::placeholder {
+              color: lightgray;
+            }
+          }
+        }
+      }
+
+      .userChat {
+        padding: 10px;
+
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px;
+        border-bottom: $background 1px solid;
+
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $sec;
+        }
+
+        p {
+          font-size: 14px;
+          color: lightgray;
+        }
+      }
+
+      .userChatInfo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        span {
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+    }
+
