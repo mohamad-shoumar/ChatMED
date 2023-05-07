@@ -192,7 +192,7 @@ const Register = () => {
         >
           Sign Up
         </button>
-        <Toast ref={toast} position="top-left" />
+        <Toast ref={toast} />
         {loading && "Uploading and compressing the image please wait..."}
       </form>
     </div>
