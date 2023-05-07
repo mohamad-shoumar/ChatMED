@@ -55,7 +55,7 @@ const Chats = (): JSX.Element => {
   return (
     <div className={styles.chats}>
       {Object.entries(chats)
-        ?.sort((a, b) => b[1].date.seconds - a[1].date.seconds)
+        ?.sort((a, b) => b[1].date?.seconds - a[1].date?.seconds)
         .map((chat) => (
           <div
             className={styles.userChat}
