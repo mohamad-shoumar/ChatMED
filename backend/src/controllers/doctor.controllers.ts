@@ -46,19 +46,19 @@ export const editProfile = async (req: Request, res: Response) => {
 // get profile
 export const getProfile = async (req: Request, response: Response) => {
   try {
-    const doctorInfo = req.body.user.id;
-    const userInfo = req.body.user.id;
-    const doctor = await Doctor.findOne({ user: doctorInfo });
-    const user = await User.findOne({ _id: userInfo });
-    if (!doctor) {
-      response.status(404).json({ message: "Doctor not found" });
-      return;
-    }
+    const userInfo = req.body.user;
+    console.log(userInfo);
+
+    // const doctor = await Doctor.findOne({ user: doctorInfo });
+    const user = await User.findOne({ email: userInfo.email });
+
+    console.log(user);
+
     if (!user) {
       response.status(404).json({ message: "User not found" });
       return;
     }
-    response.json({ doctor, user });
+    response.json(user);
   } catch (error) {
     response.status(500).json({ message: "Server error" });
   }
@@ -69,6 +69,7 @@ export const getPatients = async (req: Request, response: Response) => {
     const doctorId = req.body.user.id;
     const doctor = await Doctor.findOne({ user: doctorId });
     console.log(doctor);
+    console.log(doctorId);
 
     if (!doctor) {
       response.status(404).json({ message: "Doctor not found" });
@@ -97,7 +98,15 @@ export const getMedicalHistory = async (req: Request, response: Response) => {
   }
 };
 // get responses(serach response collection and get the list of responses with dr id)
+export const getConsultations = async (req: Request, response: Response) => {
+  const doctorId = req.body.user.id;
 
+  const responses = await ResponseModel.find({
+    doctor: doctorId,
+  });
+
+  return response.json({ responses });
+};
 // edit the response
 export const editResponse = async (req: Request, res: Response) => {
   const responseId = req.params.id;
