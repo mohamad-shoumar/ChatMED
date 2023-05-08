@@ -6,6 +6,10 @@ import docpic from "../../../assets/DocDash/docpic.png";
 import FloatLabelDemo from "../../../components/FloatInput/FloatInput";
 import { Button } from "primereact/button";
 import UploadFile from "../../../components/UploadFile/UploadFile";
+import { API } from "../../../API/API";
+import { base_url } from "../../../API/API";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
 
 const DoctorProfile = () => {
   const [name, setName] = useState("");
@@ -14,6 +18,39 @@ const DoctorProfile = () => {
   const [price, setPrice] = useState("");
   const [specialization, setSpecialization] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
+  const [doctor, setDoctor] = useState<any>(undefined);
+  const token = localStorage.getItem("token");
+  const { currentUser } = useContext(AuthContext);
+
+  const handleClick = async () => {
+    console.log("clicked");
+
+    try {
+      const body = {
+        displayName: name,
+        workingHours: workingHours,
+        price: price,
+        specialization: specialization,
+        profilePictureUrl: profilePicture,
+      };
+      const response = await API.postAPI(
+        `${base_url}doctor/editprofile`,
+        body,
+        token!
+      );
+      console.log(response);
+      setDoctor(response);
+
+      if (currentUser) {
+        await currentUser.updateProfile({
+          displayName: name,
+          photoURL: profilePicture,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -22,7 +59,11 @@ const DoctorProfile = () => {
         <div className={styles.main}>
           <div className={styles.left}>
             <div className={styles.profilePic}>
-              <UploadFile className="my-class" disableChange={false} />
+              <UploadFile
+                className="my-class"
+                disableChange={false}
+                imageUrl={profilePicture}
+              />
             </div>
             <div className={styles.name}>Dr. John Doe</div>
             <div className={styles.email}>Dr.JohnDoe22@gmail.com</div>
@@ -31,7 +72,12 @@ const DoctorProfile = () => {
             <div className={styles.header}>
               <h3>Edit Profile</h3>
               <div className={styles.headerButtons}>
-                <Button label="Edit" size="small" style={{ height: "2rem" }} />
+                <Button
+                  label="Edit"
+                  size="small"
+                  style={{ height: "2rem" }}
+                  onClick={handleClick}
+                />
               </div>
             </div>
 
