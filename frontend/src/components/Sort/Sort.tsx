@@ -10,11 +10,12 @@ interface Category {
   icon: string;
 }
 interface Doctor {
-  _id: number;
-  displayName: string;
-  price?: number;
-  specialty?: string;
-  imageUrl: string;
+  user: any;
+  specialization: any | undefined;
+  _id: any;
+  displayName?: any | null;
+  price?: any;
+  imageUrl: any;
 }
 
 export default function SortDoctor({ onChange }: SortBySpecialtyProps) {
@@ -30,7 +31,7 @@ export default function SortDoctor({ onChange }: SortBySpecialtyProps) {
   const handleSpecialtyChange = (selectedCategory: Category | null) => {
     if (selectedCategory) {
       const filterFn = (doctor: Doctor) =>
-        doctor.specialty === selectedCategory.name;
+        doctor.specialization === selectedCategory.name;
       onChange(filterFn);
     } else {
       onChange(() => true);
