@@ -15,6 +15,9 @@ import { Height } from "../../../components/Height/Height";
 import height from "../../../assets/height.png";
 import weight from "../../../assets/weight.png";
 import InforCard from "../../../components/InfoCard/InforCard";
+import Radar from "../../../components/Radar/Radar";
+import BasicDemo from "../../../components/BloodPressureChart/BloodPressureChart";
+import ComboDemo from "../../../components/ComboGraph/ComboGraph";
 const DoctorView = () => {
   const navigate = useNavigate();
 
@@ -35,7 +38,7 @@ const DoctorView = () => {
             className="p-button-text"
           />
           <div style={{ fontWeight: "Bold" }}>Back to Dashboard</div>
-          <Search />
+          {/* <Search /> */}
         </div>
         <div className={styles.body}>
           <div className={styles.bodyheader}>
@@ -53,6 +56,9 @@ const DoctorView = () => {
                   <p>ID: 9172876387</p>
                   <div>Age:26</div>
                 </div>
+              </div>
+              <div>
+                <Radar />
               </div>
               <div className={styles.bodycomposition}>
                 <div className={styles.bodyWeight}>
@@ -75,7 +81,10 @@ const DoctorView = () => {
               <div className={styles.info}>
                 <div className={styles.infoheader}>
                   <div className={styles.infoheaderleft}>Name</div>
-                  <div className={styles.grpahs}>Graph1 Graph2</div>
+                  <div className={styles.grpahs}>
+                    {/* <BasicDemo /> */}
+                    <ComboDemo />
+                  </div>
                 </div>
               </div>
             </div>
