@@ -90,5 +90,35 @@ const LandingPage = () => {
       <div>
         <h2 className={styles.headerTitle}>WHY CHATMED</h2>
       </div>
+      <div className={styles.main_box}>
+        <div className={styles.box_inmain}>
+          <p className={styles.para_inbox}>
+            Get affordable and fast <br />
+            responses using our <br />
+            network of doctors and <br />
+            Medibot, our chatbot <br />
+            powered by chatgpt
+          </p>
+        </div>
+        <div className={styles.box_inmain}>
+          <p className={styles.para_inbox}>
+            Get health advices <br />
+            tailored to your medical <br />
+            history
+          </p>
+        </div>
+        <div className={styles.box_inmain}>
+          <p className={styles.para_inbox}>
+            Track Your Health and <br />
+            Receive daily motivation <br />
+            or warning through push <br />
+            notifications based on <br />
+            your vitals
+          </p>
+        </div>
+      </div>
+      <div className={styles.chat_MED}>
+        <img src={doc} alt="" />
+
 
 export default LandingPage;
