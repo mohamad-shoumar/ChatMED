@@ -9,10 +9,10 @@ interface DoctorCardProps {
   onClick: (_id: number) => void;
   doctor: {
     _id: number;
-    displayName: string;
-    imageUrl: string;
-    price?: number;
-    specialty?: string;
+    displayName?: any | null;
+    imageUrl: any;
+    price?: any;
+    specialty?: any;
   };
 }
 

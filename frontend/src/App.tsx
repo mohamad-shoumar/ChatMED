@@ -17,6 +17,7 @@ import "primeflex/primeflex.css";
 import DoctorDashboard from "./pages/DoctorPages/DoctorDashboard/DoctorDashboard";
 import DoctorProfile from "./pages/DoctorPages/DoctorProfile/DoctorProfile";
 import DoctorView from "./pages/DoctorPages/DoctorView/DoctorView";
+import LandingPage from "./pages/LandingPage/LandingPage";
 import { JwtPayload } from "jsonwebtoken";
 type ProtectedRouteProps = {
   children: ReactNode;
@@ -24,21 +25,18 @@ type ProtectedRouteProps = {
 };
 
 function App() {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") ?? "";
   let user: JwtPayload | null = null;
 
   if (token) {
     user = jwt_decode(token) as JwtPayload;
   }
-  // if (!token) {
-  //   return <Navigate to="/authentication" />;
-  // }
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="authentication" element={<Authentication />} />
-
+        <Route path="/" element={<LandingPage />} />
         {user && user.role === "patient" && (
           <>
             <Route path="chat" element={<Chats />} />

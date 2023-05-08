@@ -1,5 +1,6 @@
 import styles from "../../styles/ChatPage/ChatPage.module.scss";
 import React, { useContext, useState } from "react";
+import search from "../../assets/Chats/search.png";
 import {
   collection,
   query,
