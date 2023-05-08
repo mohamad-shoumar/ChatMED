@@ -11,9 +11,25 @@ import ResponseModel from "../models/ResponseModel";
 import { date } from "joi";
 
 // Get all doctors
+// export const getDoctors = async (req: Request, response: Response) => {
+//   try {
+//     const doctors = await User.find({ role: "doctor" });
+//     response.json(doctors);
+//   } catch (error) {
+//     response.status(500).json({ message: "Server error" });
+//   }
+// };
+
 export const getDoctors = async (req: Request, response: Response) => {
   try {
-    const doctors = await User.find({ role: "doctor" });
+    const doctors = await Doctor.find({})
+      .populate({
+        path: "user",
+        select: "displayName imageUrl",
+      })
+      .select("specialization price")
+      .exec();
+
     response.json(doctors);
   } catch (error) {
     response.status(500).json({ message: "Server error" });
