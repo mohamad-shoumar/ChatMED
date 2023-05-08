@@ -92,11 +92,10 @@
 
 .home {
   background-color: $background;
-  height: 100vh;
+  height: 90vh;
   margin-top: 4.8%;
   width: 100vw;
   display: flex;
-
   justify-content: space-between;
 
   .container {
@@ -108,9 +107,9 @@
     margin-right: 1rem;
     border-radius: 10px;
     width: 78vw;
-    max-height: 80%;
+    max-height: 80vh;
     display: flex;
-    overflow: hidden;
+    overflow-y: hidden;
     // @include tablet {
     //   width: 90%;
     // }
@@ -205,6 +204,12 @@
           background-color: $sec;
         }
 
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
         p {
           font-size: 14px;
           color: lightgray;
