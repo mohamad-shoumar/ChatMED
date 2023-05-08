@@ -73,3 +73,20 @@ const generatePrompt = (symptoms: string, retrievedMedicalhistory: any) => {
     },
 })`;
 };
+
+// get response
+export const getResponse = async (req: Request, res: Response) => {
+  try {
+    const doctorID = req.body.user.id;
+    console.log(doctorID);
+
+    const responses = await ResponseModel.find({ doctor: doctorID });
+
+    if (!responses) {
+      return res.status(404).json({ error: "Response not found" });
+    }
+    res.status(200).json({ message: "success", data: responses });
+  } catch (error: any) {
+    console.log(error);
+  }
+};
