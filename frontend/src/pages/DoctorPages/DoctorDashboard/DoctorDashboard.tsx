@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import NavBar from "../../../components/NavBar/NavBar";
 import SideNavBar from "../../../components/SideNavBar/SideNavBar";
 import styles from "../../../styles/Doctor/Dashboard.module.scss";
@@ -7,8 +7,10 @@ import { Card } from "@mui/material";
 import { Calendar, CalendarChangeEvent } from "primereact/calendar";
 import docpic from "../../../assets/DocDash/docpic.png";
 import { text } from "stream/consumers";
-import RowExpansionDemo from "../../../components/PatientsTable/PatientsTable";
+import PatientsTable from "../../../components/PatientsTable/PatientsTable";
 import { API } from "../../../API/API";
+import { useNavigate } from "react-router-dom";
+
 import { base_url } from "../../../API/API";
 
 interface Doctor {
@@ -17,14 +19,49 @@ interface Doctor {
   email: string;
   imageUrl: string;
 }
-
+interface Product {
+  [x: string]: ReactNode;
+  id: string;
+  displayName: string;
+  description?: string;
+  imageUrl?: any;
+  status?: any;
+  role: any | undefined;
+}
+interface Consultation {
+  id: string;
+  patient: string;
+  doctor: string;
+  date: string;
+  diagnosis: string;
+  treatmentPlan: string;
+  symptoms: string;
+  status: string;
+}
 const DoctorDashboard = () => {
+  const navigate = useNavigate();
+
   const [date, setDate] = useState<string | Date | Date[] | null>(null);
   const [doctor, setDoctor] = useState<Doctor | undefined>(undefined);
+  const [products, setProdcuts] = useState<Product[] | undefined>(undefined);
+  const [consultations, setConsultations] = useState<
+    Consultation[] | undefined
+  >([]);
 
+  const [chatResponse, setSelectedProduct] = useState<Product | null>(null);
   const token = localStorage.getItem("token");
   useEffect(() => {
-    const fetchAdviceData = async () => {
+    const fetchResponses = async () => {
+      try {
+        const responseChat = await API.getAPI(`${base_url}response/`, token!);
+        console.log("Response responseChat", responseChat);
+
+        setConsultations(responseChat.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const fetchProfileeData = async () => {
       try {
         const response = await API.getAPI(
           `${base_url}doctor/getprofile`,
@@ -37,19 +74,24 @@ const DoctorDashboard = () => {
       }
     };
 
-    // const fetchPatientData = async () => {
-    //   try {
-    //     const response = await API.getAPI(`${base_url}patient/profile`, token!);
-    //     console.log(response);
-    //     setPatient(response);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
+    const fetchPatientData = async () => {
+      try {
+        const response = await API.getAPI(
+          `${base_url}doctor/getpatients`,
+          token!
+        );
+        console.log(response);
+        setProdcuts(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    fetchAdviceData();
-    // fetchPatientData();
+    fetchResponses();
+    fetchProfileeData();
+    fetchPatientData();
   }, []);
+  console.log("consultations", consultations);
 
   return (
     <div>
@@ -71,23 +113,8 @@ const DoctorDashboard = () => {
             {/* </div> */}
           </div>
         </div>
-        {/* <div className={styles.topRight}>
-            <Calendar
-              value={date}
-              onChange={(e: CalendarChangeEvent) => setDate(e.value ?? null)}
-              inline
-              showWeek
-              style={{
-                transform: "scale(1)",
-                height: "100%",
-                border: " 1px solid black",
-              }}
-            />
-          </div> */}
-        {/* </div> */}
-
         <div className={styles.bottom}>
-          <RowExpansionDemo />
+          <PatientsTable consultations={consultations} patients={products} />
         </div>
       </div>
     </div>
