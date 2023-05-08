@@ -12,8 +12,14 @@ import ResponseModel from "../models/ResponseModel";
 export const editProfile = async (req: Request, res: Response) => {
   try {
     const userId = req.body.user.id;
-    const { displayName, price, workingHours, email, profilePictureUrl } =
-      req.body;
+    const {
+      displayName,
+      price,
+      specialization,
+      workingHours,
+      email,
+      profilePictureUrl,
+    } = req.body;
     console.log(req.body);
     console.log(userId);
     console.log(workingHours);
@@ -25,6 +31,7 @@ export const editProfile = async (req: Request, res: Response) => {
     const typedDoctor = doctor as IDoctor;
     typedDoctor.price = price || typedDoctor.price;
     typedDoctor.workingHours = workingHours || typedDoctor.workingHours;
+    typedDoctor.specialization = specialization || typedDoctor.specialization;
     const updatedDoctor = await typedDoctor.save();
 
     const retrievedUser = await User.findOne({ _id: userId });
@@ -34,8 +41,7 @@ export const editProfile = async (req: Request, res: Response) => {
     }
     retrievedUser.displayName = displayName || retrievedUser.displayName;
     retrievedUser.email = email || retrievedUser.email;
-    // retrievedUser.profilePictureUrl =
-    //   profilePictureUrl || retrievedUser.profilePictureUrl;
+    retrievedUser.imageUrl = profilePictureUrl || retrievedUser.imageUrl;
     const updatedUser = await retrievedUser.save();
     res.json({ updatedDoctor, updatedUser });
   } catch (error) {
