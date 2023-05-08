@@ -10,6 +10,8 @@ import sun from "../../assets/sidebar/sun.png";
 import Icon from "../../assets/sidebar/Icon.png";
 import doc from "../../assets/sidebar/doc.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../FireBaseChat";
 
@@ -18,6 +20,14 @@ const SideNavBar = () => {
   const [active, setActive] = React.useState(-1);
   const handleClick = (index: number) => {
     setActive(index);
+  };
+  const handleLogout = () => {
+    // localStorage.clear();
+    // const firebaseUser = firebase.auth().currentUser;
+    // if (firebaseUser) {
+    //   firebase.auth().signOut();
+    // }
+    navigate("/authentication");
   };
 
   return (
@@ -35,7 +45,7 @@ const SideNavBar = () => {
                 } ${styles.hover}`}
                 onClick={() => {
                   handleClick(0);
-                  navigate("/patient/dashboard");
+                  navigate("/dashboard");
                 }}
               >
                 <div className={styles.linkleft}>
@@ -51,7 +61,7 @@ const SideNavBar = () => {
                 } ${styles.hover}`}
                 onClick={() => {
                   handleClick(1);
-                  navigate("/patient/medicalhistory");
+                  navigate("/medicalhistory");
                 }}
               >
                 <div className={styles.linkleft}>
@@ -67,7 +77,7 @@ const SideNavBar = () => {
                 } ${styles.hover}`}
                 onClick={() => {
                   handleClick(2);
-                  navigate("/patient/vitals");
+                  navigate("/vitals");
                 }}
               >
                 <div className={styles.linkleft}>
@@ -82,7 +92,7 @@ const SideNavBar = () => {
                 } ${styles.hover}`}
                 onClick={() => {
                   handleClick(3);
-                  navigate("/patient/consultation");
+                  navigate("/consultation");
                 }}
               >
                 <div className={styles.linkleft}>
@@ -97,7 +107,7 @@ const SideNavBar = () => {
                 } ${styles.hover}`}
                 onClick={() => {
                   handleClick(4);
-                  navigate("/patient/chat");
+                  navigate("/chat");
                 }}
               >
                 <div className={styles.linkleft}>
@@ -108,11 +118,11 @@ const SideNavBar = () => {
               </div>
               <div
                 className={`${styles.link} ${styles.hover}`}
-                onClick={() => navigate("")}
+                onClick={() => navigate("/authentication")}
               >
                 <div className={styles.linkleft}>
                   <img src={logs} alt="logo" />
-                  <div className={styles.word} onClick={() => signOut(auth)}>
+                  <div className={styles.word} onClick={handleLogout}>
                     Log Out
                   </div>
                 </div>
