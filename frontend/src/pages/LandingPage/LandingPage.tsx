@@ -119,6 +119,41 @@ const LandingPage = () => {
       </div>
       <div className={styles.chat_MED}>
         <img src={doc} alt="" />
+        <div className={styles.text_chat_MED}>
+          <h1 className={styles.head_chatmed}>
+            Using Chat-MED is as easy as <br />
+            one,two,three
+          </h1>
+          <br />
+          <h4 className={styles.text_chatmed}>
+            1.Enter your medical history <br /> <br />
+            2.Select a doctor from our network and enter your symptoms into
+            MediBot
+            <br />
+            <br />
+            3.Receive a Response Validated by a Doctor
+          </h4>
+        </div>
+      </div>
+      <div className={styles.chat_MED2}>
+        <div className={styles.text_chat_MED2}>
+          <h1 className={styles.head_chatmed}>
+            Compatible with smart wearables
+          </h1>
+          <br />
+          <h4 className={styles.text_chatmed}>
+            Connect your smart wearables to keep a better track of your health,
+            and get more accurate data.
+          </h4>
+        </div>
+        <img src={watch} alt="" />
+      </div>
 
+      <div className={styles.footer}>
+        <p className={styles.foot_text}>ChatMED all rights reserved 2023</p>
+      </div>
+    </div>
+  );
+};
 
 export default LandingPage;
