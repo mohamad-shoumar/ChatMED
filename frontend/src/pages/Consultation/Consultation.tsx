@@ -19,11 +19,12 @@ import Sort from "../../components/Sort/Sort";
 import { InputTextarea } from "primereact/inputtextarea";
 
 interface Doctor {
-  _id: number;
-  displayName: string;
-  price?: number;
-  specialty?: string;
-  imageUrl: string;
+  user: any;
+  specialization: any | undefined;
+  _id: any;
+  displayName?: any | null;
+  price?: any;
+  imageUrl: any;
 }
 
 const Consultation = () => {
@@ -45,9 +46,10 @@ const Consultation = () => {
   const token = localStorage.getItem("token");
   const [consultation, setConsultation] = useState<any>([]);
   const [doctors, setDoctors] = useState<Doctor[]>([]);
-  const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
+  const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>(doctors);
   const [selectedDoctorId, setSelectedDoctorId] = useState<number | null>(null);
   const [symptoms, setSymptoms] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -63,6 +65,7 @@ const Consultation = () => {
         console.log(error);
       }
     };
+
     fetchDoctors();
   }, []);
 
@@ -71,7 +74,6 @@ const Consultation = () => {
       (response) => {
         const consultation = response;
         setConsultation(consultation);
-        console.log(response);
       }
     );
   }, []);
@@ -80,13 +82,12 @@ const Consultation = () => {
     const filtered = doctors.filter(filterFn);
     setFilteredDoctors(filtered);
   };
+
   const handleDoctorCardClick = (doctorId: number) => {
     setSelectedDoctorId(doctorId);
   };
 
   const handleSubmit = async (symptoms: string) => {
-    console.log(symptoms);
-
     if (!selectedDoctorId) {
       toast.current?.show({
         severity: "error",
@@ -111,14 +112,14 @@ const Consultation = () => {
       doctor: selectedDoctorId,
     };
     try {
-      console.log(token);
       const response1 = await API.postAPI(`${base_url}response`, body, token!);
-      console.log(response1);
+
       const response2 = await API.postAPI(
         `${base_url}patient/choosedoctor`,
         body2,
         token!
       );
+      console.log(response1);
       console.log(response2);
     } catch (error) {
       console.log(error);
@@ -136,7 +137,10 @@ const Consultation = () => {
               <h2>Consultations</h2>
             </div>
             <div className={styles.submitbtn}>
-              <Search />
+              <Search
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+              />
             </div>
           </div>
           <div className={styles.medicalHistoryForm}>
@@ -146,20 +150,31 @@ const Consultation = () => {
                 <Toast ref={toast} />
                 <Sort onChange={handleSpecialtyChange} />
                 <div className={styles.docCards}>
-                  {filteredDoctors.map((doctor) => (
-                    <DoctorCard
-                      key={doctor._id}
-                      doctor={{
-                        _id: doctor._id,
-                        displayName: doctor.displayName,
-                        imageUrl: doctor.imageUrl,
-                        price: 50,
-                        specialty: doctor.specialty,
-                      }}
-                      onClick={handleDoctorCardClick}
-                      isSelected={selectedDoctorId === doctor._id}
-                    />
-                  ))}
+                  {filteredDoctors
+                    .filter(
+                      (doctor) =>
+                        doctor.user?.displayName
+                          .toLowerCase()
+                          .includes(searchQuery.toLowerCase()) ||
+                        doctor.specialization
+                          ?.toLowerCase()
+                          .includes(searchQuery.toLowerCase())
+                    )
+
+                    .map((doctor) => (
+                      <DoctorCard
+                        key={doctor._id}
+                        doctor={{
+                          _id: doctor.user._id,
+                          displayName: doctor.user?.displayName,
+                          imageUrl: doctor.user?.imageUrl,
+                          price: doctor.price,
+                          specialty: doctor.specialization,
+                        }}
+                        onClick={handleDoctorCardClick}
+                        isSelected={selectedDoctorId === doctor._id}
+                      />
+                    ))}
                 </div>
               </div>
               <div className={styles.botRight}>
