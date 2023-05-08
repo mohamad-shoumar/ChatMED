@@ -63,8 +63,32 @@ const LandingPage = () => {
               JOIN US <i className="fa-solid fa-arrow-right"></i>
             </button>
           </div>
-
-  );
-};
+        </div>
+        <div className={styles.maincontenet}>
+          <div className={styles.head_text}>
+            <h1 className={styles.headintext}>
+              Health <br />
+              Powered by AI
+            </h1>
+            <p className={styles.subheadintexxt}>
+              Transform your healthcare experience with our ChatGPT-powered
+              medical app.
+            </p>
+          </div>
+          <div className={styles.symptoms}>
+            <img className={styles.heading_text} src={mini} alt="" />
+            <br />
+            <br />
+            <br />
+            <h4 className={styles.heading_symptoms}>
+              Let’s start with the symptom that’s troubling <br />
+              you the most.
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 className={styles.headerTitle}>WHY CHATMED</h2>
+      </div>
 
 export default LandingPage;
