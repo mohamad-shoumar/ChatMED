@@ -7,6 +7,17 @@
   height: 90vh;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 30rem;
 }
 .main {
   width: 60%;
@@ -52,7 +63,7 @@
   align-items: center;
   padding: 20px;
 }
-.profilePic > img {
+.images > img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
