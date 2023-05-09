@@ -44,9 +44,8 @@
   padding-right: 30px;
 }
 .noti > img {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  height: 27px;
+  width: 27px;
   margin-left: 10px;
 }
 
@@ -60,8 +59,23 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.bell {
-  transform: scale(0.55);
+// .bell {
+//   transform: scale(0.55);
+// }
+.dropdown {
+  position: absolute;
+  margin-top: 18rem;
+  bottom: 90;
+
+  right: 10;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-top: none;
+  width: 500px;
+  padding: 10px;
+}
+.notification {
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
