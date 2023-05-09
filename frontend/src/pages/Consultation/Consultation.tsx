@@ -17,6 +17,8 @@ import { Toast } from "primereact/toast";
 import ConsultationCard from "../../components/ConsultationCard/ConsultationCard";
 import Sort from "../../components/Sort/Sort";
 import { InputTextarea } from "primereact/inputtextarea";
+const documentStyle = getComputedStyle(document.documentElement);
+const textColor = documentStyle.getPropertyValue("--primay-color");
 
 interface Doctor {
   user: any;
@@ -119,8 +121,8 @@ const Consultation = () => {
         body2,
         token!
       );
-      console.log(response1);
-      console.log(response2);
+      console.log("response", response1);
+      console.log("response2", response2);
     } catch (error) {
       console.log(error);
     }
@@ -185,18 +187,24 @@ const Consultation = () => {
                     header="MediDoc Here!"
                     visible={visible}
                     onHide={hideDialog}
-                    style={{ width: "50%", height: "50%" }}
+                    style={{
+                      width: "fit-content",
+                      maxWidth: "90%",
+                      height: "fit-content",
+                    }}
                     footer={
-                      <div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          marginTop: "1rem",
+                        }}
+                      >
                         <Button2
                           label="Submit"
                           onClick={() => handleSubmit(symptoms)}
                         />
-                        <Button
-                          label="Cancel"
-                          onClick={hideDialog}
-                          style={{ color: "black" }}
-                        />
+                        <Button2 label="Cancel" onClick={hideDialog} />
                       </div>
                     }
                   >
@@ -211,7 +219,11 @@ const Consultation = () => {
                         <input
                           id="symptoms"
                           type="text"
-                          style={{ borderRadius: "5px" }}
+                          style={{
+                            borderRadius: "5px",
+                            width: "100%",
+                            height: "4rem",
+                          }}
                           value={symptoms}
                           onChange={(e) => setSymptoms(e.target.value)}
                           className="p-input p-input-lg"
