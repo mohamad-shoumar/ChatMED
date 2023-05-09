@@ -29,10 +29,12 @@ const PatientDashboard = () => {
   useEffect(() => {
     const fetchAdviceData = async () => {
       try {
+        console.log("hello");
         const response = await API.getAPI(`${base_url}advice`, token!);
-        console.log(response.data);
-        const advicesString = JSON.stringify(response.data.advice);
-        setAdvices(advicesString);
+
+        console.log("advicedata", response.data);
+
+        setAdvices(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -41,7 +43,6 @@ const PatientDashboard = () => {
     const fetchPatientData = async () => {
       try {
         const response = await API.getAPI(`${base_url}patient/profile`, token!);
-        console.log(response);
         setPatient(response);
       } catch (error) {
         console.log(error);
@@ -78,7 +79,7 @@ const PatientDashboard = () => {
               </div>
             </div>
             <div className={styles.adviceMain}>
-              <Card style={{ minHeight: "95%" }} title="Tip of the Day">
+              <Card style={{ maxHeight: "93%" }} title="Tip of the Day">
                 <div className={styles.divBack}>
                   <p className={styles.advice}>{advices}</p>
                 </div>
