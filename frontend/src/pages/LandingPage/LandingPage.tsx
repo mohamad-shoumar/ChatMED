@@ -117,6 +117,8 @@ const LandingPage = () => {
           </p>
         </div>
       </div>
+      <h2 className={styles.headerTitle}>HOW TO USE</h2>
+
       <div className={styles.chat_MED}>
         <img src={doc} alt="" />
         <div className={styles.text_chat_MED}>
@@ -135,6 +137,7 @@ const LandingPage = () => {
           </h4>
         </div>
       </div>
+      <h2 className={styles.headerTitle3}> STAY CONNECTED</h2>
       <div className={styles.chat_MED2}>
         <div className={styles.text_chat_MED2}>
           <h1 className={styles.head_chatmed}>
