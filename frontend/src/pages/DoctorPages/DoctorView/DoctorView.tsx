@@ -18,6 +18,7 @@ import InforCard from "../../../components/InfoCard/InforCard";
 import Radar from "../../../components/Radar/Radar";
 import BasicDemo from "../../../components/BloodPressureChart/BloodPressureChart";
 import ComboDemo from "../../../components/ComboGraph/ComboGraph";
+import avatar from "../../../assets/nour.jpg";
 const DoctorView = () => {
   const navigate = useNavigate();
 
@@ -48,43 +49,45 @@ const DoctorView = () => {
             <div className={styles.uppersection}>
               <div className={styles.bodyuser}>
                 <div className={styles.bodyuserdetails}>
-                  <img
-                    src="https://www.w3schools.com/howto/img_avatar.png"
-                    alt="Avatar"
-                  />
-                  <h5>Alexander Dean</h5>
+                  <img src={avatar} alt="Avatar" />
+                  <h5>Nour Mshawrab</h5>
                   <p>ID: 9172876387</p>
-                  <div>Age:26</div>
+                  <div>Age:25</div>
                 </div>
               </div>
-              <div>
-                <Radar />
+
+              <div className={styles.infocontainer}>
+                <InforCard
+                  Gender="female"
+                  Allergies="Nasal"
+                  Surgeries={"None"}
+                  Diseases={"Diabetes 2005"}
+                />
               </div>
               <div className={styles.bodycomposition}>
                 <div className={styles.bodyWeight}>
-                  <Height image={height} title="Weight" value={75} unit="kg" />
+                  <Height image={weight} title="Weight" value={63} unit="kg" />
                 </div>
                 <div className={styles.bodyHeight}>
-                  <Height image={weight} title="Height" value={180} unit="cm" />
+                  <Height image={height} title="Height" value={160} unit="cm" />
                 </div>
               </div>
             </div>
             <div className={styles.lowerection}>
-              <div className={styles.infocontainer}>
-                <InforCard
-                  Gender="male"
-                  Allergies="Nasal"
-                  Surgeries={"Openheart(2013)"}
-                  Diseases={"Daibetes(2005)"}
-                />
-              </div>
               <div className={styles.info}>
                 <div className={styles.infoheader}>
-                  <div className={styles.infoheaderleft}>Name</div>
+                  <div className={styles.infoheaderleft}>
+                    Vitals and Health Status
+                  </div>
                   <div className={styles.grpahs}>
                     {/* <BasicDemo /> */}
                     <ComboDemo />
                   </div>
+                </div>
+              </div>
+              <div className={styles.radarContainer}>
+                <div className={styles.radar}>
+                  <Radar />
                 </div>
               </div>
             </div>
