@@ -54,6 +54,7 @@ export default function BloodSugarGraph() {
               },
             },
             y: {
+              min: 30,
               ticks: {
                 color: textColorSecondary,
               },

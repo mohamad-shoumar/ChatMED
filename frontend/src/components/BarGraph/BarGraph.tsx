@@ -75,6 +75,7 @@ export default function BloodPressure() {
               },
             },
             y: {
+              min: 30,
               ticks: {
                 color: textColorSecondary,
               },
