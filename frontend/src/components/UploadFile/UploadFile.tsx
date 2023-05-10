@@ -9,17 +9,17 @@ import { base_url } from "../../API/API";
 import { API } from "../../API/API";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-interface UploadFileProps {
+interface UpdateImageProps {
   className: string;
   disableChange?: boolean;
   imageUrl?: string;
 }
 
-const UploadFile = ({
+const UpdateImage = ({
   className,
   disableChange,
   imageUrl,
-}: UploadFileProps) => {
+}: UpdateImageProps) => {
   const [imageUrls, setImageUrls] = useState("");
   const [image, setImage] = useState(emptyImage);
   const { currentUser } = useContext(AuthContext);
@@ -95,4 +95,4 @@ const UploadFile = ({
     </>
   );
 };
-export default UploadFile;
+export default UpdateImage;

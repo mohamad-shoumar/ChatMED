@@ -14,7 +14,7 @@ import {
 import { db, storage } from "../../FireBaseChat";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-
+import send from "../../assets/Chats/send.png";
 const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState<File | null>(null);
@@ -89,7 +89,9 @@ const Input = () => {
         <label htmlFor="file">
           <img src={Img} alt="" />
         </label>
-        <button onClick={handleSend}>Send</button>
+        <button onClick={handleSend}>
+          <img src={send} alt="" />
+        </button>
       </div>
     </div>
   );
