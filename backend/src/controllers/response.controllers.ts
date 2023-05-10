@@ -17,8 +17,6 @@ export const responseByChat = async (req: Request, res: Response) => {
       user: patientId,
     });
     const symptoms = req.body.symptoms;
-    console.log(doctorId);
-
     const response: any = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: generatePrompt(symptoms, retrievedMedicalhistory),
@@ -27,7 +25,6 @@ export const responseByChat = async (req: Request, res: Response) => {
       n: 1,
     });
     const responseData = JSON.parse(response.data.choices[0].text.trim());
-
     const responseModel = new ResponseModel({
       patient: patientId,
       doctor: doctorId,
