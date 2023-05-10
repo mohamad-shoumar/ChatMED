@@ -80,6 +80,41 @@ const DoctorProfile = () => {
       if (currentUser) {
         await currentUser.updateProfile({
           displayName: name,
+          imageUrl: profilePicture,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleImageChange = async (e: any) => {
+    const file = e.target.files[0];
+    console.log(file);
+
+    if (file) {
+      const imageRef = ref(storage, `${uuidV4()}`);
+      await uploadBytes(imageRef, file);
+      const imageUrl = await getDownloadURL(imageRef);
+      setProfilePicture(imageUrl);
+
+      // Update the profile picture in the backend
+      try {
+        const body = {
+          profilePictureUrl: imageUrl,
+        };
+        const response = await API.postAPI(
+          `${base_url}doctor/editprofile`,
+          body,
+          token!
+        );
+        console.log(response);
+
+        if (currentUser) {
+          await currentUser.updateProfile({
+            photoURL: imageUrl,
+          });
+        }
       } catch (error) {
         console.log(error);
       }
