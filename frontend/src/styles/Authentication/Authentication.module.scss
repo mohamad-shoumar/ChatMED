@@ -25,7 +25,7 @@
 }
 
 .wholeContainer {
-  background: linear-gradient(to right, #6fc6ee 0%, #01b8e2 51%, #244674 100%);
+  background: linear-gradient(to right, #4eb7e8 0%, #01b8e2 51%, #244674 100%);
 
   display: flex;
   flex-direction: column;
@@ -38,6 +38,7 @@
 .title {
   font-size: 27px;
   font-weight: 800;
+  line-height: 1.5;
   padding-top: 10px;
   color: #fafafa;
 }

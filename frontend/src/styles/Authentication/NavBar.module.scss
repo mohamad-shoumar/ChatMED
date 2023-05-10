@@ -42,6 +42,7 @@
   display: flex;
   align-items: center;
   padding-right: 30px;
+  position: relative;
 }
 .noti > img {
   height: 27px;
@@ -64,18 +65,20 @@
 // }
 .dropdown {
   position: absolute;
-  margin-top: 18rem;
-  bottom: 90;
 
-  right: 10;
+  top: 8.5vh;
+  right: 10.5vw;
   background-color: white;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
   border-top: none;
-  width: 500px;
+  width: 14rem;
   padding: 10px;
-}
-.notification {
-  margin-bottom: 10px;
+
+  p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $text;
+  }
 }
 
 @media screen and (min-width: 768px) {
