@@ -28,13 +28,13 @@
   flex-direction: column;
 }
 .uppersection {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  gap: 2rem;
 }
 .bodyuser {
-  width: 25%;
+  width: 36%;
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -81,13 +81,13 @@
 // lower section
 .lowerection {
   display: flex;
-
+  justify-content: center;
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
 }
 .infocontainer {
-  width: 25%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -100,4 +100,17 @@
 }
 .info {
   width: 75%;
+}
+
+.infoheaderleft {
+  font-size: larger;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.radarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
