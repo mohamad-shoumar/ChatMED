@@ -4,7 +4,7 @@ export interface IVital extends Document {
   user: string;
   bloodPressure?: { value: string; timestamp?: Date }[];
   heartRate?: { value: number; timestamp?: Date }[];
-  bloodsugar?: { value: number; timestamp?: Date }[];
+  bloodsugar?: { value: string; timestamp?: Date }[];
 }
 const VitalSchema = new mongoose.Schema(
   {
