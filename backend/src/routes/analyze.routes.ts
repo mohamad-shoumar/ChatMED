@@ -5,6 +5,6 @@ import { patientMiddleware } from "../middlewares/patient.middleware";
 import { doctorMiddleware } from "../middlewares/doctor.middleware";
 import { analyzeByChat } from "../controllers/analyze.controllers";
 
-router.post("/", authMiddleware, analyzeByChat);
+router.get("/", authMiddleware, analyzeByChat);
 
 export default router;
