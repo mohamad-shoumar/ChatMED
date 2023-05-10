@@ -42,8 +42,10 @@ const Login = () => {
 
       if (user.role === "patient") {
         nav("/dashboard");
+        window.location.reload();
       } else {
         nav("/docdashboard");
+        window.location.reload();
       }
     } catch {
       toast.current?.show({

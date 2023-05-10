@@ -19,6 +19,7 @@ import DoctorProfile from "./pages/DoctorPages/DoctorProfile/DoctorProfile";
 import DoctorView from "./pages/DoctorPages/DoctorView/DoctorView";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { JwtPayload } from "jsonwebtoken";
+import NavBar from "./components/NavBar/NavBar";
 type ProtectedRouteProps = {
   children: ReactNode;
   currentUser: any;
@@ -34,6 +35,9 @@ function App() {
 
   return (
     <BrowserRouter>
+      {user && (user.role === "patient" || user.role === "doctor") && (
+        <NavBar />
+      )}
       <Routes>
         <Route path="authentication" element={<Authentication />} />
         <Route path="/" element={<LandingPage />} />

@@ -163,7 +163,6 @@ const MedicalHistory = () => {
 
   return (
     <div>
-      <NavBar />
       <Toast ref={toast} />
       <div className={styles.medicalHistory}>
         <SideNavBar />

@@ -24,7 +24,6 @@ interface Patient {
 const PatientDashboard = () => {
   const [advices, setAdvices] = useState("");
   const [patient, setPatient] = useState<Patient | undefined>(undefined);
-
   const token = localStorage.getItem("token");
   useEffect(() => {
     const fetchAdviceData = async () => {
@@ -55,8 +54,6 @@ const PatientDashboard = () => {
 
   return (
     <div>
-      <NavBar />
-
       <div className={styles.main}>
         <SideNavBar />
         <div className={styles.mainContainer}>

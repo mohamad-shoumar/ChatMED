@@ -130,7 +130,6 @@ const Consultation = () => {
 
   return (
     <div>
-      <NavBar />
       <div className={styles.mainContainer}>
         <SideNavBar />
         <div className={styles.rightSection}>

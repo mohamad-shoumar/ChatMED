@@ -36,10 +36,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchAdviceData = async () => {
       try {
-        console.log("hello ayman I love your attitude");
-        const response = await API.getAPI(`${base_url}advice`, token!);
-
-        console.log("advicedata", response.data);
+        const response = await API.getAPI(`${base_url}analyze`, token!);
 
         setNotifications(response.data);
         setBellImage(redbell);
@@ -55,11 +52,7 @@ const Navbar = () => {
     const token = localStorage.getItem("token");
     let user: JwtPayload = jwt_decode(token!);
     setUser(user);
-    console.log(user);
   };
-
-  console.log(user);
-  console.log("notifications", notifications);
 
   const toggleBellImage = () => {
     if (isBellActive) {
