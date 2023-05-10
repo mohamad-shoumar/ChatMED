@@ -62,6 +62,8 @@ const Login = () => {
       <Toast ref={toast} />
       <form>
         <h1 className={styles.title2}>Sign In</h1>
+        <span className={styles.span}>Don't have an account? sign up </span>
+
         <input
           type="email"
           placeholder="Email"
