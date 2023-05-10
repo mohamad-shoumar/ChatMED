@@ -38,7 +38,8 @@ export const register = async (req: Request, res: Response) => {
     password: Joi.string().min(6).required(),
     role: Joi.string().valid("patient", "doctor").required(),
     displayName: Joi.string().min(3).max(50).required(),
-    imageUrl: Joi.string(),
+    imageUrl: Joi.string().optional(),
+    file: Joi.any().optional(),
   });
 
   const { error } = schema.validate(req.body);
@@ -67,12 +68,12 @@ export const register = async (req: Request, res: Response) => {
 
     if (role === "doctor") {
       const doctor = new Doctor({
-        doctor: user._id,
+        user: user.id,
       });
       await doctor.save();
     } else if (role === "patient") {
       const patient = new Patient({
-        patient: user._id,
+        user: user.id,
       });
       await patient.save();
     }
@@ -82,27 +83,3 @@ export const register = async (req: Request, res: Response) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
-//
-
-// apis
-// post add medical history
-// get medical history
-// post edit medical history
-// get patient profile
-// get list of doctors
-// get advice of day(response.advice model)
-// post choose doctor and enter sympotoms (response model)
-// get response by doctor
-// post edit profile
-// post enter vitals
-// get vitals(graph and chart)
-
-// doctor api
-// get list of patients
-// get list of consultations
-// get profile
-// post edit doctor profile
-// get response
-// post edit reponse
-// post submit response( turn state to complete)
