@@ -181,5 +181,55 @@
   text-align: center;
   color: #244674;
 }
-dius: 30px;
+
+@media screen and (max-width: 768px) {
+  .main_box {
+    flex-direction: column;
+  }
+  .box_inmain {
+    margin: 20px;
+    width: 80%;
+  }
+}
+
+.chat_MED {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  gap: 100px;
+  width: 95%;
+  margin-top: 100px;
+  margin-left: 2.5%;
+  background: #ecf4f7;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.23);
+  border-radius: 30px;
+}
+
+.chat_MED img {
+  width: 50%;
+}
+
+.text_chat_MED {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat_MED2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  gap: 100px;
+  margin-top: 120px;
+  width: 95%;
+  margin-left: 2.5%;
+  background: #ecf4f7;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.23);
+  border-radius: 30px;
 }
