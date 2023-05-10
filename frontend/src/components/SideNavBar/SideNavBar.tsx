@@ -21,13 +21,15 @@ const SideNavBar = () => {
   const handleClick = (index: number) => {
     setActive(index);
   };
-  const handleLogout = () => {
-    // localStorage.clear();
+  const handleLogout = async () => {
+    await localStorage.removeItem("token");
+    await localStorage.clear();
     // const firebaseUser = firebase.auth().currentUser;
     // if (firebaseUser) {
     //   firebase.auth().signOut();
     // }
     navigate("/authentication");
+    window.location.reload();
   };
 
   return (
@@ -122,7 +124,7 @@ const SideNavBar = () => {
               >
                 <div className={styles.linkleft}>
                   <img src={logs} alt="logo" />
-                  <div className={styles.word} onClick={handleLogout}>
+                  <div className={styles.word} onClick={() => handleLogout()}>
                     Log Out
                   </div>
                 </div>
