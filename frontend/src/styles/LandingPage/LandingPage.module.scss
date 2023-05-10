@@ -7,7 +7,7 @@
   font-family: "Lato", sans-serif;
 }
 .main_container {
-  background: linear-gradient(278.62deg, #01b8e2 2.27%, #244674 98.18%);
+  background: linear-gradient(278.62deg, #01b8e2, 2.27%, #244674 98.18%);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -110,4 +110,76 @@
   font-size: 50px;
   line-height: 70px;
   color: #f9fbfd;
+}
+.subheadintexxt {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 21px;
+  width: 80%;
+  color: #f9fbfd;
+}
+
+@media screen and (max-width: 900px) {
+  .maincontenet {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .head_text {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .maincontenet {
+    padding: 60px 20px;
+  }
+  .head_text {
+    margin: 20px 0px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+.main_box {
+  padding: 50px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.box_inmain {
+  height: 280px;
+  width: 30%;
+  background: #ecf4f7;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.23);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.box_inmain:hover .para_inbox {
+  color: #ecf4f7;
+}
+.box_inmain:hover {
+  background: #446da3;
+  color: #ecf4f7;
+}
+
+.para_inbox {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 34px;
+  text-align: center;
+  color: #244674;
+}
+dius: 30px;
 }
