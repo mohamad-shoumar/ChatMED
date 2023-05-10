@@ -149,7 +149,7 @@ const MedicalHistory = () => {
         detail: `Medical-History added.`,
       });
       setTimeout(() => {
-        window.location.href = "/patient/dashboard";
+        window.location.href = "/dashboard";
       }, 1000);
     } catch (error) {
       console.log("error");
