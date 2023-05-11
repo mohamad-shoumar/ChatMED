@@ -28,9 +28,9 @@
 
 ### Mockups
 
-| Home screen                                  | Authentication                        | Chats                             |
-| -------------------------------------------- | ------------------------------------- | --------------------------------- |
-| ![Landing](./readme/demo/Landing%20page.png) | ![fsdaf](./readme/demo/register1.png) | ![fsdaf](./readme/demo/Chats.jpg) |
+| Home screen                                    | Authentication                                                          | Chats |
+| ---------------------------------------------- | ----------------------------------------------------------------------- | ----- |
+| ![Landing](./readme/demo/Landingpagefigma.png) | ![fsdaf](./readme/demo/register1.png) ![fsdaf](./readme/demo/Chats.jpg) |
 
 <br><br>
 
