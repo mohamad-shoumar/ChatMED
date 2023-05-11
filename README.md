@@ -41,11 +41,11 @@
 
 ### Patient Screens
 
-| Live Chats                                | Medical History                       | Profile                               |
-| ----------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/chatsImp.png)    | ![fsdaf](./readme/demo/history.png)   | ![fsdaf](./readme/demo/Profile.jpg)   |
-| Home screen                               | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Live Chats                                | Medical History                     | Profile                                 |
+| ----------------------------------------- | ----------------------------------- | --------------------------------------- |
+| ![Landing](./readme/demo/chatsImp.png)    | ![fsdaf](./readme/demo/history.png) | ![fsdaf](./readme/demo/Profile.jpg)     |
+| View Patient                              | Login                               | Register                                |
+| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/logIn.png)   | ![fsdaf](./readme/demo/registerImp.png) |
 
 <br><br>
 
@@ -82,18 +82,30 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/MoeShoumar/ChatMED
    ```
-3. Install NPM packages
+   Here you will find three folders (frontend, backend, and test)
+2. Inside the frontend folder, run:
+
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
+
+3. Inside the backend folder, run:
+   ```sh
+   npm install
+   ```
+4. Set your `DB_CONNECT` to your MongoDB connection URL and add your `TOKEN_SECRET`.
+
+5. Inside the socket folder, run:
+
+   ```sh
+   npm install socket.io
    ```
 
-Now, you should be able to run Coffee Express locally and explore its features.
+6. You are ready to go, inside the backend folder, the frontend folder and the socket folder, run:
+   ```sh
+   npm start
+   ```
