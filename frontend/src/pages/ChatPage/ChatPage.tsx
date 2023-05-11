@@ -8,7 +8,6 @@ import SideNavBar from "../../components/SideNavBar/SideNavBar";
 const Chats = () => {
   return (
     <div>
-      <Navbar />
       <div className={styles.home}>
         <SideNavBar />
         <div className={styles.container}>
