@@ -1,34 +1,3 @@
-<!-- Implementation -->
-<img src="./readme/title4.svg"/>
-
-> Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
-
-| Landing Screen | Login/Register screen |
-| ------------------------------------------------------------------ | |--------------------------------------------------------------------------- |
-|[<img src="./readme/demo/Landing page.png"/>](readme/demo/Landing page.png) |
-
-<!-- ![login](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/signinlap.png) [<img src="./readme/demo/register1.png" />](readme/demo/register1.png) | -->
-
-> | medical History                                                                          | Profile                                                                              |
-> | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-> | ![medical History](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medical.png) | ![Profile](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/profileedit.png) |
-
-> | Pateint Dashboard                                                                   |
-> | ----------------------------------------------------------------------------------- |
-> | ![ChatMED](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicallap.png) |
-
-> | medical History                                                                             | Patient Dashboard                                                                |
-> | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-> | ![medical History](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicallap.png) | ![Profile](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/dashLap.png) |
-
-> | medical History                                                                              | Patient Dashboard                                                                 |
-> | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-> | ![medical History](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/medicalDesk.png) | ![Profile](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/dashDesk.png) |
-
-> | Vitals                                                                                      | Doctor Profile                                                                         |
-> | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-> | ![medical History](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/vitalsdesk.png) | ![Profile](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/docProfilelap.png) |
-
 <img src="./readme/title1.svg"/>
 
 <br><br>
@@ -72,11 +41,11 @@
 
 ### Patient Screens
 
-| Login screen                            | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Live Chats                                | Medical History                       | Profile                               |
+| ----------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/demo/chatsImp.png)    | ![fsdaf](./readme/demo/history.png)   | ![fsdaf](./readme/demo/Profile.jpg)   |
+| Home screen                               | Menu Screen                           | Order Screen                          |
+| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 <br><br>
 
