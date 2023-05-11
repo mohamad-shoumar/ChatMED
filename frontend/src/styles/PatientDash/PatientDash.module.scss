@@ -2,9 +2,15 @@
 @import " ../../../../stylesheet.scss";
 
 body {
-  background: $background;
   font-family: "Montserrat", sans-serif;
 }
+.changeColor {
+  background-color: red;
+}
+.dark {
+  background-color: $text;
+}
+
 .advice {
   font-size: 14px;
   color: $text;
