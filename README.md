@@ -5,7 +5,9 @@
 
 | Landing Screen | Login/Register screen |
 | ------------------------------------------------------------------ | |--------------------------------------------------------------------------- |
-|[<img src="./readme/demo/Landing page.png"/>](readme/demo/Landing page.png) |![login](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/signinlap.png) [<img src="./readme/demo/register1.png" />](readme/demo/register1.png) |
+|[<img src="./readme/demo/Landing page.png"/>](readme/demo/Landing page.png) |
+
+<!-- ![login](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/signinlap.png) [<img src="./readme/demo/register1.png" />](readme/demo/register1.png) | -->
 
 > | medical History                                                                          | Profile                                                                              |
 > | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
@@ -57,9 +59,9 @@
 
 ### Mockups
 
-| Home screen                             | Menu Screen                           | Order Screen                          |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Home screen                                  | Authentication                        | Chats                             |
+| -------------------------------------------- | ------------------------------------- | --------------------------------- |
+| ![Landing](./readme/demo/Landing%20page.png) | ![fsdaf](./readme/demo/register1.png) | ![fsdaf](./readme/demo/Chats.jpg) |
 
 <br><br>
 
@@ -83,17 +85,20 @@
 
 ### ChatMED is built using the following technologies:
 
+- For unit testing, this project uses [jest](https://jestjs.io/) which is a JavaScript testing framework that supports Typescript.
 - This project uses the [React JS development framework](https://reactjs.org/). React is a declarative, efficient, and flexible JavaScript library for building SPA (single web application) and user interfaces or UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”.
 - For styling i used [SCSS Modules](https://sass-lang.com/) along [Primeract](https://primereact.org/) which provided a flexible design pattern.
-- Fir live messages, the app uses the [Firebase](https://firebase.google.com/).
-- The app uses the font ["Montserrat"](https://fonts.google.com/specimen/Montserrat) as its main font, and the design of the app adheres to the material design guidelines.
+- For live messages, the project uses the [Firebase](https://firebase.google.com/).
+- The project uses the font ["Montserrat"](https://fonts.google.com/specimen/Montserrat) as its main font, and the design of the app adheres to the material design guidelines.
+- For persistent storage (database), this project uses the [MongoDB](https://www.mongodb.com/) package which allows the app to create a custom storage schema and save it to a local database.
+- This project uses [Node.js](https://nodejs.org/) a JavaScript runtime built on Chrome's V8 JavaScript engine as a backend infrastructure and [Express](https://expressjs.com/) framework which is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
 <br><br>
 
 <!-- How to run -->
 <img src="./readme/title6.svg"/>
 
-> To set up Coffee Express locally, follow these steps:
+> To set up ChatMED locally, follow these steps:
 
 ### Prerequisites
 
