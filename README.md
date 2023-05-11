@@ -3,9 +3,9 @@
 
 > Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
 
-| Login screen                                                                     | Register screen |
-| -------------------------------------------------------------------------------- | --------------- |
-| ![login](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/signinlap.png) |
+| Landing Screen | Login/Register screen |
+| ------------------------------------------------------------------ | |--------------------------------------------------------------------------- |
+|[<img src="./readme/demo/Landing page.png"/>](readme/demo/Landing page.png) |![login](https://github.com/MoeShoumar/ChatM.E.D/blob/main/readme/signinlap.png) [<img src="./readme/demo/register1.png" />](readme/demo/register1.png) |
 
 > | medical History                                                                          | Profile                                                                              |
 > | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
@@ -34,9 +34,9 @@
 <!-- project philosophy -->
 <img src="./readme/title2.svg"/>
 
-> A mobile app for ordering coffee on-the-go, making it easier for coffee lovers to get their favorite beverages without waiting in line.
+> A web app designed to revolutionize primary healthcare by leveraging the power of ChatGPT.
 >
-> Coffee Express aims to streamline the coffee-ordering process by providing a user-friendly platform for customers to place orders and pick up their coffee at their convenience. We believe in enhancing the coffee experience by saving time and ensuring customer satisfaction.
+> Our mission is to make quality healthcare accessible to everyone while empowering individuals to stay on top of their health goals. By combining advanced technology with personalized care, ChatMED aims to bridge the gap between patients and healthcare providers.
 
 ### User Stories
 
@@ -55,12 +55,6 @@
 
 > We designed Coffee Express using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
-### Wireframes
-
-| Login screen                            | Register screen                       | Landing screen                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
 ### Mockups
 
 | Home screen                             | Menu Screen                           | Order Screen                          |
@@ -72,17 +66,9 @@
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
 
-> Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
+> Using the mockups as a guide, we implemented ChatMED app with the following features:
 
-### User Screens (Mobile)
-
-| Login screen                              | Register screen                         | Landing screen                          | Loading screen                          |
-| ----------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-| Home screen                               | Menu Screen                             | Order Screen                            | Checkout Screen                         |
-| ![Landing](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) | ![fsdaf](https://placehold.co/900x1600) |
-
-### Admin Screens (Web)
+### Patient Screens
 
 | Login screen                            | Register screen                       | Landing screen                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
@@ -95,13 +81,12 @@
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
 
-### Coffee Express is built using the following technologies:
+### ChatMED is built using the following technologies:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+- This project uses the [React JS development framework](https://reactjs.org/). React is a declarative, efficient, and flexible JavaScript library for building SPA (single web application) and user interfaces or UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”.
+- For styling i used [SCSS Modules](https://sass-lang.com/) along [Primeract](https://primereact.org/) which provided a flexible design pattern.
+- Fir live messages, the app uses the [Firebase](https://firebase.google.com/).
+- The app uses the font ["Montserrat"](https://fonts.google.com/specimen/Montserrat) as its main font, and the design of the app adheres to the material design guidelines.
 
 <br><br>
 
