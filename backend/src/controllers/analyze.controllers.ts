@@ -46,7 +46,7 @@ const generatePrompt = (vitalspatient: any) => {
         ------------------------------
         Given the above information,
           the patient has the following vitals: ${vitalspatient}.
-          Analyze the blood sugar values and provide a 15 words warning, motivation or nuetral statemnet for the patient. the analysis should be in the form of talking directley to the patient.It must also be smart and not sound like a generic advice.
+          Analyze the blood sugar values and provide a 15 words analyis,then give the patient a warning, motivation or nuetral statemnet based on the analysis. the analysis should be in the form of talking directley to the patient.It must also be smart and not sound like a generic advice.
           Don't mention talking to a doctor or a nurse.
 `;
 };

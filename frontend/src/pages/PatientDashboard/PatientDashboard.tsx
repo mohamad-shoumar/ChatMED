@@ -13,18 +13,25 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
+import sun from "../../assets/sidebar/sun.png";
 
 interface Patient {
-  id: number;
+  _id: number;
   displayName: string;
   email: string;
   imageUrl: string;
+}
+interface SideNavBarProps {
+  isDarkMode: boolean;
+  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PatientDashboard = () => {
   const [advices, setAdvices] = useState("");
   const [patient, setPatient] = useState<Patient | undefined>(undefined);
   const token = localStorage.getItem("token");
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   useEffect(() => {
     const fetchAdviceData = async () => {
       try {
@@ -51,11 +58,12 @@ const PatientDashboard = () => {
     fetchAdviceData();
     fetchPatientData();
   }, []);
-
+  console.log(patient);
   return (
     <div>
-      <div className={styles.main}>
+      <div className={`${styles.main}`}>
         <SideNavBar />
+
         <div className={styles.mainContainer}>
           <div className={styles.headerContainer}>
             <div className={styles.profile}>
@@ -63,16 +71,9 @@ const PatientDashboard = () => {
               <div className={styles.info}>
                 <p className={styles.name}>{patient?.displayName}</p>
                 <div className={styles.email}>
-                  <p className={styles.deanCom}>
-                    {patient?.email}
-                    {/* <strong className={styles.deanComEmphasis0}>Dean</strong>
-                    &#64;gmail.com */}
-                  </p>
-                  {/* <div className={styles.dateicon}>
-                    <DateRange className={styles.dateRange} />
-                    <p className={styles.date}> </p>
-                  </div> */}
+                  <p className={styles.deanCom}>Email: {patient?.email}</p>
                 </div>
+                <p className={styles.id}>ID: {patient?._id}</p>
               </div>
             </div>
             <div className={styles.adviceMain}>

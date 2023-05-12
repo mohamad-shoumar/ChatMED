@@ -47,6 +47,11 @@ const Register = () => {
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
+    toast.current?.show({
+      severity: "info",
+      summary: "Please Wait",
+      detail: `Uploading and compressing the image`,
+    });
     setLoading(true);
     setErr(false);
     let data2 = {
@@ -88,6 +93,7 @@ const Register = () => {
             // save user in db
             const response = await API.postAPI(url, data2);
             console.log(response);
+            setLoading(true);
 
             toast.current?.show({
               severity: "success",
@@ -95,6 +101,7 @@ const Register = () => {
               detail: `Registered succesfully, please Sign in.`,
               sticky: true,
             });
+
             setDisplayName("");
             setEmail("");
             setPassword("");
@@ -193,7 +200,6 @@ const Register = () => {
           Sign Up
         </button>
         <Toast ref={toast} />
-        {loading && "Uploading and compressing the image please wait..."}
       </form>
     </div>
   );

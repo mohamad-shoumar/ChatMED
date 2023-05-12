@@ -1,13 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
 import "./index.css";
+import { createRoot } from "react-dom/client";
 import App from "./App";
+import { initReactI18next } from "react-i18next";
 import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider, createTheme } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ChatContextProvider } from "./context/ChatContext";
 
-const theme = createTheme({
+const lightTheme = createTheme({
   palette: {
     primary: {
       main: "#244674",
@@ -59,23 +61,99 @@ const theme = createTheme({
     },
   },
 });
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#244674",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#01b8e2",
+      contrastText: "#fff",
+    },
+    background: {
+      default: "#121c38",
+    },
+    text: {
+      primary: "#fff",
+      secondary: "#a0acb7",
+    },
+  },
+  typography: {
+    fontFamily: "Montserrat",
+    fontSize: 11,
+    h1: {
+      fontWeight: 700,
+      fontSize: "2.5rem",
+      lineHeight: 0.8,
+      color: "#fff",
+    },
+    h2: {
+      fontWeight: 700,
+      fontSize: "2rem",
+      lineHeight: 0.8,
+      color: "#fff",
+    },
+    h3: {
+      fontWeight: 700,
+      fontSize: "1.5rem",
+      lineHeight: 0.8,
+      color: "#fff",
+    },
+    h4: {
+      fontWeight: 700,
+      fontSize: "1.25rem",
+      lineHeight: 0.8,
+      color: "#fff",
+    },
+    body1: {
+      fontSize: "1rem",
+      lineHeight: 0.8,
+      color: "#fff",
+    },
+  },
+});
+// i18n.use();
+const Root = () => {
+  // const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
-  <AuthContextProvider>
-    <ChatContextProvider>
-      <React.StrictMode>
-        <ThemeProvider theme={theme}>
+  // const toggleTheme = () => {
+  //   setIsDarkTheme((prevTheme) => !prevTheme);
+  // };
+  // const theme = isDarkTheme ? darkTheme : lightTheme;
+
+  return (
+    <AuthContextProvider>
+      <ChatContextProvider>
+        <React.StrictMode>
           <App />
-        </ThemeProvider>
-      </React.StrictMode>
-    </ChatContextProvider>
-  </AuthContextProvider>
-);
+        </React.StrictMode>
+      </ChatContextProvider>
+    </AuthContextProvider>
+  );
+};
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Root />, rootElement);
+// ReactDOM.createRoot(document.getElementById("root")).render(<Root />);
+
+// const root = ReactDOM.createRoot(
+//   document.getElementById("root") as HTMLElement
+// );
+// root.render(
+//   <AuthContextProvider>
+//     <ChatContextProvider>
+//       <React.StrictMode>
+//         <ThemeProvider theme={theme}>
+//           <App />
+//         </ThemeProvider>
+//       </React.StrictMode>
+//     </ChatContextProvider>
+//   </AuthContextProvider>
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
