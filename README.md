@@ -45,6 +45,8 @@
 
 > Using the mockups as a guide, we implemented ChatMED app with the following features:
 
+### Shared Screens
+
 > | Landing                                                 |
 > | ------------------------------------------------------- |
 > | <img src="./readme/gifs/landing2gif.gif" width="100%"/> |
@@ -53,7 +55,17 @@
 > | ------------------------------------------------ |
 > | <img src="./readme/gifs/Auth.gif" width="100%"/> |
 
-> | vitals                                             |
+> | Live Chat                                        |
+> | ------------------------------------------------ |
+> | <img src="./readme/gifs/chat.gif" width="100%"/> |
+
+> | Multi Language and Responsiveness                |
+> | ------------------------------------------------ |
+> | <img src="./readme/gifs/chat.gif" width="100%"/> |
+
+### Patient Screens
+
+> | Vitals                                             |
 > | -------------------------------------------------- |
 > | <img src="./readme/gifs/vitals.gif" width="100%"/> |
 
@@ -61,13 +73,9 @@
 > | ---------------------------------------------------------- |
 > | <img src="./readme/gifs/medicalHistory.gif" width="100%"/> |
 
-### Patient Screens
-
-| Live Chats                                | Medical History                     | Profile                                 |
-| ----------------------------------------- | ----------------------------------- | --------------------------------------- |
-| ![Landing](./readme/demo/chatsImp.png)    | ![fsdaf](./readme/demo/history.png) | ![fsdaf](./readme/demo/Profile.jpg)     |
-| View Patient                              | Login                               | Register                                |
-| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/logIn.png)   | ![fsdaf](./readme/demo/registerImp.png) |
+> | Consultation                                        |
+> | --------------------------------------------------- |
+> | <img src="./readme/gifs/consult.gif" width="100%"/> |
 
 <br><br>
 
@@ -75,6 +83,8 @@
 <img src="./readme/title5.svg"/>
 
 ### ChatMED is built using the following technologies:
+
+-The application utilizes OpenAI's API, which offers advanced natural language processing capabilities, to generate personalized treatment plans, analyze vital information, and provide customized advice.
 
 - For unit testing, this project uses [jest](https://jestjs.io/) which is a JavaScript testing framework that supports Typescript.
 - This project uses the [React JS development framework](https://reactjs.org/). React is a declarative, efficient, and flexible JavaScript library for building SPA (single web application) and user interfaces or UI components. It lets you compose complex UIs from small and isolated pieces of code called “components”.
