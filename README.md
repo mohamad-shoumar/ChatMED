@@ -44,17 +44,18 @@
 <img src="./readme/title4.svg"/>
 
 > Using the mockups as a guide, we implemented ChatMED app with the following features:
-> | Landing |
-> | |
-> | <img src="./readme/gifs/landing2gif.gif" width="100%"/> |
-> | Auth |
-> | |
-> | <img src="./readme/gifs/Auth.gif" width="100%"/> |
-> | vitals |
-> | |
-> | <img src="./readme/gifs/vitals.gif" width="100%"/> |
-> | Medical History |
-> | |
+
+> | Landing                                                    |
+> | ---------------------------------------------------------- |
+> | <img src="./readme/gifs/landing2gif.gif" width="100%"/>    |
+> | Auth                                                       |
+> | -----------------                                          |
+> | <img src="./readme/gifs/Auth.gif" width="100%"/>           |
+> | vitals                                                     |
+> | -----------------                                          |
+> | <img src="./readme/gifs/vitals.gif" width="100%"/>         |
+> | Medical History                                            |
+> | -----------------                                          |
 > | <img src="./readme/gifs/medicalHistory.gif" width="100%"/> |
 
 ### Patient Screens
