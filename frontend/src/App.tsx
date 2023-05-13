@@ -1,5 +1,3 @@
-import React from "react";
-import logo from "./logo.svg";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Authentication from "./pages/Authentication/Authentication";
 import MedicalHistory from "./pages/MedicalHistory/MedicalHistory";
@@ -9,7 +7,6 @@ import Vitals from "./pages/Vitals/Vitals";
 import Consultation from "./pages/Consultation/Consultation";
 import Chats from "./pages/ChatPage/ChatPage";
 import { useContext, ReactNode } from "react";
-import { AuthContext } from "./context/AuthContext";
 import jwt_decode from "jwt-decode";
 import "primereact/resources/primereact.css";
 import "primeicons/primeicons.css";
@@ -20,10 +17,6 @@ import DoctorView from "./pages/DoctorPages/DoctorView/DoctorView";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { JwtPayload } from "jsonwebtoken";
 import NavBar from "./components/NavBar/NavBar";
-type ProtectedRouteProps = {
-  children: ReactNode;
-  currentUser: any;
-};
 
 function App() {
   const token = localStorage.getItem("token") ?? "";
@@ -65,11 +58,3 @@ function App() {
 }
 
 export default App;
-
-// const ProtectedRoute = ({ children, currentUser }: ProtectedRouteProps) => {
-//   if (!currentUser) {
-//     return <Navigate to="/authentication" />;
-//   }
-
-//   return children;
-// };
