@@ -8,8 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ChatContextProvider } from "./context/ChatContext";
-
-const lightTheme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: "#244674",
@@ -61,59 +60,7 @@ const lightTheme = createTheme({
     },
   },
 });
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#244674",
-      contrastText: "#fff",
-    },
-    secondary: {
-      main: "#01b8e2",
-      contrastText: "#fff",
-    },
-    background: {
-      default: "#121c38",
-    },
-    text: {
-      primary: "#fff",
-      secondary: "#a0acb7",
-    },
-  },
-  typography: {
-    fontFamily: "Montserrat",
-    fontSize: 11,
-    h1: {
-      fontWeight: 700,
-      fontSize: "2.5rem",
-      lineHeight: 0.8,
-      color: "#fff",
-    },
-    h2: {
-      fontWeight: 700,
-      fontSize: "2rem",
-      lineHeight: 0.8,
-      color: "#fff",
-    },
-    h3: {
-      fontWeight: 700,
-      fontSize: "1.5rem",
-      lineHeight: 0.8,
-      color: "#fff",
-    },
-    h4: {
-      fontWeight: 700,
-      fontSize: "1.25rem",
-      lineHeight: 0.8,
-      color: "#fff",
-    },
-    body1: {
-      fontSize: "1rem",
-      lineHeight: 0.8,
-      color: "#fff",
-    },
-  },
-});
+
 // i18n.use();
 const Root = () => {
   // const [isDarkTheme, setIsDarkTheme] = React.useState(false);
@@ -127,7 +74,9 @@ const Root = () => {
     <AuthContextProvider>
       <ChatContextProvider>
         <React.StrictMode>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </React.StrictMode>
       </ChatContextProvider>
     </AuthContextProvider>
