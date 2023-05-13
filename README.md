@@ -28,9 +28,12 @@
 
 ### Mockups
 
-| Home screen                                    | Authentication                                                          | Chats |
-| ---------------------------------------------- | ----------------------------------------------------------------------- | ----- |
-| ![Landing](./readme/demo/Landingpagefigma.png) | ![fsdaf](./readme/demo/register1.png) ![fsdaf](./readme/demo/Chats.jpg) |
+| Landing Page                                   | Authentication                        | Live Chats                                  |
+| ---------------------------------------------- | ------------------------------------- | ------------------------------------------- |
+| ![Landing](./readme/demo/Landingpagefigma.png) | ![fsdaf](./readme/demo/register1.png) | ![zed](./readme/demo/Chats.jpg)             |
+| View Patient                                   | Edit Profile                          | Doctor Dashboard                            |
+| ---                                            | ---                                   | ---                                         |
+| ![Landing](./readme/demo/ViewPatient.png)      | ![fsdaf](./readme/demo/Profile.jpg)   | ![fsdaf](./readme/demo/DoctorDashboard.png) |
 
 <br><br>
 
