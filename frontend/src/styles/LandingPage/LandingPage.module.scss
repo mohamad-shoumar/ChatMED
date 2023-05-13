@@ -6,8 +6,26 @@
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
 }
+.lang {
+  background: #244674;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  color: #f9fbfd;
+  width: max-content;
+  padding: 8px 15px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  margin: 10px;
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
+  border: none;
+  background-color: #244674;
+}
 .main_container {
-  background: linear-gradient(278.62deg, #01b8e2, 2.27%, #244674 98.18%);
+  background: linear-gradient(278.62deg, #01b8e2 2.27%, #244674 98.18%);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -30,7 +48,7 @@
   margin-right: 10px;
   cursor: pointer;
 }
-.logo_head {
+:local .logo_head {
   cursor: pointer;
   font-family: "Lato";
   font-style: normal;
@@ -38,6 +56,7 @@
   font-size: 24px;
   line-height: 29px;
   color: #ffffff;
+  padding-bottom: 1rem;
 }
 .nav_buttons {
   display: flex;
@@ -111,12 +130,50 @@
   line-height: 70px;
   color: #f9fbfd;
 }
-.subheadintexxt {
+.textAnimation {
+  /* background-color: red; */
+  border-right: 10px solid white;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 900;
+  font-family: "Lato", sans-serif;
+  animation: textAnim 6s steps(18) infinite;
+}
+@keyframes textAnim {
+  0% {
+    width: 0vw;
+  }
+  40% {
+    width: 34vw;
+    border-color: white;
+  }
+  45% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+  55% {
+    border-color: transparent;
+  }
+  60% {
+    border-color: white;
+    width: 34vw;
+  }
+  100% {
+    width: 0vw;
+  }
+}
+:local .subheadintexxt {
   font-family: "Montserrat";
   font-style: normal;
   font-size: 21px;
   width: 80%;
   color: #f9fbfd;
+}
+.headintext {
+  font-size: 5vw;
 }
 
 @media screen and (max-width: 900px) {
@@ -124,11 +181,59 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .chat_MED {
+    flex-direction: column;
+  }
+  .chat_MED img {
+    width: 100%;
+  }
+  .text_chat_MED {
+    width: 100%;
+  }
+  .chat_MED2 {
+    flex-direction: column;
+  }
+  .chat_MED2 img {
+    width: 100%;
+  }
+  .text_chat_MED2 {
+    width: 100%;
+  }
+  .text_chatmed {
+    width: 100%;
+  }
   .head_text {
     width: 100%;
   }
+  :local .headintext {
+    font-size: 8vw;
+  }
+  @keyframes textAnim {
+    0% {
+      width: 0vw;
+    }
+    40% {
+      width: 53vw;
+      border-color: white;
+    }
+    45% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+    55% {
+      border-color: transparent;
+    }
+    60% {
+      border-color: white;
+      width: 53vw;
+    }
+    100% {
+      width: 0vw;
+    }
+  }
 }
-
 @media screen and (max-width: 590px) {
   .maincontenet {
     padding: 60px 20px;
@@ -141,6 +246,36 @@
 @media screen and (max-width: 440px) {
   .navbar {
     flex-direction: column;
+  }
+}
+@media screen and (max-width: 350px) {
+  #headintext {
+    font-size: 10vw;
+  }
+  @keyframes textAnim {
+    0% {
+      width: 0vw;
+    }
+    40% {
+      width: 70vw;
+      border-color: white;
+    }
+    45% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+    55% {
+      border-color: transparent;
+    }
+    60% {
+      border-color: white;
+      width: 70vw;
+    }
+    100% {
+      width: 0vw;
+    }
   }
 }
 
@@ -173,10 +308,10 @@
 }
 
 .para_inbox {
-  font-family: "Montserrat";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 500;
-  font-size: 27px;
+  font-size: 22px;
   line-height: 34px;
   text-align: center;
   color: #244674;
@@ -232,6 +367,9 @@
   background: #ecf4f7;
   box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.23);
   border-radius: 30px;
+  img {
+    border-radius: 20px;
+  }
 }
 .head_chatmed {
   font-family: "Lato";
@@ -261,7 +399,7 @@
   align-items: center;
   font-family: "Montserrat";
   margin-top: 2rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
 
   color: #244674;
 }
@@ -280,30 +418,6 @@
 }
 .chat_MED2 img {
   width: 50%;
-}
-
-@media screen and (max-width: 900px) {
-  .chat_MED {
-    flex-direction: column;
-  }
-  .chat_MED img {
-    width: 100%;
-  }
-  .text_chat_MED {
-    width: 100%;
-  }
-  .chat_MED2 {
-    flex-direction: column;
-  }
-  .chat_MED2 img {
-    width: 100%;
-  }
-  .text_chat_MED2 {
-    width: 100%;
-  }
-  .text_chatmed {
-    width: 100%;
-  }
 }
 
 .footer {
