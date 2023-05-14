@@ -28,21 +28,6 @@
 
 ### Mockups
 
-<!-- | Landing | Signin Signup|
-|
-| | | |
-| <img src="./readme/demo/Landingpagefigma.png" /> | ![fsdaf](./readme/demo/figmasignup.png) |
-
-|                                           |                        | Edit Profile |
-| ----------------------------------------- | ----------------------------------- | ------------ |
-| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/Profile.jpg) |
-
-Doctor Dashboard |Live chat |
-| ![fsdaf](./readme/demo/DoctorDashboard.png) || ![fsdaf](./readme/demo/Chats.jpg) |
-| Medical History | Vitals |
-| ---| ---| ---|
-| ![Landing](./readme/demo/historyfigma.png) | ![fsdaf](./readme/demo/vitalsfigma.png) | -->
-
 > | Landing                                        | Signup/Signin/Profile                                                                                                                                 |
 > | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 > | <img src="./readme/demo/Landingpage2x.png"  /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Signin](./readme/demo/signinfigma.png) ![Profile](./readme//demo/Profile.jpg) |
