@@ -28,18 +28,26 @@
 
 ### Mockups
 
-| Landing Page                                                               | Signup Signin                           |
-| -------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/demo/Landingpagefigma.png" width="50%" height= "100%"/> | ![fsdaf](./readme/demo/figmasignup.png) | ![zed](./readme/demo/signinfigma.png) |
-
-| View Patient | Edit Profile | Doctor Dashboard |
+<!-- | Landing | Signin Signup|
+|
 | | | |
-| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/Profile.jpg) | ![fsdaf](./readme/demo/DoctorDashboard.png) |
-| Medical History | Live chat | Vitals |
-| | | |
-| ![Landing](./readme/demo/historyfigma.png) | ![fsdaf](./readme/demo/Chats.jpg) | ![fsdaf](./readme/demo/vitalsfigma.png) |
+| <img src="./readme/demo/Landingpagefigma.png" /> | ![fsdaf](./readme/demo/figmasignup.png) |
 
-<br><br>
+|                                           | View Patient                        | Edit Profile |
+| ----------------------------------------- | ----------------------------------- | ------------ |
+| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/Profile.jpg) |
+
+Doctor Dashboard |Live chat |
+| ![fsdaf](./readme/demo/DoctorDashboard.png) || ![fsdaf](./readme/demo/Chats.jpg) |
+| Medical History | Vitals |
+| ---| ---| ---|
+| ![Landing](./readme/demo/historyfigma.png) | ![fsdaf](./readme/demo/vitalsfigma.png) | -->
+
+> | Landing                                                                   | Signup/Signin/Profile                                                                                                                                 |
+> | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | <img src="./readme/demo/Landing page2x.png" height='100%' width='100%' /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Signin](./readme/demo/signinfigma.png) ![Profile](./readme//demo/Profile.jpg) |
+>
+> <br><br>
 
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
