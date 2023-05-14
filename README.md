@@ -43,9 +43,9 @@ Doctor Dashboard |Live chat |
 | ---| ---| ---|
 | ![Landing](./readme/demo/historyfigma.png) | ![fsdaf](./readme/demo/vitalsfigma.png) | -->
 
-> | Landing                                                                   | Signup/Signin/Profile                                                                                                                                 |
-> | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-> | <img src="./readme/demo/Landing page2x.png" height='100%' width='100%' /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Signin](./readme/demo/signinfigma.png) ![Profile](./readme//demo/Profile.jpg) |
+> | Landing                                                                  | Signup/Signin/Profile                                                                                                                                 |
+> | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | <img src="./readme/demo/Landingpage2x.png" height='100%' width='100%' /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Signin](./readme/demo/signinfigma.png) ![Profile](./readme//demo/Profile.jpg) |
 >
 > <br><br>
 
