@@ -28,15 +28,16 @@
 
 ### Mockups
 
-| Landing Page                                   | Signup                                  | Signin                                      |
-| ---------------------------------------------- | --------------------------------------- | ------------------------------------------- |
-| ![Landing](./readme/demo/Landingpagefigma.png) | ![fsdaf](./readme/demo/figmasignup.png) | ![zed](./readme/demo/signinfigma.png)       |
-| View Patient                                   | Edit Profile                            | Doctor Dashboard                            |
-|                                                |                                         |                                             |
-| ![Landing](./readme/demo/ViewPatient.png)      | ![fsdaf](./readme/demo/Profile.jpg)     | ![fsdaf](./readme/demo/DoctorDashboard.png) |
-| Medical History                                | Live chat                               | Vitals                                      |
-|                                                |                                         |                                             |
-| ![Landing](./readme/demo/historyfigma.png)     | ![fsdaf](./readme/demo/Chats.jpg)       | ![fsdaf](./readme/demo/vitalsfigma.png)     |
+| Landing Page                                                               | Signup Signin                           |
+| -------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------- |
+| <img src="./readme/demo/Landingpagefigma.png" width="50%" height= "100%"/> | ![fsdaf](./readme/demo/figmasignup.png) | ![zed](./readme/demo/signinfigma.png) |
+
+| View Patient | Edit Profile | Doctor Dashboard |
+| | | |
+| ![Landing](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/Profile.jpg) | ![fsdaf](./readme/demo/DoctorDashboard.png) |
+| Medical History | Live chat | Vitals |
+| | | |
+| ![Landing](./readme/demo/historyfigma.png) | ![fsdaf](./readme/demo/Chats.jpg) | ![fsdaf](./readme/demo/vitalsfigma.png) |
 
 <br><br>
 
