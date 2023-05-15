@@ -1,25 +1,19 @@
 import React, { useState, useEffect, ReactNode } from "react";
 import NavBar from "../../../components/NavBar/NavBar";
-import SideNavBar from "../../../components/SideNavBar/SideNavBar";
 import styles from "../../../styles/Doctor/Dashboard.module.scss";
 import ".././../../Prime-theme/theme.css";
-import { Card } from "@mui/material";
-import { Calendar, CalendarChangeEvent } from "primereact/calendar";
-import docpic from "../../../assets/DocDash/docpic.png";
-import { text } from "stream/consumers";
-import PatientsTable from "../../../components/PatientsTable/PatientsTable";
 import { API } from "../../../API/API";
 import { useNavigate } from "react-router-dom";
-
 import { base_url } from "../../../API/API";
+import PatientTable2 from "../../../components/PatientTable2/PatientTable2";
 
 interface Doctor {
   id: number;
-  displayName: string;
+  displayName: any;
   email: string;
   imageUrl: string;
 }
-interface Product {
+interface Patient {
   [x: string]: ReactNode;
   id: string;
   displayName: string;
@@ -43,61 +37,34 @@ const DoctorDashboard = () => {
 
   const [date, setDate] = useState<string | Date | Date[] | null>(null);
   const [doctor, setDoctor] = useState<Doctor | undefined>(undefined);
-  const [products, setProdcuts] = useState<Product[] | undefined>(undefined);
+  const [patients, setPatients] = useState<Patient[] | undefined>(undefined);
   const [consultations, setConsultations] = useState<
     Consultation[] | undefined
   >([]);
-
-  const [chatResponse, setSelectedProduct] = useState<Product | null>(null);
+  const [chatResponse, setSelectedProduct] = useState<Consultation | null>(
+    null
+  );
   const token = localStorage.getItem("token");
   useEffect(() => {
-    const fetchResponses = async () => {
-      try {
-        const responseChat = await API.getAPI(`${base_url}response/`, token!);
-        console.log("Response responseChat", responseChat);
-
-        setConsultations(responseChat.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     const fetchProfileeData = async () => {
       try {
         const response = await API.getAPI(
           `${base_url}doctor/getprofile`,
           token!
         );
-        console.log(response);
         setDoctor(response);
       } catch (error) {
         console.log(error);
       }
     };
 
-    const fetchPatientData = async () => {
-      try {
-        const response = await API.getAPI(
-          `${base_url}doctor/getpatients`,
-          token!
-        );
-        console.log(response);
-        setProdcuts(response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchResponses();
     fetchProfileeData();
-    fetchPatientData();
   }, []);
-  console.log("consultations", consultations);
 
   return (
     <div>
       <NavBar />
       <div className={styles.global}>
-        {/* <div className={styles.top}> */}
         <div className={styles.topLeft}>
           <div className={styles.details}>
             <div>
@@ -114,7 +81,7 @@ const DoctorDashboard = () => {
           </div>
         </div>
         <div className={styles.bottom}>
-          <PatientsTable consultations={consultations} patients={products} />
+          <PatientTable2 />
         </div>
       </div>
     </div>

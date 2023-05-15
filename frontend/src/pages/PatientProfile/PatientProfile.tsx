@@ -17,7 +17,8 @@ import {
   list,
 } from "firebase/storage";
 import { v4 as uuidV4 } from "uuid";
-import { storage } from "../../FireBase";
+import nour from "../../assets/nour.jpg";
+// import { storage } from "../../FireBase";
 import axios from "axios";
 
 declare global {
@@ -38,41 +39,8 @@ const PatientProfile = () => {
     }
   };
 
-  const handleFileSubmit = () => {
-    if (!image) {
-      console.log("No image selected");
-      return;
-    }
-    const imageRef = ref(storage, `${uuidV4()}`);
-    uploadBytes(imageRef, image).then(() => {
-      getDownloadURL(imageRef).then((url: string) => {
-        setImageUrls(url);
-
-        console.log(url);
-        axios
-          .post(
-            `${base_url}upload`,
-            { imageUrl: url },
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          )
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
-    });
-  };
-
   return (
     <div>
-      <NavBar />
-
       <Box
         sx={{
           display: "flex",
@@ -109,7 +77,7 @@ const PatientProfile = () => {
               }}
               variant="contained"
               color="secondary"
-              onClick={handleFileSubmit}
+              // onClick={handleFileSubmit}
             >
               Edit
             </Button>
@@ -138,7 +106,7 @@ const PatientProfile = () => {
               }}
             >
               <img
-                src="https://picsum.photos/200"
+                src={nour}
                 alt="profile"
                 style={{
                   borderRadius: "50%",

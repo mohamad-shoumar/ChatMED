@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/SideNavBar/SideNavBar.module.scss";
 import Union from "../../assets/sidebar/Union.png";
 import history from "../../assets/sidebar/history.png";
@@ -14,10 +14,37 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../FireBaseChat";
-
+import { useTheme } from "@mui/material/styles";
+// interface SideNavBarProps {
+//   isDarkMode: boolean;
+//   setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+// }
+// ({
+//   isDarkMode,
+//   setIsDarkMode,
+// })
+// : React.FC<SideNavBarProps>
 const SideNavBar = () => {
   const navigate = useNavigate();
   const [active, setActive] = React.useState(-1);
+  // const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const storedDarkTheme = localStorage.getItem("darkTheme");
+  // const isDarkMode = storedDarkTheme ? JSON.parse(storedDarkTheme) : false;
+  // useEffect(() => {
+  //   const storedDarkTheme = localStorage.getItem("darkTheme");
+  //   setIsDarkMode(storedDarkTheme ? JSON.parse(storedDarkTheme) : false);
+  // }, []);
+  // const toggleTheme = () => {
+  //   const newDarkTheme = !isDarkMode;
+  //   setIsDarkMode(newDarkTheme);
+  //   localStorage.setItem("darkTheme", JSON.stringify(newDarkTheme));
+  // };
+
+  // console.log(isDarkMode);
+  const togleTheme = () => {
+    console.log("togleTheme");
+  };
+
   const handleClick = (index: number) => {
     setActive(index);
   };
@@ -118,7 +145,7 @@ const SideNavBar = () => {
                 </div>
                 <img src={Icon} alt="arrow" />
               </div>
-              <div
+              {/* <div
                 className={`${styles.link} ${styles.hover}`}
                 onClick={() => navigate("/authentication")}
               >
@@ -129,13 +156,18 @@ const SideNavBar = () => {
                   </div>
                 </div>
                 <img src={Icon} alt="arrow" />
-              </div>
+              </div> */}
             </div>
-            <div className={`${styles.darkmodeloc}`}>
+            <div
+              className={`${styles.darkmodeloc}`}
+              onClick={() => navigate("/authentication")}
+            >
               <div className={`${styles.darkmode} ${styles.hover}`}>
                 <div className={styles.linkleft}>
-                  <img src={sun} alt="logo" />
-                  <div className={styles.word}>Dark Mode</div>
+                  <img src={logs} alt="logo" />
+                  <div onClick={() => handleLogout()} className={styles.word}>
+                    Log Out
+                  </div>
                 </div>
               </div>
             </div>
