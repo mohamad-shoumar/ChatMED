@@ -41,7 +41,6 @@ interface TableComponentProps {
 export default function PatientsTable(props: TableComponentProps) {
   const { patients, consultations } = props;
   const [products, setProducts] = useState<Product[]>([]);
-
   const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [visible, setVisible] = useState(false);
@@ -52,15 +51,6 @@ export default function PatientsTable(props: TableComponentProps) {
   console.log("Patients", patients);
   console.log("Consultation", consultations);
 
-  const imageBodyTemplate = (product: Product) => {
-    return (
-      <img
-        src={product.imageUrl}
-        alt={product.imageUrl}
-        className="w-6rem shadow-2 border-rounded-half"
-      />
-    );
-  };
   const handleRowSelect = (event: any) => {
     const selectedPatient = event.data;
     console.log("selectedPatient", selectedPatient);
@@ -160,10 +150,6 @@ export default function PatientsTable(props: TableComponentProps) {
       <Button label="Submit" icon="pi pi-check" className="p-button-success" />
     </div>
   );
-  // const statusBodyTemplate = (product: Product) => {
-  //   console.log("PRoduct", product);
-  //   return <Tag value={product.status} severity={getSeverity(product)}></Tag>;
-  // };
   const statusBodyTemplate = (rowData: Product) => {
     return (
       <Tag
@@ -174,13 +160,12 @@ export default function PatientsTable(props: TableComponentProps) {
   };
 
   console.log("Selected Product", selectedProduct);
-  const dialogContent = selectedProduct && (
+  const dialogContent = (
     <div className="p-grid">
       <div className="p-col-12 p-md-6">
         <div className="card">
           <h5>Symptoms</h5>
           <hr />
-          {/* <p>{selectedProduct?.role.consultations[0].symptoms}</p> */}
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est itaque
             expedita beatae a sint minus id odio rerum. Odio tempora quae
@@ -193,7 +178,6 @@ export default function PatientsTable(props: TableComponentProps) {
         <div className="card">
           <h5>Diagnosis</h5>
           <hr />
-          {/* <p>{selectedProduct?.diagnosis}</p> */}
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est itaque
             expedita beatae a sint minus id odio rerum. Odio tempora quae
@@ -206,7 +190,6 @@ export default function PatientsTable(props: TableComponentProps) {
         <div className="card">
           <h5>Treatment Plan</h5>
           <hr />
-          {/* <p>{selectedProduct.treatmentPlan}</p> */}
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est itaque
             expedita beatae a sint minus id odio rerum. Odio tempora quae
@@ -220,8 +203,7 @@ export default function PatientsTable(props: TableComponentProps) {
 
   console.log("Comeplete Consultation", consultation);
   console.log(mergedData);
-  console.log(mergedData?.[0].displayName);
-  console.log(mergedData?.[1].displayName);
+
   console.log("Merged Data", mergedData?.[0]);
 
   return (
@@ -264,7 +246,7 @@ export default function PatientsTable(props: TableComponentProps) {
         <Column
           body={(rowData) => {
             console.log(rowData);
-            const fullName = rowData[0].displayName.split(" ");
+            const fullName = rowData.displayName.split(" ");
             return fullName[fullName.length - 1];
           }}
           header="Last name"
@@ -287,101 +269,3 @@ export default function PatientsTable(props: TableComponentProps) {
     </div>
   );
 }
-
-// const dialogContent = (
-//   <div className="p-grid">
-//     <div className="p-col-12 p-md-6">
-//       <div className="card">
-//         <h5>Symptoms</h5>
-//         <hr />
-//         <p>
-//           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-//           suscipit massa auctor lacus sodales faucibus.
-//         </p>
-//       </div>
-//     </div>
-//     {editingResponse ? (
-//       <div className="p-col-12 p-md-6">
-//         <div className="card">
-//           <h5>Response</h5>
-//           <hr />
-//           <textarea
-//             value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit massa auctor lacus sodales faucibus."
-//             onChange={(e) => {}}
-//             className="w-full p-2 border rounded"
-//           ></textarea>
-//         </div>
-//       </div>
-//     ) : null}
-//   </div>
-// );
-
-// const handleRowSelect = async (event: any) => {
-//   const selectedPatient = event.data;
-//   if (selectedPatient.consultationStatus === "Pending") {
-//     try {
-//       const responseConsultation = await API.getAPI(
-//         `${base_url}response`,
-//         token!
-//       );
-//       console.log("Response consultation", responseConsultation);
-//       setConsultation(responseConsultation.response);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     setSelectedProduct(selectedPatient);
-//     setVisible(true);
-//   }
-// };
-
-// const consultationBodyTemplate = (patient: Product) => {
-//   const patientConsultations = consultations?.filter(
-//     (consultations) => consultations.patient === patient._id
-//   );
-//   if (patientConsultations && patientConsultations.length > 0) {
-//     const latestConsultation = patientConsultations[0];
-//     const handleClick = () => {
-//       if (latestConsultation.status === "pending") {
-//         setSelectedProduct(patient);
-//         setVisible(true);
-//       }
-//     };
-//     return (
-//       <div onClick={handleClick} style={{ cursor: "pointer" }}>
-//         {latestConsultation.status === "pending" ? (
-//           <span>Pending</span>
-//         ) : (
-//           <span>Completed</span>
-//         )}
-//       </div>
-//     );
-//   }
-//   return null;
-// };
-
-// const history = (rowData: {
-//   country: {
-//     code: any;
-//     name:
-//       | string
-//       | number
-//       | boolean
-//       | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-//       | React.ReactFragment
-//       | React.ReactPortal
-//       | null
-//       | undefined;
-//   };
-// }) => {
-//   return (
-//     <div className="flex align-items-center gap-2">
-//       <img
-//         alt="flag"
-//         src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png"
-//         className={`flag flag-${rowData.country.code}`}
-//         style={{ width: "24px" }}
-//       />
-//       <span>{rowData.country.name}</span>
-//     </div>
-//   );
-// };
