@@ -28,10 +28,10 @@
 
 ### Mockups
 
-> | Landing                                        | Signup/Signin/Profile                                                                                                                                 |
-> | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-> | <img src="./readme/demo/Landingpage2x.png"  /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Signin](./readme/demo/signinfigma.png) ![Profile](./readme//demo/Profile.jpg) |
->
+> | Landing                                      | Signup/Signin/Profile                                                                                                                                 |
+> | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+> | <img src="./readme/demo/Landingpage.png"  /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Signin](./readme/demo/signinfigma.png) ![Profile](./readme//demo/Profile.jpg) |
+
 > |     | View Patient                            | Live Chat                         |
 > | --- | --------------------------------------- | --------------------------------- |
 > |     | ![fsdaf](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/Chats.jpg) |
