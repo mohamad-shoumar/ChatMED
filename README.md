@@ -61,9 +61,9 @@
 > | ------------------------------------------------ |
 > | <img src="./readme/gifs/chat.gif" width="100%"/> |
 
-> | Multi Language and Responsiveness                |
-> | ------------------------------------------------ |
-> | <img src="./readme/gifs/chat.gif" width="100%"/> |
+> | Multi Language and Responsiveness                    |
+> | ---------------------------------------------------- |
+> | <img src="./readme/gifs/multlang.gif" width="100%"/> |
 
 ### Patient Screens
 
