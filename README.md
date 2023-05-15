@@ -67,6 +67,10 @@
 
 ### Patient Screens
 
+> | Dashbaord                                                    |
+> | ------------------------------------------------------------ |
+> | <img src="./readme/gifs/dahsboardPatient.gif" width="100%"/> |
+
 > | Vitals                                             |
 > | -------------------------------------------------- |
 > | <img src="./readme/gifs/vitals.gif" width="100%"/> |
@@ -78,6 +82,20 @@
 > | Consultation                                        |
 > | --------------------------------------------------- |
 > | <img src="./readme/gifs/consult.gif" width="100%"/> |
+
+### Doctro Screens
+
+> | Edit Response                                            |
+> | -------------------------------------------------------- |
+> | <img src="./readme/gifs/editResponse.gif" width="100%"/> |
+
+> | View Patient                                            |
+> | ------------------------------------------------------- |
+> | <img src="./readme/demo/ViewPatient.png" width="100%"/> |
+
+> | Edit Profile                                               |
+> | ---------------------------------------------------------- |
+> | <img src="./readme/gifs/docprofileEdit.gif" width="100%"/> |
 
 <br><br>
 
