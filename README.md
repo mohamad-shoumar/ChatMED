@@ -9,13 +9,15 @@
 >
 > Our mission is to make quality healthcare accessible to everyone while empowering individuals to stay on top of their health goals. By combining advanced technology with personalized care, ChatMED aims to bridge the gap between patients and healthcare providers.
 
-### User Stories
+### Patient Stories
 
 - As a patient, I want to choose a doctor and enter my symptoms to a chatbot so that the doctor can check my symptoms later.
-- As a user, I want to customize my order, so I can add or remove ingredients according to my preferences.
+- As a Patient, I want to customize my order, so I can add or remove ingredients according to my preferences.
 - As a patient, I want to input my vitals and receive notifications assessing my progress so that I can stay on track with my health goals.
 
-- As a doctor, I want to receive a diagnosis and treatment plan so that I can provide medical advice to my patient.
+### Doctor Stories
+
+- As a doctor, I want to receive a diagnosis and treatment plan from ChatGPT so that I can provide medical advice to my patient.
 - As a doctor, I want to conduct virtual consultations through live chat with the patient if needed.
 - As a doctor, I want to view my patients along their vitals and detailed medical history.
 
@@ -28,17 +30,13 @@
 
 ### Mockups
 
-> | Landing                                      | Signup/Signin/Profile                                                                                                                                 |
-> | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-> | <img src="./readme/demo/Landingpage.png"  /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Signin](./readme/demo/signinfigma.png) ![Profile](./readme//demo/Profile.jpg) |
+> | Landing                                      | Signup/Signin/Profile                                                                                        |
+> | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+> | <img src="./readme/demo/Landingpage.png"  /> | <img src="./readme/demo/figmasignup.png" height='20%' width='100%' /> ![Profile](./readme//demo/Profile.jpg) |
 
-> |     | View Patient                            | Live Chat                         |
-> | --- | --------------------------------------- | --------------------------------- |
-> |     | ![fsdaf](./readme/demo/ViewPatient.png) | ![fsdaf](./readme/demo/Chats.jpg) |
-
-> |     | Dashboard                                   | Medical History                          |
-> | --- | ------------------------------------------- | ---------------------------------------- |
-> |     | ![fsdaf](./readme/demo/DoctorDashboard.png) | ![fsdaf](./readme/demo/historyfigma.png) |
+> |     | View Patient                                 | Live Chat                         |
+> | --- | -------------------------------------------- | --------------------------------- |
+> |     | ![fsdaf](./readme/demo/ViewPatientFigma.png) | ![fsdaf](./readme/demo/Chats.jpg) |
 
 > <br><br>
 
