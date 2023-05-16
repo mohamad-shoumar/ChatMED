@@ -176,109 +176,6 @@
   font-size: 5vw;
 }
 
-@media screen and (max-width: 900px) {
-  .maincontenet {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .chat_MED {
-    flex-direction: column;
-  }
-  .chat_MED img {
-    width: 100%;
-  }
-  .text_chat_MED {
-    width: 100%;
-  }
-  .chat_MED2 {
-    flex-direction: column;
-  }
-  .chat_MED2 img {
-    width: 100%;
-  }
-  .text_chat_MED2 {
-    width: 100%;
-  }
-  .text_chatmed {
-    width: 100%;
-  }
-  .head_text {
-    width: 100%;
-  }
-  :local .headintext {
-    font-size: 8vw;
-  }
-  @keyframes textAnim {
-    0% {
-      width: 0vw;
-    }
-    40% {
-      width: 53vw;
-      border-color: white;
-    }
-    45% {
-      border-color: transparent;
-    }
-    50% {
-      border-color: white;
-    }
-    55% {
-      border-color: transparent;
-    }
-    60% {
-      border-color: white;
-      width: 53vw;
-    }
-    100% {
-      width: 0vw;
-    }
-  }
-}
-@media screen and (max-width: 590px) {
-  .maincontenet {
-    padding: 60px 20px;
-  }
-  .head_text {
-    margin: 20px 0px;
-  }
-}
-
-@media screen and (max-width: 440px) {
-  .navbar {
-    flex-direction: column;
-  }
-}
-@media screen and (max-width: 350px) {
-  #headintext {
-    font-size: 10vw;
-  }
-  @keyframes textAnim {
-    0% {
-      width: 0vw;
-    }
-    40% {
-      width: 70vw;
-      border-color: white;
-    }
-    45% {
-      border-color: transparent;
-    }
-    50% {
-      border-color: white;
-    }
-    55% {
-      border-color: transparent;
-    }
-    60% {
-      border-color: white;
-      width: 70vw;
-    }
-    100% {
-      width: 0vw;
-    }
-  }
-}
-
 .main_box {
   padding: 50px 0px;
   width: 100%;
@@ -440,4 +337,126 @@
   line-height: 13px;
 
   color: #ffffff;
+}
+@media screen and (max-width: 900px) {
+  .maincontenet {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .headintext {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 40px;
+  }
+  .buttonss {
+    margin-right: 10px;
+  }
+  .headerTitle3 {
+    font-size: 2rem;
+  }
+  .headerTitle {
+    font-size: 2rem;
+  }
+  .nav_buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .chat_MED {
+    flex-direction: column;
+  }
+  .chat_MED img {
+    width: 100%;
+  }
+  .text_chat_MED {
+    width: 100%;
+  }
+  .chat_MED2 {
+    flex-direction: column;
+  }
+  .chat_MED2 img {
+    width: 100%;
+  }
+  .text_chat_MED2 {
+    width: 100%;
+  }
+  .text_chatmed {
+    width: 100%;
+  }
+  .head_text {
+    width: 100%;
+  }
+  :local .headintext {
+    font-size: 8vw;
+  }
+  @keyframes textAnim {
+    0% {
+      width: 0vw;
+    }
+    40% {
+      width: 53vw;
+      border-color: white;
+    }
+    45% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+    55% {
+      border-color: transparent;
+    }
+    60% {
+      border-color: white;
+      width: 53vw;
+    }
+    100% {
+      width: 0vw;
+    }
+  }
+}
+@media screen and (max-width: 590px) {
+  .maincontenet {
+    padding: 60px 20px;
+  }
+  .head_text {
+    margin: 20px 0px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 350px) {
+  #headintext {
+    font-size: 10vw;
+  }
+  @keyframes textAnim {
+    0% {
+      width: 0vw;
+    }
+    40% {
+      width: 70vw;
+      border-color: white;
+    }
+    45% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+    55% {
+      border-color: transparent;
+    }
+    60% {
+      border-color: white;
+      width: 70vw;
+    }
+    100% {
+      width: 0vw;
+    }
+  }
 }
