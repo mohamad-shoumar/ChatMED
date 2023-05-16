@@ -12,7 +12,6 @@ const saltRounds = 10;
 //  Login
 export const login = async (req: Request, res: Response) => {
   try {
-    console.log(req.body);
     const secretKey: Secret = process.env.Secret_key as string;
     const { email, password } = req.body;
     const user = await User.findOne({ email });

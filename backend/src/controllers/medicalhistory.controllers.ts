@@ -6,7 +6,6 @@ export const addMedicalHistory = async (req: Request, response: Response) => {
   try {
     const userId = req.body.user.id;
     const medicalHistory = req.body.medicalHistory;
-    console.log(medicalHistory);
 
     let newMedicalHistory = await MedicalHistory.findOne({ user: userId });
     if (newMedicalHistory) {
@@ -25,7 +24,6 @@ export const addMedicalHistory = async (req: Request, response: Response) => {
         dateOfBirth: medicalHistory.dateOfBirth,
         gender: medicalHistory.gender,
       });
-      console.log(newMedicalHistory);
       await newMedicalHistory.save();
       response.json({ message: "medical history added", newMedicalHistory });
     }

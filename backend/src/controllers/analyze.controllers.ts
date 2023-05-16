@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
 import { Configuration, OpenAIApi } from "openai";
-import Patient from "../models/PatientModel";
-import Analyze from "../models/AnalyzeModel";
 import Vital from "../models/VitalModel";
 
 export const analyzeByChat = async (req: Request, res: Response) => {

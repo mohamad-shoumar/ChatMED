@@ -75,7 +75,6 @@ const generatePrompt = (symptoms: string, retrievedMedicalhistory: any) => {
 export const getResponse = async (req: Request, res: Response) => {
   try {
     const doctorID = req.body.user.id;
-    console.log(doctorID);
 
     const responses = await ResponseModel.find({ doctor: doctorID });
 

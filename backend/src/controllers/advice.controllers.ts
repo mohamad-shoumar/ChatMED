@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { Configuration, OpenAIApi } from "openai";
 import MedicalHistory from "../models/MedicalHistoryModel";
-import { log } from "console";
-import Advice from "../models/AdviceModel";
 
 export const adviceByChat = async (req: Request, res: Response) => {
   try {

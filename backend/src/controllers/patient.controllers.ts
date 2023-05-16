@@ -2,23 +2,9 @@ import { Request, Response } from "express";
 import User, { IUser } from "../models/UserModel";
 import Patient, { IPatient } from "../models/PatientModel";
 import Doctor, { IDoctor } from "../models/DoctorModel";
-import MedicalHistory, { IMedicalHistory } from "../models/MedicalHistoryModel";
-import jwt from "jsonwebtoken";
-import moment from "moment";
-import multer from "multer";
-import path from "path";
+
 import ResponseModel from "../models/ResponseModel";
 import { date } from "joi";
-
-// Get all doctors
-// export const getDoctors = async (req: Request, response: Response) => {
-//   try {
-//     const doctors = await User.find({ role: "doctor" });
-//     response.json(doctors);
-//   } catch (error) {
-//     response.status(500).json({ message: "Server error" });
-//   }
-// };
 
 export const getDoctors = async (req: Request, response: Response) => {
   try {
@@ -76,8 +62,6 @@ export const editProfile = async (req: Request, res: Response) => {
     const { displayName, email, imageUrls } = req.body;
     const retrievedUser = await User.findById(id);
 
-    console.log("controller: ", req.body);
-
     if (!retrievedUser) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -85,11 +69,7 @@ export const editProfile = async (req: Request, res: Response) => {
     if (retrievedUser) {
       retrievedUser.displayName = displayName || retrievedUser.displayName;
       retrievedUser.email = email || retrievedUser.email;
-      // retrievedUser.link = link || retrievedUser.link;
 
-      // if (req.file) {
-      //   retrievedUser.profilePictureUrl = req.file.path;
-      // }
       const updatedUser = await retrievedUser.save();
 
       res.json(updatedUser);
@@ -104,10 +84,8 @@ export const editProfile = async (req: Request, res: Response) => {
 export const getProfile = async (req: Request, response: Response) => {
   try {
     const user = req.body.user;
-    console.log(user);
 
     const retreiveduser = await User.findOne({ email: user.email });
-    console.log(retreiveduser);
 
     if (!retreiveduser) {
       response.status(404).json({ message: "User not found" });
@@ -122,13 +100,10 @@ export const getProfile = async (req: Request, response: Response) => {
 export const chooseDoctor = async (req: Request, response: Response) => {
   const id = req.body.user.id;
   const doctorid = req.body.doctor;
-  console.log("patientid", id);
-  console.log("docid", doctorid);
+
   try {
     const patient = await User.findOne({ user: id });
     const doctor = await User.findOne({ id: doctorid });
-
-    console.log(doctorid);
 
     let docList: any = {};
     docList = await Doctor.findOne({ user: doctorid }, { patients: 1 });

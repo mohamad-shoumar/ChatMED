@@ -20,9 +20,6 @@ export const editProfile = async (req: Request, res: Response) => {
       email,
       profilePictureUrl,
     } = req.body;
-    console.log(req.body);
-    console.log(userId);
-    console.log(workingHours);
 
     const doctor = await Doctor.findOne({ user: userId });
     if (!doctor) {
@@ -53,12 +50,9 @@ export const editProfile = async (req: Request, res: Response) => {
 export const getProfile = async (req: Request, response: Response) => {
   try {
     const userInfo = req.body.user;
-    console.log(userInfo);
 
     // const doctor = await Doctor.findOne({ user: doctorInfo });
     const user = await User.findOne({ email: userInfo.email });
-
-    console.log(user);
 
     if (!user) {
       response.status(404).json({ message: "User not found" });
@@ -74,8 +68,6 @@ export const getPatients = async (req: Request, response: Response) => {
   try {
     const doctorId = req.body.user.id;
     const doctor = await Doctor.findOne({ user: doctorId });
-    console.log(doctor);
-    console.log(doctorId);
 
     if (!doctor) {
       response.status(404).json({ message: "Doctor not found" });
