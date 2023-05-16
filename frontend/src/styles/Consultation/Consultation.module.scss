@@ -52,7 +52,7 @@
 .docCards {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid $subText;
+  // border-bottom: 1px solid $subText;
   padding: 5px;
   width: 100%;
   gap: 0.7rem;
@@ -65,6 +65,7 @@
   justify-content: flex-start;
   padding: 0 10px;
   overflow-y: auto;
+  position: relative;
 }
 .symptoms {
   padding: 30px 10px;
@@ -76,5 +77,11 @@
 }
 .response {
   min-width: 100%;
+  position: absolute;
+  right: 0%;
+  bottom: 40%;
   overflow-x: auto;
+  text-align: center;
+  font-size: 1.4rem;
+  color: $subText;
 }
