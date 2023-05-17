@@ -8,7 +8,7 @@ export class API {
       const headers: AxiosRequestConfig["headers"] = {
         Authorization: token ? `Bearer ${token}` : "",
         "Content-Type": "application/json",
-        Accept: "application/json,multipart/form-data",
+        Accept: "application/json",
       };
       if (token) {
         headers.Authorization = `Bearer ${token}`;
@@ -30,7 +30,7 @@ export class API {
       console.log("API data:", api_data);
       const headers: AxiosRequestConfig["headers"] = {
         Authorization: token ? `Bearer ${token}` : "",
-        Accept: "application/json, multipart/form-data",
+        Accept: "application/json",
       };
       const response = await axios.post(url, api_data, { headers });
       return response.data;

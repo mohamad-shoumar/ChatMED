@@ -14,9 +14,9 @@ const Chat = () => {
       <div className={styles.chatInfo}>
         <span>{data.user?.displayName}</span>
         <div className={styles.chatIcons}>
-          <img src={Cam} alt="" />
+          {/* <img src={Cam} alt="" />
           <img src={Add} alt="" />
-          <img src={More} alt="" />
+          <img src={More} alt="" /> */}
         </div>
       </div>
       <Messages />

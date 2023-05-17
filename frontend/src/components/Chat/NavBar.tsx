@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
     <div className={style.navbar}>
       <span className={style.logo}>ChatMED</span>
       <div className={style.user}>
-        <img src={currentUser.photoURL} alt="" />
+        <img src={currentUser?.photoURL} alt="" />
         <span>{currentUser.displayName}</span>
       </div>
     </div>

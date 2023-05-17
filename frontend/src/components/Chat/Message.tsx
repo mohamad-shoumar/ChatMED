@@ -29,7 +29,7 @@ const Message: React.FC<Props> = ({ message }) => {
         <img
           src={
             message.senderId === currentUser?.uid
-              ? currentUser.photoURL
+              ? currentUser?.photoURL
               : data?.user?.photoURL
           }
           alt=""

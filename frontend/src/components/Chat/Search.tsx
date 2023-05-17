@@ -96,7 +96,7 @@ const Search = () => {
       {err && <span>User not found!</span>}
       {user && (
         <div className={styles.userChat} onClick={handleSelect}>
-          <img src={user.photoURL} alt="" />
+          <img src={user?.photoURL} alt="" />
           <div className={styles.userChatInfo}>
             <span>{user.displayName}</span>
           </div>

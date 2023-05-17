@@ -65,12 +65,12 @@ const Chats = (): JSX.Element => {
             <div className={styles.userChatInfo}>
               <img
                 className={styles.cardimage}
-                src={chat[1].userInfo.photoURL}
+                src={chat[1].userInfo?.photoURL}
                 alt=""
               />
             </div>
             <div className={styles.cardimagetext}>
-              <span>{chat[1].userInfo.displayName}</span>
+              <span>{chat[1].userInfo?.displayName}</span>
               <p>{chat[1].lastMessage?.text}</p>
             </div>
           </div>
