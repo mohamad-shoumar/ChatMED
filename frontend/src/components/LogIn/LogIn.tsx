@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/Authentication/LogIn.module.scss";
 import "../../styles/Authentication/Authentication.module.scss";
 import styles from "../../styles/Authentication/Authentication.module.scss";
@@ -17,6 +17,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let nav = useNavigate();
+  const emailInputRef = useRef<HTMLInputElement>(null!);
+  const passwordInputRef = useRef<HTMLInputElement>(null!);
+
+  useEffect(() => {
+    emailInputRef.current?.focus();
+  }, []);
   const toast = useRef<Toast>(null);
   const show = () => {
     toast.current?.show({
@@ -67,16 +73,28 @@ const Login = () => {
         <span className={styles.span}>Don't have an account? sign up </span>
 
         <input
+          ref={emailInputRef}
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              passwordInputRef.current?.focus();
+            }
+          }}
         />
         <input
           type="password"
+          ref={passwordInputRef}
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSignin(e);
+            }
+          }}
         />
         <button
           onClick={handleSignin}
