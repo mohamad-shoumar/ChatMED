@@ -149,13 +149,20 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 4. Set your `DB_CONNECT` to your MongoDB connection URL and add your `TOKEN_SECRET`.
 
-5. Inside the socket folder, run:
+5. Set up Firebase:
 
-   ```sh
-   npm install socket.io
-   ```
+Create a new project on the Firebase console (https://console.firebase.google.com).
+Set up Firebase Authentication:
+Enable the email/password authentication method.
 
-6. You are ready to go, inside the backend folder, the frontend folder and the socket folder, run:
-   ```sh
-   npm start
-   ```
+6. Configure the frontend to use Firebase:
+
+Inside the frontend folder, create a new file named .env.local.
+Add the following lines to the .env.local file::
+
+```sh
+REACT_APP_FIREBASE_API_KEY=<your_firebase_apiKey>
+REACT_APP_FIREBASE_AUTH_DOMAIN=<your_firebase_authDomain>
+REACT_APP_FIREBASE_PROJECT_ID=<your_firebase_projectId>
+REACT_APP_FIREBASE_DATABASE_URL=<your_firebase_databaseURL>
+```
